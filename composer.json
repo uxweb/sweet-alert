@@ -1,7 +1,8 @@
 {
     "name": "uxweb/sweet-alert",
-    "description": "A simple PHP package to show SweetAlerts in Laravel",
+    "description": "A simple PHP package to show SweetAlerts",
     "license": "MIT",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Uziel Bueno",
@@ -10,7 +11,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "~5.0"
+        "illuminate/session": "~5.0"
     },
     "autoload": {
         "psr-4": {
