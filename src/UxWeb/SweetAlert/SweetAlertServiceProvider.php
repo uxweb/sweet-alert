@@ -19,7 +19,7 @@ class SweetAlertServiceProvider extends ServiceProvider
         );
 
         $this->app->singleton('uxweb.sweet-alert', function() {
-            $this->app->make(SweetAlertNotifier::class);
+            return $this->app->make(SweetAlertNotifier::class);
         });
     }
 
@@ -30,7 +30,7 @@ class SweetAlertServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../../views', 'alert');
+        $this->loadViewsFrom(__DIR__ . '/../../views', 'sweet');
 
         $this->publishes([
             __DIR__ . '/../../views' => base_path('resources/views/vendor/sweet-alert')

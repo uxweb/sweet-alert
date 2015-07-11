@@ -12,12 +12,16 @@ class SweetAlertNotifier
     /**
      * @var array
      */
-    private $config = [];
+    private $config = [
+        'showConfirmButton' => false,
+        'timer' => 1800,
+        'allowOutsideClick' => true,
+    ];
 
     /**
      * @param SessionStore $session
      */
-    function __construct(SessionStore $session)
+    public function __construct(SessionStore $session)
     {
         $this->session = $session;
     }
@@ -25,14 +29,14 @@ class SweetAlertNotifier
     /**
      * Displays a simple alert with a message and an optional title
      *
-     * @param $message
+     * @param $text
      * @param string $type
-     * @param null $title
+     * @param string $title
      * @return $this
      */
-    public function message($message, $type = 'info', $title = null)
+    public function message($text, $type = 'info', $title = '')
     {
-        $this->config['message'] = $message;
+        $this->config['text'] = $text;
         $this->config['type'] = $type;
         $this->config['title'] = $title;
 
@@ -45,13 +49,13 @@ class SweetAlertNotifier
      * Displays a success alert
      *
      *
-     * @param $message
+     * @param $text
      * @param string $title
      * @return $this
      */
-    public function success($message, $title = 'Success!')
+    public function success($text, $title = 'Success!')
     {
-        $this->message($message, 'success', $title);
+        $this->message($text, 'success', $title);
 
         return $this;
     }
@@ -59,13 +63,13 @@ class SweetAlertNotifier
     /**
      * Displays an error alert
      *
-     * @param $message
+     * @param $text
      * @param string $title
      * @return $this
      */
-    public function error($message, $title = "Oops!")
+    public function error($text, $title = "Oops!")
     {
-        $this->message($message, 'error', $title);
+        $this->message($text, 'error', $title);
 
         return $this;
     }
@@ -78,7 +82,24 @@ class SweetAlertNotifier
      */
     public function autoclose($milliseconds = 2000)
     {
-        $this->session('timer', $milliseconds);
+        $this->config['timer'] = $milliseconds;
+        $this->flashConfig();
+
+        return $this;
+    }
+
+    /**
+     * Shows an alert that prevents autoclosing
+     *
+     * @param string $buttonText
+     * @return $this
+     */
+    public function persistent($buttonText = 'OK')
+    {
+        $this->config['confirmButtonText'] = $buttonText;
+        $this->config['showConfirmButton'] = true;
+        $this->config['allowOutsideClick'] = false;
+        $this->config['timer'] = null;
         $this->flashConfig();
 
         return $this;
@@ -89,6 +110,10 @@ class SweetAlertNotifier
      */
     public function flashConfig()
     {
-        $this->session('sweet_alert.alert', json_encode($this->config));
+        foreach ($this->config as $key => $value) {
+            $this->session->flash("sweet_alert.{$key}", $value);
+        }
+
+        $this->session->flash('sweet_alert.alert', json_encode($this->config));
     }
 }
