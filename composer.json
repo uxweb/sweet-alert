@@ -2,7 +2,7 @@
     "name": "uxweb/sweet-alert",
     "description": "A simple PHP package to show SweetAlerts",
     "license": "MIT",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "authors": [
         {
             "name": "Uziel Bueno",
