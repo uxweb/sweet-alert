@@ -35,9 +35,6 @@ class SweetAlertNotifier
         $this->config['title'] = $title;
 
         $this->flashConfig();
-//        $this->session->flash('sweet_alert.message', $message);
-//        $this->session->flash('sweet_alert.type', $type);
-//        $this->session->flash('sweet_alert.title', $title);
 
         return $this;
     }
@@ -72,7 +69,6 @@ class SweetAlertNotifier
      */
     public function autoclose($milliseconds = 2000)
     {
-//        $this->config('sweet_alert.autoclose', true);
         $this->session('timer', $milliseconds);
         $this->flashConfig();
 

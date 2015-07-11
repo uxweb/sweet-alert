@@ -22,4 +22,18 @@ class SweetAlertServiceProvider extends ServiceProvider
             $this->app->make(SweetAlertNotifier::class);
         });
     }
+
+    /**
+     * Bootstrap the application events.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->loadViewsFrom(__DIR__ . '/../../views', 'alert');
+
+        $this->publishes([
+            __DIR__ . '/../../views' => base_path('resources/views/vendor/sweet-alert')
+        ]);
+    }
 }
