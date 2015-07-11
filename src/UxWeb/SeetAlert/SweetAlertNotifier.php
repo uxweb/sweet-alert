@@ -23,12 +23,14 @@ class SweetAlertNotifier
     }
 
     /**
+     * Displays a simple alert with a message and an optional title
+     *
      * @param $message
      * @param string $type
      * @param null $title
      * @return $this
      */
-    public function alert($message, $type = 'info', $title = null)
+    public function message($message, $type = 'info', $title = null)
     {
         $this->config['message'] = $message;
         $this->config['type'] = $type;
@@ -40,30 +42,37 @@ class SweetAlertNotifier
     }
 
     /**
+     * Displays a success alert
+     *
+     *
      * @param $message
      * @param string $title
      * @return $this
      */
     public function success($message, $title = 'Success!')
     {
-        $this->alert($message, 'success', $title);
+        $this->message($message, 'success', $title);
 
         return $this;
     }
 
     /**
+     * Displays an error alert
+     *
      * @param $message
      * @param string $title
      * @return $this
      */
     public function error($message, $title = "Oops!")
     {
-        $this->alert($message, 'error', $title);
+        $this->message($message, 'error', $title);
 
         return $this;
     }
 
     /**
+     * Sets the time for this alert to close
+     *
      * @param int $milliseconds
      * @return $this
      */
