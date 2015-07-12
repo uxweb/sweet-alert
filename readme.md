@@ -1,5 +1,7 @@
 # Easy Sweet Alert Messages
 
+![A success modal](http://i.imgur.com/1XySJiz.png)
+
 ## Installation
 
 First, pull in the package through Composer.
@@ -22,7 +24,7 @@ And, for convenience, add a facade alias to this same file at the bottom:
 
 ```php
 'aliases' => [
-    'Alert' => 'Uxweb\SweetAlert\SweetAlert'
+    'Alert' => 'UxWeb\SweetAlert\SweetAlert'
 ];
 ```
 
@@ -84,13 +86,13 @@ But no fear, if you need to specify a different time you can!:
 alert('Hello World!')->autoclose(3000); // -> Remember!, the number is set in milliseconds
 ```
 
-Also, if you need the alert to be persistent on the page until the user dismiss it:
+Also, if you need the alert to be persistent on the page until the user dismiss it by pressing the alert confirmation button:
 
 ```php
-alert('Hello World!')->persistent("Close this"); // -> The text passed is for the button
+alert('Hello World!')->persistent("Close this"); // -> The text for the button
 ```
 
-Note that, if you want, you may use (or modify) the view that is included with this package. Simply append it to your layout view:
+Finally, to display the alert in the browser, you may use (or modify) the view that is included with this package. Simply append it to your layout view:
 
 ```html
 @include('sweet::alert')
@@ -104,7 +106,6 @@ Note that, if you want, you may use (or modify) the view that is included with t
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/sweetalert.css">
 </head>
 <body>
@@ -114,10 +115,9 @@ Note that, if you want, you may use (or modify) the view that is included with t
     </div>
     
     <script src="//code.jquery.com/jquery.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="js/sweetalert.min.js"></script>
     
-    <!-- Include this after you include the sweet alert js file -->
+    <!-- Include this after you the sweet alert js file -->
     @include('sweet::alert')
 
 </body>
@@ -130,7 +130,7 @@ If you need to modify the alert message partial, you can run:
 php artisan vendor:publish
 ```
 
-The package view will now be located in the `app/views/packages/uxweb/sweet/` directory.
+The package view will now be located in the `resources/views/vendor/sweet/` directory.
 
 Now you can build your sweet alert configuration as you wish, for example:
 
@@ -142,7 +142,9 @@ Now you can build your sweet alert configuration as you wish, for example:
 @endif
 ```
 
-The `sweet_alert.alert` session key contains a JSON configuration object to pass it directly to sweetAlert.
+The `sweet_alert.alert` session key contains a JSON configuration object to pass it directly to Sweet Alert.
+
+Note that {!! !!} are used to output unescaped json object, it will not work with escaped output tags.
 
 If you are building your own configuration, you still can access some of the variable configuration values like:
 
@@ -172,15 +174,28 @@ Alert::message('Welcome back!');
 
 return Redirect::home();
 ```
+![A info alert](http://i.imgur.com/K2gGW0a.png)
+
 
 ```php
 Alert::error('Sorry! Please try again.');
 
 return Redirect::home();
 ```
+![A error alert](http://i.imgur.com/FH8d5F3.png)
+
 
 ```php
 Alert::success('You are now a new member!', 'Thank you!');
 
 return Redirect::home();
 ```
+![A success alert](http://i.imgur.com/1XySJiz.png)
+
+
+```php
+Alert::success('Hello World!')->persistent("Close this");
+
+return Redirect::home();
+```
+![A persist alert](http://i.imgur.com/4ggrLfR.png)
