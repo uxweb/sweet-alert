@@ -137,7 +137,7 @@ Now you can build your sweet alert configuration as you wish, for example:
 ```html
 @if (Session::has('sweet_alert.alert'))
     <script>
-        swal({{ Session::get('sweet_alert.alert') }});
+        swal({!! Session::get('sweet_alert.alert') !!});
     </script>
 @endif
 ```
