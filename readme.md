@@ -1,6 +1,6 @@
 # Easy Sweet Alert Messages
 
-![A success modal](https://www.dropbox.com/s/o6rlzkgghjfbr04/sweet-alert-laravel-success.png?dl=0)
+![A success modal](http://i.imgur.com/1XySJiz.png)
 
 ## Installation
 
@@ -174,7 +174,7 @@ Alert::message('Welcome back!');
 
 return Redirect::home();
 ```
-![A info alert](https://www.dropbox.com/s/hnyi2phdkq0m3sq/sweet-alert-laravel-info.png?dl=0)
+![A info alert](http://i.imgur.com/K2gGW0a.png)
 
 
 ```php
@@ -182,7 +182,7 @@ Alert::error('Sorry! Please try again.');
 
 return Redirect::home();
 ```
-![A error alert](https://www.dropbox.com/s/ov268sp2kquc1iw/sweet-alert-laravel-error.png?dl=0)
+![A error alert](http://i.imgur.com/FH8d5F3.png)
 
 
 ```php
@@ -190,4 +190,4 @@ Alert::success('You are now a new member!', 'Thank you!');
 
 return Redirect::home();
 ```
-![A success alert](https://www.dropbox.com/s/o6rlzkgghjfbr04/sweet-alert-laravel-success.png?dl=0)
+![A success alert](http://i.imgur.com/1XySJiz.png)
