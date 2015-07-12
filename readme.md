@@ -191,3 +191,11 @@ Alert::success('You are now a new member!', 'Thank you!');
 return Redirect::home();
 ```
 ![A success alert](http://i.imgur.com/1XySJiz.png)
+
+
+```php
+Alert::success('Hello World!')->persistent("Close this");
+
+return Redirect::home();
+```
+![A persist alert](http://i.imgur.com/4ggrLfR.png)
