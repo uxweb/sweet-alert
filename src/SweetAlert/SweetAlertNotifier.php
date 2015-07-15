@@ -99,7 +99,7 @@ class SweetAlertNotifier
         $this->config['confirmButtonText'] = $buttonText;
         $this->config['showConfirmButton'] = true;
         $this->config['allowOutsideClick'] = false;
-        $this->config['timer'] = null;
+        $this->config['timer'] = 'null';
         $this->flashConfig();
 
         return $this;
