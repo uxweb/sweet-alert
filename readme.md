@@ -1,4 +1,4 @@
-# Easy Sweet Alert Messages
+# Easy Sweet Alert Messages for Laravel
 
 ![A success modal](http://i.imgur.com/1XySJiz.png)
 
@@ -83,19 +83,21 @@ By default, all alerts will dismiss after a sensible default number of seconds.
 But no fear, if you need to specify a different time you can!:
 
 ```php
-alert('Hello World!')->autoclose(3000); // -> Remember!, the number is set in milliseconds
+    // -> Remember!, the number is set in milliseconds
+    alert('Hello World!')->autoclose(3000);
 ```
 
 Also, if you need the alert to be persistent on the page until the user dismiss it by pressing the alert confirmation button:
 
 ```php
-alert('Hello World!')->persistent("Close this"); // -> The text for the button
+    // -> The text will appear in the button
+    alert('Hello World!')->persistent("Close this");
 ```
 
 Finally, to display the alert in the browser, you may use (or modify) the view that is included with this package. Simply append it to your layout view:
 
 ```html
-@include('sweet::alert')
+    @include('sweet::alert')
 ```
 
 ## Example
@@ -117,7 +119,7 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="js/sweetalert.min.js"></script>
     
-    <!-- Include this after you the sweet alert js file -->
+    <!-- Include this after the sweet alert js file -->
     @include('sweet::alert')
 
 </body>
@@ -127,7 +129,7 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
 If you need to modify the alert message partial, you can run:
 
 ```bash
-php artisan vendor:publish
+    php artisan vendor:publish
 ```
 
 The package view will now be located in the `resources/views/vendor/sweet/` directory.
@@ -144,13 +146,14 @@ Now you can build your sweet alert configuration as you wish, for example:
 
 The `sweet_alert.alert` session key contains a JSON configuration object to pass it directly to Sweet Alert.
 
-Note that {!! !!} are used to output unescaped json object, it will not work with escaped output tags.
+Note that {!! !!} are used to output unescaped json object, it will not work with {{ }} escaped output tags.
 
 If you are building your own configuration, you still can access some of the variable configuration values like:
 
     Session::get('sweet_alert.text')
     Session::get('sweet_alert.type')
     Session::get('sweet_alert.title')
+    Session::get('sweet_alert.timer')
 
 Now you can build your own sweet alert:
 
@@ -158,10 +161,12 @@ Now you can build your own sweet alert:
 @if (Session::has('sweet_alert.alert'))
     <script>
         swal({
-            text: {{ Session::get('sweet_alert.text') }},
-            title: {{ Session::get('sweet_alert.title') }},
-            timer: {{ Session::get('sweet_alert.timer') }},
-            // More options ...
+            text: '{!! Session::get('sweet_alert.text') !!}',
+            title: '{!! Session::get('sweet_alert.title') !!}',
+            timer: {!! Session::get('sweet_alert.timer') !!},
+            showConfirmButton: false,
+            type: 'success'
+            // more options
         });
     </script>
 @endif

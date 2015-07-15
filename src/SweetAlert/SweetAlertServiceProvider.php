@@ -14,12 +14,12 @@ class SweetAlertServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            SessionStore::class,
-            LaravelSessionStore::class
+            'UxWeb\SweetAlert\SessionStore',
+            'UxWeb\SweetAlert\LaravelSessionStore'
         );
 
         $this->app->singleton('uxweb.sweet-alert', function() {
-            return $this->app->make(SweetAlertNotifier::class);
+            return $this->app->make('UxWeb\SweetAlert\SweetAlertNotifier');
         });
     }
 
