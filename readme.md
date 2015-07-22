@@ -161,8 +161,8 @@ Now you can build your own sweet alert:
 @if (Session::has('sweet_alert.alert'))
     <script>
         swal({
-            text: '{!! Session::get('sweet_alert.text') !!}',
-            title: '{!! Session::get('sweet_alert.title') !!}',
+            text: "{!! Session::get('sweet_alert.text') !!}",
+            title: "{!! Session::get('sweet_alert.title') !!}",
             timer: {!! Session::get('sweet_alert.timer') !!},
             showConfirmButton: false,
             type: 'success'
