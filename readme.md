@@ -39,7 +39,7 @@ Or through bower:
 ```bash
 bower install sweetalert
 ```
-    
+
 ## Usage
 
 ### With the Facade
@@ -123,10 +123,10 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
     <div class="container">
         <p>Welcome to my website...</p>
     </div>
-    
+
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="js/sweetalert.min.js"></script>
-    
+
     <!-- Include this after the sweet alert js file -->
     @include('sweet::alert')
 
