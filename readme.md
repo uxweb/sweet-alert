@@ -42,6 +42,12 @@ bower install sweetalert
     
 ## Usage
 
+### With the Facade
+
+- `Alert::message('Message', 'title')`
+- `Alert::success('Message', 'title')`
+- `Alert::error('Message', 'title')`
+
 Within your controllers, before you perform a redirect...
 
 ```php
@@ -53,12 +59,14 @@ public function store()
 }
 ```
 
-You may also do:
+### With the Helper
 
-- `Alert::success('Message', 'title')`
-- `Alert::error('Message', 'title')`
+- `alert('Message')`
+- `alert()->message('Message')`
+- `alert()->success('Message', 'title')`
+- `alert()->error('Message', 'title')`
 
-Alternatively, again, if you're using Laravel, you may reference the `alert()` helper function, instead of the facade. Here's an example:
+Alternatively, if you're using Laravel, you may reference the `alert()` helper function, instead of the facade. Here's an example:
 
 ```php
 /**
@@ -76,11 +84,11 @@ public function destroy()
 }
 ```
 
-Or, for a general information alert, just do: `alert('Some message');`.
+For a general information alert, just do: `alert('Some message');` (same as `alert->message('Some message');`).
 
 By default, all alerts will dismiss after a sensible default number of seconds.
 
-But no fear, if you need to specify a different time you can!:
+But no fear, if you need to specify a different time you can:
 
 ```php
     // -> Remember!, the number is set in milliseconds
