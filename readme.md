@@ -1,6 +1,6 @@
 # Easy Sweet Alert Messages for Laravel
 
-![A success modal](http://i.imgur.com/1XySJiz.png)
+![A success alert](http://i.imgur.com/1XySJiz.png)
 
 ## Installation
 
@@ -39,8 +39,14 @@ Or through bower:
 ```bash
 bower install sweetalert
 ```
-    
+
 ## Usage
+
+### With the Facade
+
+- `Alert::message('Message', 'title')`
+- `Alert::success('Message', 'title')`
+- `Alert::error('Message', 'title')`
 
 Within your controllers, before you perform a redirect...
 
@@ -53,12 +59,14 @@ public function store()
 }
 ```
 
-You may also do:
+### With the Helper
 
-- `Alert::success('Message', 'title')`
-- `Alert::error('Message', 'title')`
+- `alert('Message')`
+- `alert()->message('Message')`
+- `alert()->success('Message', 'title')`
+- `alert()->error('Message', 'title')`
 
-Alternatively, again, if you're using Laravel, you may reference the `alert()` helper function, instead of the facade. Here's an example:
+Alternatively, if you're using Laravel, you may reference the `alert()` helper function, instead of the facade. Here's an example:
 
 ```php
 /**
@@ -76,11 +84,11 @@ public function destroy()
 }
 ```
 
-Or, for a general information alert, just do: `alert('Some message');`.
+For a general information alert, just do: `alert('Some message');` (same as `alert->message('Some message');`).
 
 By default, all alerts will dismiss after a sensible default number of seconds.
 
-But no fear, if you need to specify a different time you can!:
+But no fear, if you need to specify a different time you can:
 
 ```php
     // -> Remember!, the number is set in milliseconds
@@ -97,12 +105,6 @@ Also, if you need the alert to be persistent on the page until the user dismiss 
 Finally, to display the alert in the browser, you may use (or modify) the view that is included with this package. Simply append it to your layout view:
 
 ```html
-    @include('sweet::alert')
-```
-
-## Example
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -115,10 +117,10 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
     <div class="container">
         <p>Welcome to my website...</p>
     </div>
-    
+
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="js/sweetalert.min.js"></script>
-    
+
     <!-- Include this after the sweet alert js file -->
     @include('sweet::alert')
 
@@ -126,15 +128,33 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
 </html>
 ```
 
-If you need to modify the alert message partial, you can run:
+## Customize
+
+If you need to modify the alert message partial, run:
 
 ```bash
     php artisan vendor:publish
 ```
 
-The package view will now be located in the `resources/views/vendor/sweet/` directory.
+The package view is located in the `resources/views/vendor/sweet/` directory.
 
-Now you can build your sweet alert configuration as you wish, for example:
+You can override/overwrite your sweet alert configuration to fit your needs.
+
+### Configuration Options
+
+You have access to the following configuration options to build a custom view:
+
+    Session::get('sweet_alert.text')
+    Session::get('sweet_alert.type')
+    Session::get('sweet_alert.title')
+    Session::get('sweet_alert.confirmButtonText')
+    Session::get('sweet_alert.showConfirmButton')
+    Session::get('sweet_alert.allowOutsideClick')
+    Session::get('sweet_alert.timer')
+    
+Please check the CONFIGURATION section in the [website](http://t4t5.github.io/sweetalert/) for all other options available.
+
+### Default View
 
 ```html
 @if (Session::has('sweet_alert.alert'))
@@ -146,16 +166,10 @@ Now you can build your sweet alert configuration as you wish, for example:
 
 The `sweet_alert.alert` session key contains a JSON configuration object to pass it directly to Sweet Alert.
 
-Note that {!! !!} are used to output unescaped json object, it will not work with {{ }} escaped output tags.
+Note that `{!! !!}` are used to output the json configuration object unescaped, it will not work with `{{ }}` escaped output tags.
 
-If you are building your own configuration, you still can access some of the variable configuration values like:
 
-    Session::get('sweet_alert.text')
-    Session::get('sweet_alert.type')
-    Session::get('sweet_alert.title')
-    Session::get('sweet_alert.timer')
-
-Now you can build your own sweet alert:
+### Custom View
 
 ```html
 @if (Session::has('sweet_alert.alert'))
@@ -164,15 +178,20 @@ Now you can build your own sweet alert:
             text: "{!! Session::get('sweet_alert.text') !!}",
             title: "{!! Session::get('sweet_alert.title') !!}",
             timer: {!! Session::get('sweet_alert.timer') !!},
-            showConfirmButton: false,
-            type: 'success'
+            type: "{!! Session::get('sweet_alert.type') !!}",
+            showConfirmButton: "{!! Session::get('sweet_alert.showConfirmButton') !!}",
+            confirmButtonText: "{!! Session::get('sweet_alert.confirmButtonText') !!}",
+            confirmButtonColor: "#AEDEF4"
+
             // more options
         });
     </script>
 @endif
 ```
 
-If you want to know all options to configure sweet alert please check the CONFIGURATION section in the [website](http://t4t5.github.io/sweetalert/)
+Note that you must use `""` (double quotes) to wrapp the values except for the timer option.
+
+## Demo
 
 ```php
 Alert::message('Welcome back!');
