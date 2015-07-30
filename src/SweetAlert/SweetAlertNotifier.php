@@ -34,13 +34,28 @@ class SweetAlertNotifier
      * @param string $title
      * @return $this
      */
-    public function message($text, $type = 'info', $title = '')
+    public function message($text, $title = '', $type = null)
     {
-        $this->config['text'] = $text;
-        $this->config['type'] = $type;
+        $this->config['text']  = $text;
         $this->config['title'] = $title;
+        $this->config['type']  = $type;
 
         $this->flashConfig();
+
+        return $this;
+    }
+
+    /**
+     * Displays a info alert
+     *
+     *
+     * @param $text
+     * @param string $title
+     * @return $this
+     */
+    public function info($text, $title = 'Hey!')
+    {
+        $this->message($text, $title, 'info');
 
         return $this;
     }
@@ -55,7 +70,7 @@ class SweetAlertNotifier
      */
     public function success($text, $title = 'Success!')
     {
-        $this->message($text, 'success', $title);
+        $this->message($text, $title, 'success');
 
         return $this;
     }
@@ -69,7 +84,7 @@ class SweetAlertNotifier
      */
     public function error($text, $title = "Oops!")
     {
-        $this->message($text, 'error', $title);
+        $this->message($text, $title, 'error');
 
         return $this;
     }
@@ -114,6 +129,11 @@ class SweetAlertNotifier
             $this->session->flash("sweet_alert.{$key}", $value);
         }
 
-        $this->session->flash('sweet_alert.alert', json_encode($this->config));
+        if ($this->config['type']) {
+            $this->session->flash('sweet_alert.alert', json_encode($this->config));
+        } else {
+            $this->session->flash('sweet_alert.alert',
+                json_encode($this->config['title']).",".json_encode($this->config['text']));
+        }
     }
 }
