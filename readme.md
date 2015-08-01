@@ -54,7 +54,7 @@ Within your controllers, before you perform a redirect...
 ```php
 public function store()
 {
-    Alert::message('Welcome Back!');
+    Alert::message('Robots are working!');
 
     return Redirect::home();
 }
@@ -84,6 +84,10 @@ public function destroy()
     return home();
 }
 ```
+
+The title for all alert types is optional. When there is a title it will be displayed in bold with the message under.
+
+If no title is set, the message will be displayed in bold as a title.
 
 For a general information alert, just do: `alert('Some message');` (same as `alert->message('Some message');`).
 
