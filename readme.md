@@ -85,10 +85,6 @@ public function destroy()
 }
 ```
 
-The title for all alert types is optional. When there is a title it will be displayed in bold with the message under.
-
-If no title is set, the message will be displayed in bold as a title.
-
 For a general information alert, just do: `alert('Some message');` (same as `alert->message('Some message');`).
 
 By default, all alerts will dismiss after a sensible default number of seconds.
