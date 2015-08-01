@@ -200,6 +200,20 @@ return Redirect::home();
 ![A simple alert](http://i.imgur.com/4bvuJx9.png)
 
 ```php
+Alert::message('Your profile is up to date', 'Wonderful!');
+
+return Redirect::home();
+```
+![A simple alert with title](http://i.imgur.com/GsGOtOq.png)
+
+```php
+Alert::message('Your profile is up to date', 'Wonderful!')->persistent('Close');
+
+return Redirect::home();
+```
+![A simple alert with title and button](http://i.imgur.com/AnRGDY2.png)
+
+```php
 Alert::info('Email was sent!');
 
 return Redirect::home();
