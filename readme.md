@@ -207,7 +207,7 @@ return Redirect::home();
 ![A simple alert with title](http://i.imgur.com/GsGOtOq.png)
 
 ```php
-Alert::message('Your profile is up to date', 'Wonderful!')->persistent('Close');
+Alert::message('Thanks for comment!')->persistent('Close');
 
 return Redirect::home();
 ```
