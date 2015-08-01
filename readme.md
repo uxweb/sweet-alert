@@ -8,7 +8,7 @@ First, pull in the package through Composer.
 
 ```javascript
 "require": {
-    "uxweb/sweet-alert": "~1.0"
+    "uxweb/sweet-alert": "~1.1"
 }
 ```
 
