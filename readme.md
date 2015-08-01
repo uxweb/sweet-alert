@@ -45,6 +45,7 @@ bower install sweetalert
 ### With the Facade
 
 - `Alert::message('Message', 'title')`
+- `Alert::info('Message', 'title')`
 - `Alert::success('Message', 'title')`
 - `Alert::error('Message', 'title')`
 
@@ -102,11 +103,7 @@ Also, if you need the alert to be persistent on the page until the user dismiss 
     alert('Hello World!')->persistent("Close this");
 ```
 
-<<<<<<< HEAD
-Finally, to display the alert in the browser, you may use (or modify) the view that is included with this package. Simply append it to your layout view:
-=======
 Finally, to display the alert in the browser, you may use (or modify) the view that is included with this package. Simply include it to your layout view:
->>>>>>> feature-new-api
 
 ```html
 <!DOCTYPE html>
@@ -122,10 +119,6 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
         <p>Welcome to my website...</p>
     </div>
 
-<<<<<<< HEAD
-    <script src="//code.jquery.com/jquery.js"></script>
-=======
->>>>>>> feature-new-api
     <script src="js/sweetalert.min.js"></script>
 
     <!-- Include this after the sweet alert js file -->
@@ -137,33 +130,19 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
 
 ## Customize
 
-<<<<<<< HEAD
-If you need to modify the alert message partial, run:
-=======
 If you need to customize the alert message partial, run:
->>>>>>> feature-new-api
 
 ```bash
     php artisan vendor:publish
 ```
 
 The package view is located in the `resources/views/vendor/sweet/` directory.
-<<<<<<< HEAD
 
 You can override/overwrite your sweet alert configuration to fit your needs.
 
 ### Configuration Options
 
 You have access to the following configuration options to build a custom view:
-Please check the CONFIGURATION section in the [website](http://t4t5.github.io/sweetalert/) for all other options available.
-=======
-
-You can override/overwrite your sweet alert configuration to fit your needs.
-
-### Configuration Options
-
-You have access to the following configuration options to build a custom view:
->>>>>>> feature-new-api
 
     Session::get('sweet_alert.text')
     Session::get('sweet_alert.type')
@@ -172,11 +151,8 @@ You have access to the following configuration options to build a custom view:
     Session::get('sweet_alert.showConfirmButton')
     Session::get('sweet_alert.allowOutsideClick')
     Session::get('sweet_alert.timer')
-<<<<<<< HEAD
-=======
-    
+
 Please check the CONFIGURATION section in the [website](http://t4t5.github.io/sweetalert/) for all other options available.
->>>>>>> feature-new-api
 
 ### Default View
 
@@ -190,15 +166,8 @@ Please check the CONFIGURATION section in the [website](http://t4t5.github.io/sw
 
 The `sweet_alert.alert` session key contains a JSON configuration object to pass it directly to Sweet Alert.
 
-<<<<<<< HEAD
-Note that `{!! !!}` are used to output unescaped json object, it will not work with {{ }} escaped output tags.
-
-
-=======
 Note that `{!! !!}` are used to output the json configuration object unescaped, it will not work with `{{ }}` escaped output tags.
 
-
->>>>>>> feature-new-api
 ### Custom View
 
 ```html
@@ -219,11 +188,7 @@ Note that `{!! !!}` are used to output the json configuration object unescaped, 
 @endif
 ```
 
-<<<<<<< HEAD
-Note that you must use `""` (double quotes) to wrapp the values except for the timer option.
-=======
 Note that you must use `""` (double quotes) to wrap the values except for the timer option.
->>>>>>> feature-new-api
 
 ## Demo
 
@@ -232,15 +197,21 @@ Alert::message('Welcome back!');
 
 return Redirect::home();
 ```
-![A info alert](http://i.imgur.com/K2gGW0a.png)
-
+![A simple alert](http://i.imgur.com/4bvuJx9.png)
 
 ```php
-Alert::error('Sorry! Please try again.');
+Alert::info('Email was sent!');
 
 return Redirect::home();
 ```
-![A error alert](http://i.imgur.com/FH8d5F3.png)
+![A info alert](http://i.imgur.com/DxKh3Yx.png)
+
+```php
+Alert::error('Something went wrong', 'Oops!');
+
+return Redirect::home();
+```
+![A error alert](http://i.imgur.com/pIeTEYz.png)
 
 
 ```php
@@ -248,7 +219,7 @@ Alert::success('You are now a new member!', 'Thank you!');
 
 return Redirect::home();
 ```
-![A success alert](http://i.imgur.com/1XySJiz.png)
+![A success alert](http://i.imgur.com/pQz3ijJ.png)
 
 
 ```php

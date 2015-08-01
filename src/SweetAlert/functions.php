@@ -14,7 +14,7 @@ if (! function_exists('alert')) {
         $notifier = app('uxweb.sweet-alert');
 
         if (! is_null($message)) {
-            return $notifier->info($message, $title);
+            return $notifier->message($message, $title);
         }
 
         return $notifier;
