@@ -1,6 +1,6 @@
 # Easy Sweet Alert Messages for Laravel
 
-![A success modal](http://i.imgur.com/1XySJiz.png)
+![A success alert](http://i.imgur.com/1XySJiz.png)
 
 ## Installation
 
@@ -45,6 +45,7 @@ bower install sweetalert
 ### With the Facade
 
 - `Alert::message('Message', 'title')`
+- `Alert::info('Message', 'title')`
 - `Alert::success('Message', 'title')`
 - `Alert::error('Message', 'title')`
 
@@ -53,7 +54,7 @@ Within your controllers, before you perform a redirect...
 ```php
 public function store()
 {
-    Alert::message('Welcome Back!');
+    Alert::message('Robots are working!');
 
     return Redirect::home();
 }
@@ -66,7 +67,7 @@ public function store()
 - `alert()->success('Message', 'title')`
 - `alert()->error('Message', 'title')`
 
-Alternatively, if you're using Laravel, you may reference the `alert()` helper function, instead of the facade. Here's an example:
+Alternatively, you may reference the `alert()` helper function, instead of the facade. Here's an example:
 
 ```php
 /**
@@ -102,7 +103,7 @@ Also, if you need the alert to be persistent on the page until the user dismiss 
     alert('Hello World!')->persistent("Close this");
 ```
 
-Finally, to display the alert in the browser, you may use (or modify) the view that is included with this package. Simply append it to your layout view:
+Finally, to display the alert in the browser, you may use (or modify) the view that is included with this package. Simply include it to your layout view:
 
 ```html
 <!DOCTYPE html>
@@ -118,7 +119,6 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
         <p>Welcome to my website...</p>
     </div>
 
-    <script src="//code.jquery.com/jquery.js"></script>
     <script src="js/sweetalert.min.js"></script>
 
     <!-- Include this after the sweet alert js file -->
@@ -130,7 +130,7 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
 
 ## Customize
 
-If you need to modify the alert message partial, run:
+If you need to customize the alert message partial, run:
 
 ```bash
     php artisan vendor:publish
@@ -143,7 +143,6 @@ You can override/overwrite your sweet alert configuration to fit your needs.
 ### Configuration Options
 
 You have access to the following configuration options to build a custom view:
-Please check the CONFIGURATION section in the [website](http://t4t5.github.io/sweetalert/) for all other options available.
 
     Session::get('sweet_alert.text')
     Session::get('sweet_alert.type')
@@ -152,6 +151,8 @@ Please check the CONFIGURATION section in the [website](http://t4t5.github.io/sw
     Session::get('sweet_alert.showConfirmButton')
     Session::get('sweet_alert.allowOutsideClick')
     Session::get('sweet_alert.timer')
+
+Please check the CONFIGURATION section in the [website](http://t4t5.github.io/sweetalert/) for all other options available.
 
 ### Default View
 
@@ -165,8 +166,7 @@ Please check the CONFIGURATION section in the [website](http://t4t5.github.io/sw
 
 The `sweet_alert.alert` session key contains a JSON configuration object to pass it directly to Sweet Alert.
 
-Note that `{!! !!}` are used to output unescaped json object, it will not work with {{ }} escaped output tags.
-
+Note that `{!! !!}` are used to output the json configuration object unescaped, it will not work with `{{ }}` escaped output tags.
 
 ### Custom View
 
@@ -188,7 +188,7 @@ Note that `{!! !!}` are used to output unescaped json object, it will not work w
 @endif
 ```
 
-Note that you must use `""` (double quotes) to wrapp the values except for the timer option.
+Note that you must use `""` (double quotes) to wrap the values except for the timer option.
 
 ## Demo
 
@@ -197,28 +197,48 @@ Alert::message('Welcome back!');
 
 return Redirect::home();
 ```
-![A info alert](http://i.imgur.com/K2gGW0a.png)
-
+![A simple alert](http://i.imgur.com/4bvuJx9.png)
 
 ```php
-Alert::error('Sorry! Please try again.');
+Alert::message('Your profile is up to date', 'Wonderful!');
 
 return Redirect::home();
 ```
-![A error alert](http://i.imgur.com/FH8d5F3.png)
-
+![A simple alert with title](http://i.imgur.com/GsGOtOq.png)
 
 ```php
-Alert::success('You are now a new member!', 'Thank you!');
+Alert::message('Thanks for comment!')->persistent('Close');
 
 return Redirect::home();
 ```
-![A success alert](http://i.imgur.com/1XySJiz.png)
-
+![A simple alert with title and button](http://i.imgur.com/AnRGDY2.png)
 
 ```php
-Alert::success('Hello World!')->persistent("Close this");
+Alert::info('Email was sent!');
 
 return Redirect::home();
 ```
-![A persist alert](http://i.imgur.com/4ggrLfR.png)
+![A info alert](http://i.imgur.com/DxKh3Yx.png)
+
+```php
+Alert::error('Something went wrong', 'Oops!');
+
+return Redirect::home();
+```
+![A error alert](http://i.imgur.com/pIeTEYz.png)
+
+
+```php
+Alert::success('Good job!');
+
+return Redirect::home();
+```
+![A success alert](http://i.imgur.com/pQz3ijJ.png)
+
+
+```php
+Alert::success('Good job!')->persistent("Close");
+
+return Redirect::home();
+```
+![A persistent alert](http://i.imgur.com/dj3y95K.png)

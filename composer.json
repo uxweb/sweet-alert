@@ -1,6 +1,6 @@
 {
     "name": "uxweb/sweet-alert",
-    "description": "A simple PHP package to show SweetAlerts",
+    "description": "A simple PHP package to show Sweet Alerts with the Laravel Framework",
     "keywords": ["laravel", "alert", "sweet"],
     "license": "MIT",
     "authors": [
@@ -11,6 +11,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
+        "illuminate/support": "~5.0",
         "illuminate/session": "~5.0"
     },
     "autoload": {

@@ -34,13 +34,42 @@ class SweetAlertNotifier
      * @param string $title
      * @return $this
      */
-    public function message($text, $type = 'info', $title = '')
+    public function message($text, $title = '', $type = null)
     {
-        $this->config['text'] = $text;
-        $this->config['type'] = $type;
+        $this->config['text']  = $text;
         $this->config['title'] = $title;
+        $this->config['type']  = $type;
 
         $this->flashConfig();
+
+        return $this;
+    }
+
+    /**
+     * Displays a basic alert message
+     *
+     * @param $text
+     * @param $title
+     * @return $this
+     */
+    public function basic($text, $title)
+    {
+        $this->message($text, $title);
+
+        return $this;
+    }
+
+    /**
+     * Displays a info alert
+     *
+     *
+     * @param $text
+     * @param string $title
+     * @return $this
+     */
+    public function info($text, $title = '')
+    {
+        $this->message($text, $title, 'info');
 
         return $this;
     }
@@ -53,9 +82,9 @@ class SweetAlertNotifier
      * @param string $title
      * @return $this
      */
-    public function success($text, $title = 'Success!')
+    public function success($text, $title = '')
     {
-        $this->message($text, 'success', $title);
+        $this->message($text, $title, 'success');
 
         return $this;
     }
@@ -67,9 +96,9 @@ class SweetAlertNotifier
      * @param string $title
      * @return $this
      */
-    public function error($text, $title = "Oops!")
+    public function error($text, $title = '')
     {
-        $this->message($text, 'error', $title);
+        $this->message($text, $title, 'error');
 
         return $this;
     }
@@ -108,12 +137,62 @@ class SweetAlertNotifier
     /**
      * Flashes the current built configuration for sweet alert
      */
-    public function flashConfig()
+    private function flashConfig()
     {
         foreach ($this->config as $key => $value) {
             $this->session->flash("sweet_alert.{$key}", $value);
         }
 
-        $this->session->flash('sweet_alert.alert', json_encode($this->config));
+        $this->session->flash('sweet_alert.alert', $this->buildConfig());
+    }
+
+    /**
+     * Build the configuration for the alert
+     * @return string
+     */
+    private function buildConfig()
+    {
+        return $this->getCompound();
+    }
+
+    /**
+     * Returns configuration for a basic alert
+     * @return string
+     */
+    private function getBasic()
+    {
+        return json_encode($this->config['text']);
+    }
+
+    /**
+     * Returns configuration for an alert with title and text under
+     * @return string
+     */
+    private function getTitleAndText()
+    {
+        return json_encode($this->config['title']).",".json_encode($this->config['text']);
+    }
+
+    /**
+     * Returns all the configuration options for an alert
+     * @return string
+     */
+    private function getCompound()
+    {
+        if (! $this->hasTitle()) {
+            $this->config['title'] = $this->config['text'];
+            unset($this->config['text']);
+        }
+
+        return json_encode($this->config);
+    }
+
+    /**
+     * Tells if a title is set
+     * @return bool
+     */
+    private function hasTitle()
+    {
+        return (bool) strlen($this->config['title']);
     }
 }
