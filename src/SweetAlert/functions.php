@@ -6,14 +6,15 @@ if (! function_exists('alert')) {
      * Arrange for an alert message.
      *
      * @param  string|null $message
+     * @param string $title
      * @return \UxWeb\SweetAlert\SweetAlertNotifier
      */
-    function alert($message = null)
+    function alert($message = null, $title = '')
     {
         $notifier = app('uxweb.sweet-alert');
 
         if (! is_null($message)) {
-            return $notifier->message($message);
+            return $notifier->info($message, $title);
         }
 
         return $notifier;

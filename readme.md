@@ -1,6 +1,6 @@
 # Easy Sweet Alert Messages for Laravel
 
-![A success modal](http://i.imgur.com/1XySJiz.png)
+![A success alert](http://i.imgur.com/1XySJiz.png)
 
 ## Installation
 
@@ -66,7 +66,7 @@ public function store()
 - `alert()->success('Message', 'title')`
 - `alert()->error('Message', 'title')`
 
-Alternatively, if you're using Laravel, you may reference the `alert()` helper function, instead of the facade. Here's an example:
+Alternatively, you may reference the `alert()` helper function, instead of the facade. Here's an example:
 
 ```php
 /**
@@ -102,7 +102,11 @@ Also, if you need the alert to be persistent on the page until the user dismiss 
     alert('Hello World!')->persistent("Close this");
 ```
 
+<<<<<<< HEAD
 Finally, to display the alert in the browser, you may use (or modify) the view that is included with this package. Simply append it to your layout view:
+=======
+Finally, to display the alert in the browser, you may use (or modify) the view that is included with this package. Simply include it to your layout view:
+>>>>>>> feature-new-api
 
 ```html
 <!DOCTYPE html>
@@ -118,7 +122,10 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
         <p>Welcome to my website...</p>
     </div>
 
+<<<<<<< HEAD
     <script src="//code.jquery.com/jquery.js"></script>
+=======
+>>>>>>> feature-new-api
     <script src="js/sweetalert.min.js"></script>
 
     <!-- Include this after the sweet alert js file -->
@@ -130,13 +137,18 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
 
 ## Customize
 
+<<<<<<< HEAD
 If you need to modify the alert message partial, run:
+=======
+If you need to customize the alert message partial, run:
+>>>>>>> feature-new-api
 
 ```bash
     php artisan vendor:publish
 ```
 
 The package view is located in the `resources/views/vendor/sweet/` directory.
+<<<<<<< HEAD
 
 You can override/overwrite your sweet alert configuration to fit your needs.
 
@@ -144,6 +156,14 @@ You can override/overwrite your sweet alert configuration to fit your needs.
 
 You have access to the following configuration options to build a custom view:
 Please check the CONFIGURATION section in the [website](http://t4t5.github.io/sweetalert/) for all other options available.
+=======
+
+You can override/overwrite your sweet alert configuration to fit your needs.
+
+### Configuration Options
+
+You have access to the following configuration options to build a custom view:
+>>>>>>> feature-new-api
 
     Session::get('sweet_alert.text')
     Session::get('sweet_alert.type')
@@ -152,6 +172,11 @@ Please check the CONFIGURATION section in the [website](http://t4t5.github.io/sw
     Session::get('sweet_alert.showConfirmButton')
     Session::get('sweet_alert.allowOutsideClick')
     Session::get('sweet_alert.timer')
+<<<<<<< HEAD
+=======
+    
+Please check the CONFIGURATION section in the [website](http://t4t5.github.io/sweetalert/) for all other options available.
+>>>>>>> feature-new-api
 
 ### Default View
 
@@ -165,9 +190,15 @@ Please check the CONFIGURATION section in the [website](http://t4t5.github.io/sw
 
 The `sweet_alert.alert` session key contains a JSON configuration object to pass it directly to Sweet Alert.
 
+<<<<<<< HEAD
 Note that `{!! !!}` are used to output unescaped json object, it will not work with {{ }} escaped output tags.
 
 
+=======
+Note that `{!! !!}` are used to output the json configuration object unescaped, it will not work with `{{ }}` escaped output tags.
+
+
+>>>>>>> feature-new-api
 ### Custom View
 
 ```html
@@ -188,7 +219,11 @@ Note that `{!! !!}` are used to output unescaped json object, it will not work w
 @endif
 ```
 
+<<<<<<< HEAD
 Note that you must use `""` (double quotes) to wrapp the values except for the timer option.
+=======
+Note that you must use `""` (double quotes) to wrap the values except for the timer option.
+>>>>>>> feature-new-api
 
 ## Demo
 
@@ -221,4 +256,4 @@ Alert::success('Hello World!')->persistent("Close this");
 
 return Redirect::home();
 ```
-![A persist alert](http://i.imgur.com/4ggrLfR.png)
+![A persistent alert](http://i.imgur.com/4ggrLfR.png)
