@@ -66,7 +66,7 @@ public function store()
 - `alert()->success('Message', 'title')`
 - `alert()->error('Message', 'title')`
 
-Alternatively, if you're using Laravel, you may reference the `alert()` helper function, instead of the facade. Here's an example:
+Alternatively, you may reference the `alert()` helper function, instead of the facade. Here's an example:
 
 ```php
 /**
@@ -102,7 +102,7 @@ Also, if you need the alert to be persistent on the page until the user dismiss 
     alert('Hello World!')->persistent("Close this");
 ```
 
-Finally, to display the alert in the browser, you may use (or modify) the view that is included with this package. Simply append it to your layout view:
+Finally, to display the alert in the browser, you may use (or modify) the view that is included with this package. Simply include it to your layout view:
 
 ```html
 <!DOCTYPE html>
@@ -118,7 +118,6 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
         <p>Welcome to my website...</p>
     </div>
 
-    <script src="//code.jquery.com/jquery.js"></script>
     <script src="js/sweetalert.min.js"></script>
 
     <!-- Include this after the sweet alert js file -->
@@ -130,7 +129,7 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
 
 ## Customize
 
-If you need to modify the alert message partial, run:
+If you need to customize the alert message partial, run:
 
 ```bash
     php artisan vendor:publish
@@ -189,7 +188,7 @@ Note that `{!! !!}` are used to output the json configuration object unescaped, 
 @endif
 ```
 
-Note that you must use `""` (double quotes) to wrapp the values except for the timer option.
+Note that you must use `""` (double quotes) to wrap the values except for the timer option.
 
 ## Demo
 
@@ -222,4 +221,4 @@ Alert::success('Hello World!')->persistent("Close this");
 
 return Redirect::home();
 ```
-![A persist alert](http://i.imgur.com/4ggrLfR.png)
+![A persistent alert](http://i.imgur.com/4ggrLfR.png)
