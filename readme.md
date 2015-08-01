@@ -215,7 +215,7 @@ return Redirect::home();
 
 
 ```php
-Alert::success('You are now a new member!', 'Thank you!');
+Alert::success('Good job!');
 
 return Redirect::home();
 ```
@@ -223,8 +223,8 @@ return Redirect::home();
 
 
 ```php
-Alert::success('Hello World!')->persistent("Close this");
+Alert::success('Good job!')->persistent("Close");
 
 return Redirect::home();
 ```
-![A persistent alert](http://i.imgur.com/4ggrLfR.png)
+![A persistent alert](http://i.imgur.com/dj3y95K.png)
