@@ -10,6 +10,8 @@ class SweetAlertNotifier
     private $session;
 
     /**
+     * Configuration options for the alert
+     *
      * @var array
      */
     private $config = [
@@ -39,7 +41,6 @@ class SweetAlertNotifier
         $this->config['text']  = $text;
         $this->config['title'] = $title;
         $this->config['type']  = $type;
-
         $this->flashConfig();
 
         return $this;
@@ -109,7 +110,7 @@ class SweetAlertNotifier
      * @param int $milliseconds
      * @return $this
      */
-    public function autoclose($milliseconds = 2000)
+    public function autoclose($milliseconds = 1800)
     {
         $this->config['timer'] = $milliseconds;
         $this->flashConfig();
@@ -118,7 +119,7 @@ class SweetAlertNotifier
     }
 
     /**
-     * Shows an alert that prevents autoclosing
+     * Shows an alert with a confirmation button
      *
      * @param string $buttonText
      * @return $this
@@ -148,47 +149,32 @@ class SweetAlertNotifier
 
     /**
      * Build the configuration for the alert
+     *
      * @return string
      */
     private function buildConfig()
     {
-        return $this->getCompound();
-    }
-
-    /**
-     * Returns configuration for a basic alert
-     * @return string
-     */
-    private function getBasic()
-    {
-        return json_encode($this->config['text']);
-    }
-
-    /**
-     * Returns configuration for an alert with title and text under
-     * @return string
-     */
-    private function getTitleAndText()
-    {
-        return json_encode($this->config['title']).",".json_encode($this->config['text']);
-    }
-
-    /**
-     * Returns all the configuration options for an alert
-     * @return string
-     */
-    private function getCompound()
-    {
         if (! $this->hasTitle()) {
-            $this->config['title'] = $this->config['text'];
-            unset($this->config['text']);
+            $this->switchTitle();
         }
 
         return json_encode($this->config);
     }
 
     /**
-     * Tells if a title is set
+     * Switch the text message to the title key
+     *
+     * @return string
+     */
+    private function switchTitle()
+    {
+        $this->config['title'] = $this->config['text'];
+        unset($this->config['text']);
+    }
+
+    /**
+     * Tells if a title for the alert is set
+     *
      * @return bool
      */
     private function hasTitle()
