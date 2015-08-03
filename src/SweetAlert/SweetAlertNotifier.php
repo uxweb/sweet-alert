@@ -103,6 +103,20 @@ class SweetAlertNotifier
 
         return $this;
     }
+    
+    /**
+     * Displays a warning alert
+     *
+     *
+     * @param $text
+     * @param string $title
+     * @return $this
+     */
+    public function warning($text, $title = '')
+    {
+        $this->message($text, $title, 'warning');
+        return $this;
+    }
 
     /**
      * Sets the time for this alert to close
