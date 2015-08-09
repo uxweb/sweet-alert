@@ -74,18 +74,18 @@ function without specifying any message type. Doing so is similar to:
 Like with the Facade we can use the helper with the same methods:
 
 ```php
-    alert()->message('Message', 'Optional Title');
-    alert()->basic('Basic Message', 'Mandatory Title');
-    alert()->info('Info Message', 'Optional Title');
-    alert()->success('Success Message', 'Optional Title');
-    alert()->error('Error Message', 'Optional Title');
-    alert()->warning('Warning Message', 'Optional Title');
+alert()->message('Message', 'Optional Title');
+alert()->basic('Basic Message', 'Mandatory Title');
+alert()->info('Info Message', 'Optional Title');
+alert()->success('Success Message', 'Optional Title');
+alert()->error('Error Message', 'Optional Title');
+alert()->warning('Warning Message', 'Optional Title');
 
-    alert()->basic('Basic Message', 'Mandatory Title')
-        ->autoclose(3500);
+alert()->basic('Basic Message', 'Mandatory Title')
+    ->autoclose(3500);
 
-    alert()->error('Error Message', 'Optional Title')
-        ->persistent('Close');
+alert()->error('Error Message', 'Optional Title')
+    ->persistent('Close');
 ```
 
 Within your controllers, before you perform a redirect...
