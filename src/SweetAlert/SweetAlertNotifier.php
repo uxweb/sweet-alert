@@ -5,12 +5,12 @@ namespace UxWeb\SweetAlert;
 class SweetAlertNotifier
 {
     /**
-     * @var SessionStore
+     * @var \UxWeb\SweetAlert\SessionStore
      */
     private $session;
 
     /**
-     * Configuration options for the alert
+     * Configuration options.
      *
      * @var array
      */
@@ -21,7 +21,9 @@ class SweetAlertNotifier
     ];
 
     /**
-     * @param SessionStore $session
+     * Create a new SweetAlertNotifier instance.
+     *
+     * @param \UxWeb\SweetAlert\SessionStore $session
      */
     public function __construct(SessionStore $session)
     {
@@ -29,12 +31,14 @@ class SweetAlertNotifier
     }
 
     /**
-     * Displays a simple alert with a message and an optional title
+     * Display an alert message with a text and an optional title.
      *
-     * @param $text
-     * @param string $type
-     * @param string $title
-     * @return $this
+     * By default the alert is not typed.
+     *
+     * @param  string $text
+     * @param  string $type
+     * @param  string $title
+     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function message($text, $title = '', $type = null)
     {
@@ -47,11 +51,11 @@ class SweetAlertNotifier
     }
 
     /**
-     * Displays a basic alert message
+     * Display a not typed alert message with a text and a title.
      *
-     * @param $text
-     * @param $title
-     * @return $this
+     * @param  string $text
+     * @param  string $title
+     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function basic($text, $title)
     {
@@ -61,12 +65,11 @@ class SweetAlertNotifier
     }
 
     /**
-     * Displays a info alert
+     * Display an info typed alert message with a text and an optional title.
      *
-     *
-     * @param $text
-     * @param string $title
-     * @return $this
+     * @param  string $text
+     * @param  string $title
+     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function info($text, $title = '')
     {
@@ -76,12 +79,12 @@ class SweetAlertNotifier
     }
 
     /**
-     * Displays a success alert
+     * Display a success typed alert message with a text and an optional title.
      *
+     * @param  string $text
+     * @param  string $title
      *
-     * @param $text
-     * @param string $title
-     * @return $this
+     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function success($text, $title = '')
     {
@@ -91,11 +94,12 @@ class SweetAlertNotifier
     }
 
     /**
-     * Displays an error alert
+     * Display an error typed alert message with a text and an optional title.
      *
-     * @param $text
-     * @param string $title
-     * @return $this
+     * @param  string $text
+     * @param  string $title
+     *
+     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function error($text, $title = '')
     {
@@ -103,14 +107,14 @@ class SweetAlertNotifier
 
         return $this;
     }
-    
+
     /**
-     * Displays a warning alert
+     * Display a warning typed alert message with a text and an optional title.
      *
+     * @param  string $text
+     * @param  string $title
      *
-     * @param $text
-     * @param string $title
-     * @return $this
+     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function warning($text, $title = '')
     {
@@ -119,10 +123,10 @@ class SweetAlertNotifier
     }
 
     /**
-     * Sets the time for this alert to close
+     * Set the duration for this alert until it autocloses.
      *
-     * @param int $milliseconds
-     * @return $this
+     * @param  int $milliseconds
+     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function autoclose($milliseconds = 1800)
     {
@@ -133,10 +137,10 @@ class SweetAlertNotifier
     }
 
     /**
-     * Shows an alert with a confirmation button
+     * Make this alert persistent with a confirmation button.
      *
-     * @param string $buttonText
-     * @return $this
+     * @param  string $buttonText
+     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function persistent($buttonText = 'OK')
     {
@@ -150,7 +154,9 @@ class SweetAlertNotifier
     }
 
     /**
-     * Flashes the current built configuration for sweet alert
+     * Flash the configuration.
+     *
+     * return void
      */
     private function flashConfig()
     {
@@ -162,7 +168,7 @@ class SweetAlertNotifier
     }
 
     /**
-     * Build the configuration for the alert
+     * Build the configuration.
      *
      * @return string
      */
@@ -187,7 +193,7 @@ class SweetAlertNotifier
     }
 
     /**
-     * Tells if a title for the alert is set
+     * Determine if the title is set.
      *
      * @return bool
      */
