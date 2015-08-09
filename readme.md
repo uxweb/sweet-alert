@@ -44,10 +44,12 @@ bower install sweetalert
 
 ### With the Facade
 
-- `Alert::message('Message', 'title')`
-- `Alert::info('Message', 'title')`
-- `Alert::success('Message', 'title')`
-- `Alert::error('Message', 'title')`
+- `Alert::message('Message', 'Optional Title');`
+- `Alert::basic('Basic Message', 'Mandatory Title');`
+- `Alert::info('Info Message', 'Optional Title');`
+- `Alert::success('Success Message', 'Optional Title');`
+- `Alert::error('Error Message', 'Optional Title');`
+- `Alert::warning('Warning Message', 'Optional Title');`
 
 Within your controllers, before you perform a redirect...
 
@@ -62,12 +64,31 @@ public function store()
 
 ### With the Helper
 
-- `alert('Message')`
-- `alert()->message('Message')`
-- `alert()->success('Message', 'title')`
-- `alert()->error('Message', 'title')`
+- `alert($message = null, $title = '')`
 
-Alternatively, you may reference the `alert()` helper function, instead of the facade. Here's an example:
+In addition to the previous listed methods you can also just use the helper
+function without specifying any message type. Doing so is similar to:
+
+- `alert()->message('Message', 'Optional Title')`
+
+Like with the Facade we can use the helper with the same methods:
+
+```php
+alert()->message('Message', 'Optional Title');
+alert()->basic('Basic Message', 'Mandatory Title');
+alert()->info('Info Message', 'Optional Title');
+alert()->success('Success Message', 'Optional Title');
+alert()->error('Error Message', 'Optional Title');
+alert()->warning('Warning Message', 'Optional Title');
+
+alert()->basic('Basic Message', 'Mandatory Title')
+    ->autoclose(3500);
+
+alert()->error('Error Message', 'Optional Title')
+    ->persistent('Close');
+```
+
+Within your controllers, before you perform a redirect...
 
 ```php
 /**
@@ -85,7 +106,7 @@ public function destroy()
 }
 ```
 
-For a general information alert, just do: `alert('Some message');` (same as `alert->message('Some message');`).
+For a general information alert, just do: `alert('Some message');` (same as `alert()->message('Some message');`).
 
 By default, all alerts will dismiss after a sensible default number of seconds.
 
