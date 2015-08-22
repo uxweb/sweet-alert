@@ -12,11 +12,11 @@ First, pull in the package through Composer.
 }
 ```
 
-If using Laravel 5, include the service provider within `app/config/app.php`.
+If using Laravel 5, include the service provider within `config/app.php`.
 
 ```php
 'providers' => [
-    'UxWeb\SweetAlert\SweetAlertServiceProvider'
+    UxWeb\SweetAlert\SweetAlertServiceProvider::class
 ];
 ```
 
@@ -24,7 +24,7 @@ And, for convenience, add a facade alias to this same file at the bottom:
 
 ```php
 'aliases' => [
-    'Alert' => 'UxWeb\SweetAlert\SweetAlert'
+    'Alert' => UxWeb\SweetAlert\SweetAlert::class
 ];
 ```
 
