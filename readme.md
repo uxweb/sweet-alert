@@ -8,7 +8,7 @@ First, pull in the package through Composer.
 
 ```javascript
 "require": {
-    "uxweb/sweet-alert": "~1.1"
+    "uxweb/sweet-alert": "DEV-L42"
 }
 ```
 
@@ -154,10 +154,10 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
 If you need to customize the alert message partial, run:
 
 ```bash
-    php artisan vendor:publish
+    php artisan view:publish uxweb/sweetalert
 ```
 
-The package view is located in the `resources/views/vendor/sweet/` directory.
+The package view is located in the `app/views/packages/` directory.
 
 You can override/overwrite your sweet alert configuration to fit your needs.
 
@@ -180,14 +180,12 @@ Please check the CONFIGURATION section in the [website](http://t4t5.github.io/sw
 ```html
 @if (Session::has('sweet_alert.alert'))
     <script>
-        swal({!! Session::get('sweet_alert.alert') !!});
+        swal({{ Session::get('sweet_alert.alert') }});
     </script>
 @endif
 ```
 
 The `sweet_alert.alert` session key contains a JSON configuration object to pass it directly to Sweet Alert.
-
-Note that `{!! !!}` are used to output the json configuration object unescaped, it will not work with `{{ }}` escaped output tags.
 
 ### Custom View
 
@@ -195,12 +193,12 @@ Note that `{!! !!}` are used to output the json configuration object unescaped, 
 @if (Session::has('sweet_alert.alert'))
     <script>
         swal({
-            text: "{!! Session::get('sweet_alert.text') !!}",
-            title: "{!! Session::get('sweet_alert.title') !!}",
-            timer: {!! Session::get('sweet_alert.timer') !!},
-            type: "{!! Session::get('sweet_alert.type') !!}",
-            showConfirmButton: "{!! Session::get('sweet_alert.showConfirmButton') !!}",
-            confirmButtonText: "{!! Session::get('sweet_alert.confirmButtonText') !!}",
+            text: "{{ Session::get('sweet_alert.text') }}",
+            title: "{{ Session::get('sweet_alert.title') }}",
+            timer: {{ Session::get('sweet_alert.timer') }},
+            type: "{{ Session::get('sweet_alert.type') }}",
+            showConfirmButton: "{{ Session::get('sweet_alert.showConfirmButton') }}",
+            confirmButtonText: "{{ Session::get('sweet_alert.confirmButtonText') }}",
             confirmButtonColor: "#AEDEF4"
 
             // more options
