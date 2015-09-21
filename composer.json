@@ -22,5 +22,5 @@
           "src/UxWeb/SweetAlert/functions.php"
         ]
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }
