@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "UxWeb\\SweetAlert\\": "src/"
+            "UxWeb\\SweetAlert\\": "src/UxWeb/SweetAlert/"
         },
         "files": [
           "src/UxWeb/SweetAlert/functions.php"
