@@ -11,15 +11,15 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "~5.0",
-        "illuminate/session": "~5.0"
+        "illuminate/support": "~4.0",
+        "illuminate/session": "~4.0"
     },
     "autoload": {
         "psr-4": {
-            "UxWeb\\SweetAlert\\": "src/SweetAlert/"
+            "UxWeb\\SweetAlert\\": "src/UxWeb/SweetAlert/"
         },
         "files": [
-          "src/SweetAlert/functions.php"
+          "src/UxWeb/SweetAlert/functions.php"
         ]
     },
     "minimum-stability": "stable"

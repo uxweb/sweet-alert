@@ -7,6 +7,13 @@ use Illuminate\Support\ServiceProvider;
 class SweetAlertServiceProvider extends ServiceProvider
 {
     /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = false;
+
+    /**
      * Register the service provider.
      *
      * @return void
@@ -30,10 +37,16 @@ class SweetAlertServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../views', 'sweet');
+        $this->package('uxweb/sweetalert', 'sweet');
+    }
 
-        $this->publishes([
-            __DIR__ . '/../views' => base_path('resources/views/vendor/sweet')
-        ]);
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return ['uxweb.sweet-alert'];
     }
 }
