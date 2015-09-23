@@ -16,7 +16,6 @@ class LaravelSessionStore implements SessionStore
         $this->session = $session;
     }
 
-
     /**
      * Flash some data into the session.
      *
