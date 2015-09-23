@@ -83,7 +83,6 @@ class SweetAlertNotifier
      *
      * @param string $text
      * @param string $title
-     *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function success($text, $title = '')
@@ -98,7 +97,6 @@ class SweetAlertNotifier
      *
      * @param string $text
      * @param string $title
-     *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function error($text, $title = '')
@@ -113,7 +111,6 @@ class SweetAlertNotifier
      *
      * @param string $text
      * @param string $title
-     *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function warning($text, $title = '')
@@ -182,7 +179,7 @@ class SweetAlertNotifier
     }
 
     /**
-     * Switch the text message to the title key
+     * Switch the text message to the title key.
      *
      * @return string
      */
