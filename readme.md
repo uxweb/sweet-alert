@@ -2,6 +2,9 @@
 
 ![A success alert](http://i.imgur.com/1XySJiz.png)
 
+
+[![StyleCI](https://styleci.io/repos/38935942/shield)](https://styleci.io/repos/38935942)
+
 ## Installation
 
 First, pull in the package through Composer.
