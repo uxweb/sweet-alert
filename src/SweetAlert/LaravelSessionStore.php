@@ -11,14 +11,13 @@ class LaravelSessionStore implements SessionStore
      */
     private $session;
 
-    function __construct(Store $session)
+    public function __construct(Store $session)
     {
         $this->session = $session;
     }
 
-
     /**
-     * Flash some data into the session
+     * Flash some data into the session.
      *
      * @param $name
      * @param $data

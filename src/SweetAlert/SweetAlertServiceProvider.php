@@ -18,7 +18,7 @@ class SweetAlertServiceProvider extends ServiceProvider
             'UxWeb\SweetAlert\LaravelSessionStore'
         );
 
-        $this->app->singleton('uxweb.sweet-alert', function() {
+        $this->app->singleton('uxweb.sweet-alert', function () {
             return $this->app->make('UxWeb\SweetAlert\SweetAlertNotifier');
         });
     }
@@ -30,10 +30,10 @@ class SweetAlertServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../views', 'sweet');
+        $this->loadViewsFrom(__DIR__.'/../views', 'sweet');
 
         $this->publishes([
-            __DIR__ . '/../views' => base_path('resources/views/vendor/sweet')
+            __DIR__.'/../views' => base_path('resources/views/vendor/sweet'),
         ]);
     }
 }
