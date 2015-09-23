@@ -6,7 +6,7 @@ if (!function_exists('alert')) {
      * Arrange for an alert message.
      *
      * @param string|null $message
-     * @param string $title
+     * @param string      $title
      * 
      * @return \UxWeb\SweetAlert\SweetAlertNotifier
      */

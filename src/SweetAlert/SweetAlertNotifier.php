@@ -122,7 +122,7 @@ class SweetAlertNotifier
     public function warning($text, $title = '')
     {
         $this->message($text, $title, 'warning');
-        
+
         return $this;
     }
 
