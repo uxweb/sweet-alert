@@ -16,7 +16,7 @@ class SweetAlertNotifier
      */
     private $config = [
         'showConfirmButton' => false,
-        'timer' => 1800,
+        'timer'             => 1800,
         'allowOutsideClick' => true,
     ];
 
@@ -35,16 +35,16 @@ class SweetAlertNotifier
      *
      * By default the alert is not typed.
      *
-     * @param  string $text
-     * @param  string $type
-     * @param  string $title
+     * @param string $text
+     * @param string $type
+     * @param string $title
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function message($text, $title = '', $type = null)
     {
-        $this->config['text']  = $text;
+        $this->config['text'] = $text;
         $this->config['title'] = $title;
-        $this->config['type']  = $type;
+        $this->config['type'] = $type;
         $this->flashConfig();
 
         return $this;
@@ -53,8 +53,8 @@ class SweetAlertNotifier
     /**
      * Display a not typed alert message with a text and a title.
      *
-     * @param  string $text
-     * @param  string $title
+     * @param string $text
+     * @param string $title
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function basic($text, $title)
@@ -67,8 +67,8 @@ class SweetAlertNotifier
     /**
      * Display an info typed alert message with a text and an optional title.
      *
-     * @param  string $text
-     * @param  string $title
+     * @param string $text
+     * @param string $title
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function info($text, $title = '')
@@ -81,8 +81,8 @@ class SweetAlertNotifier
     /**
      * Display a success typed alert message with a text and an optional title.
      *
-     * @param  string $text
-     * @param  string $title
+     * @param string $text
+     * @param string $title
      *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
@@ -96,8 +96,8 @@ class SweetAlertNotifier
     /**
      * Display an error typed alert message with a text and an optional title.
      *
-     * @param  string $text
-     * @param  string $title
+     * @param string $text
+     * @param string $title
      *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
@@ -111,8 +111,8 @@ class SweetAlertNotifier
     /**
      * Display a warning typed alert message with a text and an optional title.
      *
-     * @param  string $text
-     * @param  string $title
+     * @param string $text
+     * @param string $title
      *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
@@ -125,7 +125,7 @@ class SweetAlertNotifier
     /**
      * Set the duration for this alert until it autocloses.
      *
-     * @param  int $milliseconds
+     * @param int $milliseconds
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function autoclose($milliseconds = 1800)
@@ -139,7 +139,7 @@ class SweetAlertNotifier
     /**
      * Make this alert persistent with a confirmation button.
      *
-     * @param  string $buttonText
+     * @param string $buttonText
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function persistent($buttonText = 'OK')
@@ -174,7 +174,7 @@ class SweetAlertNotifier
      */
     private function buildConfig()
     {
-        if (! $this->hasTitle()) {
+        if (!$this->hasTitle()) {
             $this->switchTitle();
         }
 
