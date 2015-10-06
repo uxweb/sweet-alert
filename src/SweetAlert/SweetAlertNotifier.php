@@ -142,6 +142,22 @@ class SweetAlertNotifier
     }
 
     /**
+     * Add a confirmation button to the alert
+     *
+     * @param string $buttonText
+     * 
+     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     */
+    public function confirmButton($buttonText = 'OK')
+    {
+        $this->config['confirmButtonText'] = $buttonText;
+        $this->config['showConfirmButton'] = true;
+        $this->flashConfig();
+
+        return $this;
+    }
+
+    /**
      * Make this alert persistent with a confirmation button.
      *
      * @param string $buttonText
