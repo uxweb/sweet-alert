@@ -142,7 +142,7 @@ class SweetAlertNotifier
     }
 
     /**
-     * Add a confirmation button to the alert
+     * Add a confirmation button to the alert.
      *
      * @param string $buttonText
      * 
