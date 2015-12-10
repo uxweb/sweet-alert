@@ -223,4 +223,18 @@ class SweetAlertNotifier
     {
         return (bool) strlen($this->config['title']);
     }
+    
+   /**
+     * @param bool|true $html
+     *
+     * @return $this
+     */
+    public function html( $html = true)
+    {
+        $this->config['html'] = $html;
+
+        $this->flashConfig();
+
+        return $this;
+    }
 }
