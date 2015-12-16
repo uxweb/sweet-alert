@@ -231,7 +231,7 @@ class SweetAlertNotifier
      *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
-    public function html($html = true)
+    public function html()
     {
         $this->config['html'] = $html;
 
