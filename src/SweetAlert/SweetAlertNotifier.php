@@ -233,7 +233,7 @@ class SweetAlertNotifier
      */
     public function html()
     {
-        $this->config['html'] = $html;
+        $this->config['html'] = true;
 
         $this->flashConfig();
 
