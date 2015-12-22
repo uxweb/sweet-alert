@@ -223,4 +223,20 @@ class SweetAlertNotifier
     {
         return (bool) strlen($this->config['title']);
     }
+    
+    /**
+     * Make Message HTML view.
+     * 
+     * @param bool|true $html
+     *
+     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     */
+    public function html()
+    {
+        $this->config['html'] = true;
+
+        $this->flashConfig();
+
+        return $this;
+    }
 }
