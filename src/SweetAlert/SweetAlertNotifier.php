@@ -161,7 +161,8 @@ class SweetAlertNotifier
      * Make this alert persistent with a confirmation button.
      *
      * @param string $buttonText
-     * 
+     * @param string $buttonColor
+     *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function persistent($buttonText = 'OK', $buttonColor = '#AEDEF4')
