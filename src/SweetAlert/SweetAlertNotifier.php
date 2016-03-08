@@ -38,7 +38,7 @@ class SweetAlertNotifier
      * @param string $text
      * @param string $type
      * @param string $title
-     * 
+     *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function message($text, $title = '', $type = null)
@@ -56,7 +56,7 @@ class SweetAlertNotifier
      *
      * @param string $text
      * @param string $title
-     * 
+     *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function basic($text, $title)
@@ -71,7 +71,7 @@ class SweetAlertNotifier
      *
      * @param string $text
      * @param string $title
-     * 
+     *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function info($text, $title = '')
@@ -86,7 +86,7 @@ class SweetAlertNotifier
      *
      * @param string $text
      * @param string $title
-     * 
+     *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function success($text, $title = '')
@@ -101,7 +101,7 @@ class SweetAlertNotifier
      *
      * @param string $text
      * @param string $title
-     * 
+     *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function error($text, $title = '')
@@ -116,7 +116,7 @@ class SweetAlertNotifier
      *
      * @param string $text
      * @param string $title
-     * 
+     *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function warning($text, $title = '')
@@ -130,7 +130,7 @@ class SweetAlertNotifier
      * Set the duration for this alert until it autocloses.
      *
      * @param int $milliseconds
-     * 
+     *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function autoclose($milliseconds = 1800)
@@ -145,7 +145,7 @@ class SweetAlertNotifier
      * Add a confirmation button to the alert.
      *
      * @param string $buttonText
-     * 
+     *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function confirmButton($buttonText = 'OK')
@@ -161,7 +161,7 @@ class SweetAlertNotifier
      * Make this alert persistent with a confirmation button.
      *
      * @param string $buttonText
-     * 
+     *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
     public function persistent($buttonText = 'OK')
