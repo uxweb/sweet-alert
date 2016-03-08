@@ -1,0 +1,5 @@
+{% if session_has('sweet_alert.alert') %}
+  <script>
+      swal({{ session_get('sweet_alert.alert')|raw }});
+  </script>
+{% endif %}
