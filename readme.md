@@ -47,6 +47,11 @@ bower install sweetalert
 
 ### With the Facade
 
+You first need to specify Alert in your controller.
+```php
+use Alert;
+```
+
 - `Alert::message('Message', 'Optional Title');`
 - `Alert::basic('Basic Message', 'Mandatory Title');`
 - `Alert::info('Info Message', 'Optional Title');`
