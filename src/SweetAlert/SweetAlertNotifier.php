@@ -223,7 +223,7 @@ class SweetAlertNotifier
     {
         return (bool) strlen($this->config['title']);
     }
-    
+
     /**
      * Make Message HTML view.
      *
