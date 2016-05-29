@@ -226,7 +226,7 @@ class SweetAlertNotifier
     
     /**
      * Make Message HTML view.
-     * 
+     *
      * @param bool|true $html
      *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
