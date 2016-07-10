@@ -18,8 +18,8 @@ class SweetAlertNotifier
         'showConfirmButton' => false,
         'timer'             => 1800,
         'allowOutsideClick' => true,
-        'title'             => 'asd',
-        'message'           => '',
+        'title'             => '',
+        'text'              => '',
     ];
 
     /**
