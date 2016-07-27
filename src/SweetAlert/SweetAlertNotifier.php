@@ -20,6 +20,7 @@ class SweetAlertNotifier
         'allowOutsideClick' => true,
         'title'             => '',
         'text'              => '',
+        'html'              => true,
     ];
 
     /**
