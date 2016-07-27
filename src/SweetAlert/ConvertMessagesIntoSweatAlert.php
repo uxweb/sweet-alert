@@ -39,7 +39,7 @@ class ConvertMessagesIntoSweatAlert
         if($request->session()->has('errors')){
             $message = $this->prepareErrors($request->session()->get('errors')->getMessages());
 
-            Alert::error($message, 'Errors')->persistent();
+            Alert::error($message, 'Errors')->html()->persistent();
         }
 
         return $next($request);
