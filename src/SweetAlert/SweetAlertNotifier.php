@@ -180,7 +180,7 @@ class SweetAlertNotifier
     /**
      * Flash the configuration.
      *
-     * return void
+     * @return void
      */
     private function flashConfig()
     {
