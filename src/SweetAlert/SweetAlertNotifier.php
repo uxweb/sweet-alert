@@ -14,13 +14,7 @@ class SweetAlertNotifier
      *
      * @var array
      */
-    private $config = [
-        'showConfirmButton' => false,
-        'timer'             => 1800,
-        'allowOutsideClick' => true,
-        'title'             => '',
-        'text'              => '',
-    ];
+    private $config;
 
     /**
      * Create a new SweetAlertNotifier instance.
@@ -29,6 +23,8 @@ class SweetAlertNotifier
      */
     public function __construct(SessionStore $session)
     {
+        $this->setDefaultConfig();
+
         $this->session = $session;
     }
 
@@ -135,11 +131,13 @@ class SweetAlertNotifier
      *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
-    public function autoclose($milliseconds = 1800)
+    public function autoclose($milliseconds = null)
     {
-        $this->config['timer'] = $milliseconds;
-        $this->flashConfig();
-
+        if ($milliseconds != null) {
+            $this->config['timer'] = $milliseconds;
+            $this->flashConfig();
+        }
+        
         return $this;
     }
 
@@ -175,6 +173,21 @@ class SweetAlertNotifier
         $this->flashConfig();
 
         return $this;
+    }
+    /**
+     * Sets all default config options for an alert
+     * 
+     * @return void
+     */
+    private function setDefaultConfig()
+    {
+        $this->config = [
+            'showConfirmButton' => false,
+            'allowOutsideClick' => true,
+            'timer'             => config('sweet-alert.autoclose', 1800),
+            'title'             => '',
+            'text'              => '',
+        ];
     }
 
     /**
