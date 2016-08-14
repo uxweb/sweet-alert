@@ -7,7 +7,7 @@ use UxWeb\SweetAlert\SweetAlertNotifier;
 class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
 {
     /** @test */
-    function it_flashes_config_for_a_basic_alert()
+    public function it_flashes_config_for_a_basic_alert()
     {
         $session = m::mock(SessionStore::class);
 
@@ -16,9 +16,9 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
         $expectedConfig = [
             'showConfirmButton' => false,
             'allowOutsideClick' => true,
-            'timer' => 1800,
-            'title' => 'Alert',
-            'text' => 'Basic Alert!',
+            'timer'             => 1800,
+            'title'             => 'Alert',
+            'text'              => 'Basic Alert!',
         ];
 
         $expectedJsonConfig = json_encode($expectedConfig);
@@ -38,7 +38,7 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    function it_flashes_config_for_a_info_alert()
+    public function it_flashes_config_for_a_info_alert()
     {
         $session = m::mock(SessionStore::class);
 
@@ -47,10 +47,10 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
         $expectedConfig = [
             'showConfirmButton' => false,
             'allowOutsideClick' => true,
-            'timer' => 1800,
-            'title' => 'Alert',
-            'text' => 'Info Alert!',
-            'type' => 'info',
+            'timer'             => 1800,
+            'title'             => 'Alert',
+            'text'              => 'Info Alert!',
+            'type'              => 'info',
         ];
 
         $expectedJsonConfig = json_encode($expectedConfig);
@@ -71,7 +71,7 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    function it_flashes_config_for_a_success_alert()
+    public function it_flashes_config_for_a_success_alert()
     {
         $session = m::mock(SessionStore::class);
 
@@ -80,10 +80,10 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
         $expectedConfig = [
             'showConfirmButton' => false,
             'allowOutsideClick' => true,
-            'timer' => 1800,
-            'title' => 'Success!',
-            'text' => 'Well Done!',
-            'type' => 'success',
+            'timer'             => 1800,
+            'title'             => 'Success!',
+            'text'              => 'Well Done!',
+            'type'              => 'success',
         ];
 
         $expectedJsonConfig = json_encode($expectedConfig);
@@ -104,7 +104,7 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    function it_flashes_config_for_a_warning_alert()
+    public function it_flashes_config_for_a_warning_alert()
     {
         $session = m::mock(SessionStore::class);
 
@@ -113,10 +113,10 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
         $expectedConfig = [
             'showConfirmButton' => false,
             'allowOutsideClick' => true,
-            'timer' => 1800,
-            'title' => 'Watch Out!',
-            'text' => 'Hey cowboy!',
-            'type' => 'warning',
+            'timer'             => 1800,
+            'title'             => 'Watch Out!',
+            'text'              => 'Hey cowboy!',
+            'type'              => 'warning',
         ];
 
         $expectedJsonConfig = json_encode($expectedConfig);
@@ -137,7 +137,7 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    function it_flashes_config_for_a_error_alert()
+    public function it_flashes_config_for_a_error_alert()
     {
         $session = m::mock(SessionStore::class);
 
@@ -146,10 +146,10 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
         $expectedConfig = [
             'showConfirmButton' => false,
             'allowOutsideClick' => true,
-            'timer' => 1800,
-            'title' => 'Whoops!',
-            'text' => 'Something wrong happened!',
-            'type' => 'error',
+            'timer'             => 1800,
+            'title'             => 'Whoops!',
+            'text'              => 'Something wrong happened!',
+            'type'              => 'error',
         ];
 
         $expectedJsonConfig = json_encode($expectedConfig);
@@ -170,7 +170,7 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    function it_flashes_timer_config_using_an_autoclose_alert()
+    public function it_flashes_timer_config_using_an_autoclose_alert()
     {
         $session = m::mock(SessionStore::class);
 
@@ -179,9 +179,9 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
         $expectedConfig = [
             'showConfirmButton' => false,
             'allowOutsideClick' => true,
-            'timer' => 2000,
-            'title' => 'Alert',
-            'text' => 'Hello!',
+            'timer'             => 2000,
+            'title'             => 'Alert',
+            'text'              => 'Hello!',
         ];
 
         $expectedJsonConfig = json_encode($expectedConfig);
@@ -203,7 +203,7 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    function if_flashes_the_message_as_the_alert_title_if_no_title_is_passed_for_json_config()
+    public function if_flashes_the_message_as_the_alert_title_if_no_title_is_passed_for_json_config()
     {
         $session = m::mock(SessionStore::class);
 
@@ -212,9 +212,9 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
         $expectedConfig = [
             'showConfirmButton' => false,
             'allowOutsideClick' => true,
-            'timer' => 1800,
-            'title' => '',
-            'text' => 'This should be the title!',
+            'timer'             => 1800,
+            'title'             => '',
+            'text'              => 'This should be the title!',
         ];
 
         $expectedJsonConfig = json_encode([
@@ -239,7 +239,7 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    function it_removes_the_timer_option_from_config_when_using_a_persistent_alert()
+    public function it_removes_the_timer_option_from_config_when_using_a_persistent_alert()
     {
         $session = m::mock(SessionStore::class);
 
@@ -250,8 +250,8 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
         $expectedConfig = [
             'showConfirmButton' => true,
             'allowOutsideClick' => false,
-            'title' => 'Alert',
-            'text' => 'Please, read with care!',
+            'title'             => 'Alert',
+            'text'              => 'Please, read with care!',
             'confirmButtonText' => 'Got it!',
         ];
 
@@ -265,21 +265,21 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    function it_will_add_the_html_option_to_config_when_using_an_html_alert()
+    public function it_will_add_the_html_option_to_config_when_using_an_html_alert()
     {
         $session = m::mock(SessionStore::class);
 
         $session->shouldReceive('flash')->atLeast(1);
-        
+
         $notifier = new SweetAlertNotifier($session);
 
         $expectedConfig = [
             'showConfirmButton' => false,
             'allowOutsideClick' => true,
-            'timer' => 1800,
-            'title' => 'Alert',
-            'text' => '<strong>This should be bold!</strong>',
-            'html' => true,
+            'timer'             => 1800,
+            'title'             => 'Alert',
+            'text'              => '<strong>This should be bold!</strong>',
+            'html'              => true,
         ];
 
         $expectedJsonConfig = json_encode($expectedConfig);
@@ -291,7 +291,7 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expectedJsonConfig, $notifier->getJsonConfig());
     }
 
-    function tearDown()
+    public function tearDown()
     {
         m::close();
     }

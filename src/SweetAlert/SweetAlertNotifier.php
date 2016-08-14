@@ -60,7 +60,7 @@ class SweetAlertNotifier
         $this->config['text'] = $text;
         $this->config['title'] = $title;
 
-        if (! is_null($type)) {
+        if (!is_null($type)) {
             $this->config['type'] = $type;
         }
 
@@ -153,7 +153,7 @@ class SweetAlertNotifier
      */
     public function autoclose($milliseconds = null)
     {
-        if (! is_null($milliseconds)) {
+        if (!is_null($milliseconds)) {
             $this->config['timer'] = $milliseconds;
         }
 
@@ -261,7 +261,7 @@ class SweetAlertNotifier
 
         // If the alert config has no title, it will switch the text for the title.
         // We are using a copy of the config to prevent messing the instance config.
-        if (! $this->hasTitle()) {
+        if (!$this->hasTitle()) {
             $config = $this->switchTitle($config);
         }
 

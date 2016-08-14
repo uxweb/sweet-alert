@@ -9,8 +9,9 @@ class ConvertMessagesIntoSweatAlert
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request  $request
+     * @param \Closure                  $next
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -49,9 +50,10 @@ class ConvertMessagesIntoSweatAlert
     }
 
     /**
-     * Retrieve the errors from ViewErrorBag
+     * Retrieve the errors from ViewErrorBag.
      *
      * @param $errors
+     *
      * @return string
      */
     private function prepareErrors($errors)
