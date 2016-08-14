@@ -1,7 +1,7 @@
 {
     "name": "uxweb/sweet-alert",
     "description": "A simple PHP package to show Sweet Alerts with the Laravel Framework",
-    "keywords": ["laravel", "alert", "sweet"],
+    "keywords": ["laravel", "alert", "sweet", "notifier"],
     "license": "MIT",
     "authors": [
         {
@@ -22,5 +22,8 @@
           "src/SweetAlert/functions.php"
         ]
     },
-    "minimum-stability": "stable"
+    "require-dev": {
+        "phpunit/phpunit": "^5.5",
+        "mockery/mockery": "^0.9.5"
+    }
 }
