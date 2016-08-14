@@ -29,7 +29,7 @@ class SweetAlertNotifier
     }
 
     /**
-     * Sets all default config options for an alert
+     * Sets all default config options for an alert.
      *
      * @return void
      */

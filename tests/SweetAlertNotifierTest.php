@@ -220,8 +220,8 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
         $expectedJsonConfig = json_encode([
             'showConfirmButton' => false,
             'allowOutsideClick' => true,
-            'timer' => 1800,
-            'title' => 'This should be the title!',
+            'timer'             => 1800,
+            'title'             => 'This should be the title!',
         ]);
 
         $session->shouldReceive('flash')->with('sweet_alert.showConfirmButton', $expectedConfig['showConfirmButton']);
