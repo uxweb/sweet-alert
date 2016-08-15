@@ -163,23 +163,7 @@ return redirect()->back()->with('errors', 'Profile updated!');
 
 > **NOTE**: When using the middleware it will make an alert to display if detects any of the following keys flashed into the session: `errors`, `success`, `warning`, `info`, `message`, `basic`.
 
-#### Some Considerations
-By default, all alerts will dismiss after a sensible default number of seconds.
-
-But no fear, if you need to specify a different time you can:
-
-```php
-    // -> Remember!, the number is set in milliseconds
-    alert('Hello World!')->autoclose(3000);
-```
-
-Also, if you need the alert to be persistent on the page until the user dismiss it by pressing the alert confirmation button:
-
-```php
-    // -> The text will appear in the button
-    alert('Hello World!')->persistent("Close this");
-```
-
+### The View
 Finally, to display the alert in the browser, you may use (or modify) the view that is included with this package. Simply include it to your layout view:
 
 ```html
@@ -203,6 +187,25 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
 
 </body>
 </html>
+```
+
+> **REMEMBER**: Always include the .css and .js files from the sweet-alert library.
+
+### Final Considerations
+By default, all alerts will dismiss after a sensible default number of seconds.
+
+But no fear, if you need to specify a different time you can:
+
+```php
+    // -> Remember!, the number is set in milliseconds
+    alert('Hello World!')->autoclose(3000);
+```
+
+Also, if you need the alert to be persistent on the page until the user dismiss it by pressing the alert confirmation button:
+
+```php
+    // -> The text will appear in the button
+    alert('Hello World!')->persistent("Close this");
 ```
 
 ## Customize
