@@ -116,6 +116,54 @@ public function destroy()
 
 For a general information alert, just do: `alert('Some message');` (same as `alert()->message('Some message');`).
 
+### With Middleware 
+#### Using middleware groups
+First register the middleware in web middleware groups by simply add the middleware class `UxWeb\SweetAlert\ConvertMessagesIntoSweatAlert::class` into the $middlewareGroups of your app/Http/Kernel.php class:
+
+```php
+    protected $middlewareGroups = [
+        'web' => [
+            \App\Http\Middleware\EncryptCookies::class,
+            ...
+            \UxWeb\SweetAlert\ConvertMessagesIntoSweatAlert::class,
+        ],
+
+        'api' => [
+            'throttle:60,1',
+        ],
+    ];
+
+```
+
+> Ensure to register the middleware within 'web' group only.
+
+#### Using route middleware
+Or if you would like to assign the middleware to specific routes only, you should add the middleware to `$routeMiddleware` in `app/Http/Kernel.php` file:
+
+```php
+protected $routeMiddleware = [
+    'auth' => \App\Http\Middleware\Authenticate::class,
+    ....
+    'sweetalert' => \UxWeb\SweetAlert\ConvertMessagesIntoSweatAlert::class,
+];
+```
+
+
+Next step, Within your controllers, set your return message (using `with()`), send the proper message  and proper type
+
+```PHP
+return redirect('dashboard')->with('success', 'Profile updated!'); 
+```
+
+or
+
+```PHP
+return redirect()->back()->with('errors', 'Profile updated!'); 
+```
+
+> **NOTE**: When using the middleware it will make an alert to display if detects any of the following keys flashed into the session: `errors`, `success`, `warning`, `info`, `message`, `basic`.
+
+#### Some Considerations
 By default, all alerts will dismiss after a sensible default number of seconds.
 
 But no fear, if you need to specify a different time you can:
