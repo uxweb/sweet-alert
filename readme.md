@@ -215,7 +215,9 @@ If you need to customize the alert message partial, run:
 
 The package view is located in the `resources/views/vendor/sweet/` directory.
 
-You can override/overwrite your sweet alert configuration to fit your needs.
+You can customize this view to fit your needs.
+
+A `sweet-alert.php` configuration file will be published to your `config` directory as well, this will allow you to set the default timer for all autoclose alerts.
 
 ### Configuration Options
 
@@ -266,6 +268,14 @@ Note that `{!! !!}` are used to output the json configuration object unescaped, 
 ```
 
 Note that you must use `""` (double quotes) to wrap the values except for the timer option.
+
+## Tests
+
+To run the included test suite:
+
+```bash
+vendor/bin/phpunit
+```
 
 ## Demo
 
