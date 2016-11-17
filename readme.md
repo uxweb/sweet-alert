@@ -208,6 +208,13 @@ Also, if you need the alert to be persistent on the page until the user dismiss 
     alert('Hello World!')->persistent("Close this");
 ```
 
+You can render html in your message with the html() method like this:
+
+```php
+    // -> html will be evaluate
+    alert('<a href="#">Click me</a>')->html()->persistent("No, thanks");
+```
+
 ## Customize
 
 If you need to customize the alert message partial, run:
@@ -325,6 +332,12 @@ return Redirect::home();
 ```
 ![A success alert](http://i.imgur.com/pQz3ijJ.png)
 
+```php
+Alert::info('Random lorempixel.com : <img src="http://lorempixel.com/150/150/">')->html();
+
+return Redirect::home();
+```
+![HTML in message](http://i.imgur.com/x44c12a.png)
 
 ```php
 Alert::success('Good job!')->persistent("Close");
