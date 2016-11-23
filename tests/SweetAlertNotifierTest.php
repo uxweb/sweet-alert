@@ -231,13 +231,33 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
     }
 
     /** @test */
+    public function it_show_a_confirm_button_with_custom_text()
+    {
+        $session = m::mock(SessionStore::class);
+        $session->shouldReceive('flash')->atLeast(1);
+        $notifier = new SweetAlertNotifier($session);
+        $expectedConfig = [
+            'title'             => 'Alert',
+            'text'              => 'Basic Alert!',
+            'showConfirmButton' => true,
+            'confirmButtonText'  => 'ok!',
+            'allowOutsideClick' => false,
+        ];
+        $expectedJsonConfig = json_encode($expectedConfig);
+
+        $notifier->basic('Basic Alert!', 'Alert')->confirmButton('ok!');
+
+        $this->assertEquals($expectedConfig, $notifier->getConfig());
+        $this->assertEquals($expectedJsonConfig, $notifier->getJsonConfig());
+    }
+
+    /** @test */
     public function it_show_a_cancel_button_with_custom_text()
     {
         $session = m::mock(SessionStore::class);
         $session->shouldReceive('flash')->atLeast(1);
         $notifier = new SweetAlertNotifier($session);
         $expectedConfig = [
-            'timer'             => 1800,
             'title'             => 'Alert',
             'text'              => 'Basic Alert!',
             'showConfirmButton' => false,

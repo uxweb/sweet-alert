@@ -172,6 +172,8 @@ class SweetAlertNotifier
     {
         $this->config['confirmButtonText'] = $buttonText;
         $this->config['showConfirmButton'] = true;
+        $this->config['allowOutsideClick'] = false;
+        $this->removeTimer();
         $this->flashConfig();
 
         return $this;
@@ -182,6 +184,7 @@ class SweetAlertNotifier
         $this->config['showCancelButton'] = true;
         $this->config['cancelButtonText'] = $buttonText;
         $this->config['allowOutsideClick'] = false;
+        $this->removeTimer();
         $this->flashConfig();
 
         return $this;
@@ -199,14 +202,22 @@ class SweetAlertNotifier
         $this->config['showConfirmButton'] = true;
         $this->config['confirmButtonText'] = $buttonText;
         $this->config['allowOutsideClick'] = false;
-
-        if (array_key_exists('timer', $this->config)) {
-            unset($this->config['timer']);
-        }
-
+        $this->removeTimer();
         $this->flashConfig();
 
         return $this;
+    }
+
+    /**
+     * Remove the timer config option.
+     *
+     * @return void
+     */
+    protected function removeTimer()
+    {
+        if (array_key_exists('timer', $this->config)) {
+            unset($this->config['timer']);
+        }
     }
 
     /**
