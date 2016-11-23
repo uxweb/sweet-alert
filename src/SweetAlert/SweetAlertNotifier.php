@@ -39,6 +39,7 @@ class SweetAlertNotifier
             'timer'             => config('sweet-alert.autoclose', 1800),
             'title'             => '',
             'text'              => '',
+            'showConfirmButton' => false,
         ];
     }
 
