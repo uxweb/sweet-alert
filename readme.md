@@ -15,6 +15,11 @@ First, pull in the package through Composer.
 }
 ```
 
+or faster using the terminal:
+```
+    composer require uxweb/sweet-alert
+```
+
 If using Laravel 5, include the service provider within `config/app.php`.
 
 ```php
@@ -37,28 +42,25 @@ Finally, you need to get the Sweet Alert library, you can so by:
 
 Download the .js and .css from the [website](http://t4t5.github.io/sweetalert/)
 
-Or through bower:
+If you are using Laravel Elixir for your front-end workflow, add swet alert with [yarn](https://yarnpkg.com/) or nmp
 
-```bash
-bower install sweetalert
+using Yarn:
+```php
+    yarn add sweetalert
+```
+using Npm:
+```php
+    npm install sweetalert
 ```
 
 ## Usage
 
 ### With the Facade
 
-You first need to specify Alert in your controller.
+First import the Alert facade in your controller.
 ```php
 use Alert;
 ```
-
-- `Alert::message('Message', 'Optional Title');`
-- `Alert::basic('Basic Message', 'Mandatory Title');`
-- `Alert::info('Info Message', 'Optional Title');`
-- `Alert::success('Success Message', 'Optional Title');`
-- `Alert::error('Error Message', 'Optional Title');`
-- `Alert::warning('Warning Message', 'Optional Title');`
-
 Within your controllers, before you perform a redirect...
 
 ```php
@@ -69,6 +71,13 @@ public function store()
     return Redirect::home();
 }
 ```
+
+- `Alert::message('Message', 'Optional Title');`
+- `Alert::basic('Basic Message', 'Mandatory Title');`
+- `Alert::info('Info Message', 'Optional Title');`
+- `Alert::success('Success Message', 'Optional Title');`
+- `Alert::error('Error Message', 'Optional Title');`
+- `Alert::warning('Warning Message', 'Optional Title');`
 
 ### With the Helper
 
@@ -81,20 +90,14 @@ function without specifying any message type. Doing so is similar to:
 
 Like with the Facade we can use the helper with the same methods:
 
-```php
-alert()->message('Message', 'Optional Title');
-alert()->basic('Basic Message', 'Mandatory Title');
-alert()->info('Info Message', 'Optional Title');
-alert()->success('Success Message', 'Optional Title');
-alert()->error('Error Message', 'Optional Title');
-alert()->warning('Warning Message', 'Optional Title');
-
-alert()->basic('Basic Message', 'Mandatory Title')
-    ->autoclose(3500);
-
-alert()->error('Error Message', 'Optional Title')
-    ->persistent('Close');
-```
+- `alert()->message('Message', 'Optional Title');`
+- `alert()->basic('Basic Message', 'Mandatory Title');`
+- `alert()->info('Info Message', 'Optional Title');`
+- `alert()->success('Success Message', 'Optional Title');`
+- `alert()->error('Error Message', 'Optional Title');`
+- `alert()->warning('Warning Message', 'Optional Title');`
+- `alert()->basic('Basic Message', 'Mandatory Title')->autoclose(3500);`
+- `alert()->error('Error Message', 'Optional Title')->persistent('Close');`
 
 Within your controllers, before you perform a redirect...
 
@@ -116,7 +119,7 @@ public function destroy()
 
 For a general information alert, just do: `alert('Some message');` (same as `alert()->message('Some message');`).
 
-### With Middleware 
+### With the Middleware 
 #### Using middleware groups
 First register the middleware in web middleware groups by simply add the middleware class `UxWeb\SweetAlert\ConvertMessagesIntoSweatAlert::class` into the $middlewareGroups of your app/Http/Kernel.php class:
 
