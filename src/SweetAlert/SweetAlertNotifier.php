@@ -36,8 +36,6 @@ class SweetAlertNotifier
     protected function setDefaultConfig()
     {
         $this->config = [
-            'showConfirmButton' => false,
-            'allowOutsideClick' => true,
             'timer'             => config('sweet-alert.autoclose', 1800),
             'title'             => '',
             'text'              => '',
@@ -178,6 +176,16 @@ class SweetAlertNotifier
         return $this;
     }
 
+    public function cancelButton($buttonText = 'Cancel')
+    {
+        $this->config['showCancelButton'] = true;
+        $this->config['cancelButtonText'] = $buttonText;
+        $this->config['allowOutsideClick'] = false;
+        $this->flashConfig();
+
+        return $this;
+    }
+
     /**
      * Make this alert persistent with a confirmation button.
      *
@@ -187,8 +195,8 @@ class SweetAlertNotifier
      */
     public function persistent($buttonText = 'OK')
     {
-        $this->config['confirmButtonText'] = $buttonText;
         $this->config['showConfirmButton'] = true;
+        $this->config['confirmButtonText'] = $buttonText;
         $this->config['allowOutsideClick'] = false;
 
         if (array_key_exists('timer', $this->config)) {
@@ -217,7 +225,7 @@ class SweetAlertNotifier
     }
 
     /**
-     * Flash the current alert configuration.
+     * Flash the current alert configuration to the session store.
      *
      * @return void
      */
@@ -269,6 +277,16 @@ class SweetAlertNotifier
     }
 
     /**
+     * Determine if the title is set.
+     *
+     * @return bool
+     */
+    protected function hasTitle()
+    {
+        return (bool) strlen($this->config['title']);
+    }
+
+    /**
      * Switch the text message to the title key.
      *
      * @return void
@@ -280,15 +298,5 @@ class SweetAlertNotifier
         unset($config['text']);
 
         return $config;
-    }
-
-    /**
-     * Determine if the title is set.
-     *
-     * @return bool
-     */
-    protected function hasTitle()
-    {
-        return (bool) strlen($this->config['title']);
     }
 }
