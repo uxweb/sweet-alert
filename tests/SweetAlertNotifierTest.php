@@ -9,8 +9,11 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function it_flashes_config_for_a_basic_alert()
     {
-        $session = m::mock(SessionStore::class);
+        $session = m::spy(SessionStore::class);
         $notifier = new SweetAlertNotifier($session);
+
+        $notifier->basic('Basic Alert!', 'Alert');
+
         $expectedConfig = [
             'timer'             => 1800,
             'title'             => 'Alert',
@@ -18,14 +21,11 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
             'showConfirmButton' => false,
         ];
         $expectedJsonConfig = json_encode($expectedConfig);
-        $session->shouldReceive('flash')->with('sweet_alert.timer', $expectedConfig['timer']);
-        $session->shouldReceive('flash')->with('sweet_alert.title', $expectedConfig['title']);
-        $session->shouldReceive('flash')->with('sweet_alert.text', $expectedConfig['text']);
-        $session->shouldReceive('flash')->with('sweet_alert.showConfirmButton', $expectedConfig['showConfirmButton']);
-        $session->shouldReceive('flash')->with('sweet_alert.alert', $expectedJsonConfig);
-
-        $notifier->basic('Basic Alert!', 'Alert');
-
+        $session->shouldHaveReceived('flash')->with('sweet_alert.timer', $expectedConfig['timer'])->once();
+        $session->shouldHaveReceived('flash')->with('sweet_alert.title', $expectedConfig['title'])->once();
+        $session->shouldHaveReceived('flash')->with('sweet_alert.text', $expectedConfig['text'])->once();
+        $session->shouldHaveReceived('flash')->with('sweet_alert.showConfirmButton', $expectedConfig['showConfirmButton'])->once();
+        $session->shouldHaveReceived('flash')->with('sweet_alert.alert', $expectedJsonConfig)->once();
         $this->assertEquals($expectedConfig, $notifier->getConfig());
         $this->assertEquals($expectedJsonConfig, $notifier->getJsonConfig());
     }
@@ -254,9 +254,11 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function it_show_a_cancel_button_with_custom_text()
     {
-        $session = m::mock(SessionStore::class);
-        $session->shouldReceive('flash')->atLeast(1);
+        $session = m::spy(SessionStore::class);
         $notifier = new SweetAlertNotifier($session);
+
+        $notifier->basic('Basic Alert!', 'Alert')->cancelButton('Cancel!');
+
         $expectedConfig = [
             'title'             => 'Alert',
             'text'              => 'Basic Alert!',
@@ -266,9 +268,7 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
             'allowOutsideClick' => false,
         ];
         $expectedJsonConfig = json_encode($expectedConfig);
-
-        $notifier->basic('Basic Alert!', 'Alert')->cancelButton('Cancel!');
-
+        $session->shouldHaveReceived('flash')->with('sweet_alert.title', $expectedConfig['title']);
         $this->assertEquals($expectedConfig, $notifier->getConfig());
         $this->assertEquals($expectedJsonConfig, $notifier->getJsonConfig());
     }
