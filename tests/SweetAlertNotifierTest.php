@@ -237,11 +237,11 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
         $session->shouldReceive('flash')->atLeast(1);
         $notifier = new SweetAlertNotifier($session);
         $expectedConfig = [
-            'title'             => 'Alert',
-            'text'              => 'Basic Alert!',
-            'showConfirmButton' => true,
+            'title'              => 'Alert',
+            'text'               => 'Basic Alert!',
+            'showConfirmButton'  => true,
             'confirmButtonText'  => 'ok!',
-            'allowOutsideClick' => false,
+            'allowOutsideClick'  => false,
         ];
         $expectedJsonConfig = json_encode($expectedConfig);
 
