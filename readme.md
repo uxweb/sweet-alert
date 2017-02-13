@@ -24,7 +24,7 @@ If using Laravel 5, include the service provider within `config/app.php`.
 
 ```php
 'providers' => [
-    UxWeb\SweetAlert\SweetAlertServiceProvider::class
+    UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 ];
 ```
 
@@ -32,7 +32,7 @@ And, for convenience, add a facade alias to this same file at the bottom:
 
 ```php
 'aliases' => [
-    'Alert' => UxWeb\SweetAlert\SweetAlert::class
+    'Alert' => UxWeb\SweetAlert\SweetAlert::class,
 ];
 ```
 
