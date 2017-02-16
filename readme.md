@@ -223,7 +223,7 @@ You can render html in your message with the html() method like this:
 If you need to customize the alert message partial, run:
 
 ```bash
-    php artisan vendor:publish
+    php artisan vendor:publish --provider "UxWeb\SweetAlert\SweetAlertServiceProvider"
 ```
 
 The package view is located in the `resources/views/vendor/sweet/` directory.
