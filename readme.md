@@ -24,7 +24,7 @@ If using Laravel 5, include the service provider within `config/app.php`.
 
 ```php
 'providers' => [
-    UxWeb\SweetAlert\SweetAlertServiceProvider::class
+    UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 ];
 ```
 
@@ -32,7 +32,7 @@ And, for convenience, add a facade alias to this same file at the bottom:
 
 ```php
 'aliases' => [
-    'Alert' => UxWeb\SweetAlert\SweetAlert::class
+    'Alert' => UxWeb\SweetAlert\SweetAlert::class,
 ];
 ```
 
@@ -223,7 +223,7 @@ You can render html in your message with the html() method like this:
 If you need to customize the alert message partial, run:
 
 ```bash
-    php artisan vendor:publish
+    php artisan vendor:publish --provider "UxWeb\SweetAlert\SweetAlertServiceProvider"
 ```
 
 The package view is located in the `resources/views/vendor/sweet/` directory.
