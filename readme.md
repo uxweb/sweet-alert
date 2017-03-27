@@ -121,14 +121,14 @@ For a general information alert, just do: `alert('Some message');` (same as `ale
 
 ### With the Middleware 
 #### Using middleware groups
-First register the middleware in web middleware groups by simply add the middleware class `UxWeb\SweetAlert\ConvertMessagesIntoSweatAlert::class` into the $middlewareGroups of your app/Http/Kernel.php class:
+First register the middleware in web middleware groups by simply add the middleware class `UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert::class` into the $middlewareGroups of your app/Http/Kernel.php class:
 
 ```php
     protected $middlewareGroups = [
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
             ...
-            \UxWeb\SweetAlert\ConvertMessagesIntoSweatAlert::class,
+            \UxWeb\SweetAlert\ConvertMessagesIntoSwetAlert::class,
         ],
 
         'api' => [
@@ -147,7 +147,7 @@ Or if you would like to assign the middleware to specific routes only, you shoul
 protected $routeMiddleware = [
     'auth' => \App\Http\Middleware\Authenticate::class,
     ....
-    'sweetalert' => \UxWeb\SweetAlert\ConvertMessagesIntoSweatAlert::class,
+    'sweetalert' => \UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert::class,
 ];
 ```
 
