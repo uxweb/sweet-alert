@@ -128,7 +128,7 @@ First register the middleware in web middleware groups by simply add the middlew
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
             ...
-            \UxWeb\SweetAlert\ConvertMessagesIntoSwetAlert::class,
+            \UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert::class,
         ],
 
         'api' => [
