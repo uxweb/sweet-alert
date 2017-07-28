@@ -42,7 +42,7 @@ Finally, you need to get the Sweet Alert library, you can so by:
 
 Download the .js and .css from the [website](http://t4t5.github.io/sweetalert/)
 
-If you are using Laravel Elixir for your front-end workflow, add swet alert with [yarn](https://yarnpkg.com/) or nmp
+If you are using Laravel Elixir for your front-end workflow, add sweet alert with [yarn](https://yarnpkg.com/) or npm
 
 using Yarn:
 ```php
@@ -128,7 +128,7 @@ First register the middleware in web middleware groups by simply add the middlew
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
             ...
-            \UxWeb\SweetAlert\ConvertMessagesIntoSwetAlert::class,
+            \UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert::class,
         ],
 
         'api' => [
