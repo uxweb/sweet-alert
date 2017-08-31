@@ -4,7 +4,7 @@ namespace UxWeb\SweetAlert;
 
 use Closure;
 
-class ConvertMessagesIntoSweatAlert
+class ConvertMessagesIntoSweetAlert
 {
     /**
      * Handle an incoming request.
