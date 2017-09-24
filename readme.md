@@ -269,7 +269,7 @@ Note that `{!! !!}` are used to output the json configuration object unescaped, 
             text: "{!! Session::get('sweet_alert.text') !!}",
             title: "{!! Session::get('sweet_alert.title') !!}",
             timer: {!! Session::get('sweet_alert.timer') !!},
-            type: "{!! Session::get('sweet_alert.type') !!}",
+            icon: "{!! Session::get('sweet_alert.icon') !!}",
             showConfirmButton: "{!! Session::get('sweet_alert.showConfirmButton') !!}",
             confirmButtonText: "{!! Session::get('sweet_alert.confirmButtonText') !!}",
             confirmButtonColor: "#AEDEF4"
