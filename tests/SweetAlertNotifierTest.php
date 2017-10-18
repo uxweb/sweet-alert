@@ -18,13 +18,11 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
             'timer'             => 1800,
             'title'             => 'Alert',
             'text'              => 'Basic Alert!',
-            'showConfirmButton' => false,
         ];
         $expectedJsonConfig = json_encode($expectedConfig);
         $session->shouldHaveReceived('flash')->with('sweet_alert.timer', $expectedConfig['timer'])->once();
         $session->shouldHaveReceived('flash')->with('sweet_alert.title', $expectedConfig['title'])->once();
         $session->shouldHaveReceived('flash')->with('sweet_alert.text', $expectedConfig['text'])->once();
-        $session->shouldHaveReceived('flash')->with('sweet_alert.showConfirmButton', $expectedConfig['showConfirmButton'])->once();
         $session->shouldHaveReceived('flash')->with('sweet_alert.alert', $expectedJsonConfig)->once();
         $this->assertEquals($expectedConfig, $notifier->getConfig());
         $this->assertEquals($expectedJsonConfig, $notifier->getJsonConfig());
@@ -39,15 +37,13 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
             'timer'             => 1800,
             'title'             => 'Alert',
             'text'              => 'Info Alert!',
-            'showConfirmButton' => false,
-            'type'              => 'info',
+            'icon'              => 'info',
         ];
         $expectedJsonConfig = json_encode($expectedConfig);
         $session->shouldReceive('flash')->with('sweet_alert.timer', $expectedConfig['timer']);
-        $session->shouldReceive('flash')->with('sweet_alert.showConfirmButton', $expectedConfig['showConfirmButton']);
         $session->shouldReceive('flash')->with('sweet_alert.title', $expectedConfig['title']);
         $session->shouldReceive('flash')->with('sweet_alert.text', $expectedConfig['text']);
-        $session->shouldReceive('flash')->with('sweet_alert.type', $expectedConfig['type']);
+        $session->shouldReceive('flash')->with('sweet_alert.icon', $expectedConfig['icon']);
         $session->shouldReceive('flash')->with('sweet_alert.alert', $expectedJsonConfig);
 
         $notifier->info('Info Alert!', 'Alert');
@@ -65,15 +61,13 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
             'timer'             => 1800,
             'title'             => 'Success!',
             'text'              => 'Well Done!',
-            'showConfirmButton' => false,
-            'type'              => 'success',
+            'icon'              => 'success',
         ];
         $expectedJsonConfig = json_encode($expectedConfig);
         $session->shouldReceive('flash')->with('sweet_alert.timer', $expectedConfig['timer']);
         $session->shouldReceive('flash')->with('sweet_alert.title', $expectedConfig['title']);
         $session->shouldReceive('flash')->with('sweet_alert.text', $expectedConfig['text']);
-        $session->shouldReceive('flash')->with('sweet_alert.showConfirmButton', $expectedConfig['showConfirmButton']);
-        $session->shouldReceive('flash')->with('sweet_alert.type', $expectedConfig['type']);
+        $session->shouldReceive('flash')->with('sweet_alert.icon', $expectedConfig['icon']);
         $session->shouldReceive('flash')->with('sweet_alert.alert', $expectedJsonConfig);
 
         $notifier->success('Well Done!', 'Success!');
@@ -91,15 +85,13 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
             'timer'             => 1800,
             'title'             => 'Watch Out!',
             'text'              => 'Hey cowboy!',
-            'showConfirmButton' => false,
-            'type'              => 'warning',
+            'icon'              => 'warning',
         ];
         $expectedJsonConfig = json_encode($expectedConfig);
         $session->shouldReceive('flash')->with('sweet_alert.timer', $expectedConfig['timer']);
         $session->shouldReceive('flash')->with('sweet_alert.title', $expectedConfig['title']);
         $session->shouldReceive('flash')->with('sweet_alert.text', $expectedConfig['text']);
-        $session->shouldReceive('flash')->with('sweet_alert.showConfirmButton', $expectedConfig['showConfirmButton']);
-        $session->shouldReceive('flash')->with('sweet_alert.type', $expectedConfig['type']);
+        $session->shouldReceive('flash')->with('sweet_alert.icon', $expectedConfig['icon']);
         $session->shouldReceive('flash')->with('sweet_alert.alert', $expectedJsonConfig);
 
         $notifier->warning('Hey cowboy!', 'Watch Out!');
@@ -117,15 +109,13 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
             'timer'             => 1800,
             'title'             => 'Whoops!',
             'text'              => 'Something wrong happened!',
-            'showConfirmButton' => false,
-            'type'              => 'error',
+            'icon'              => 'error',
         ];
         $expectedJsonConfig = json_encode($expectedConfig);
         $session->shouldReceive('flash')->with('sweet_alert.timer', $expectedConfig['timer']);
         $session->shouldReceive('flash')->with('sweet_alert.title', $expectedConfig['title']);
         $session->shouldReceive('flash')->with('sweet_alert.text', $expectedConfig['text']);
-        $session->shouldReceive('flash')->with('sweet_alert.showConfirmButton', $expectedConfig['showConfirmButton']);
-        $session->shouldReceive('flash')->with('sweet_alert.type', $expectedConfig['type']);
+        $session->shouldReceive('flash')->with('sweet_alert.icon', $expectedConfig['icon']);
         $session->shouldReceive('flash')->with('sweet_alert.alert', $expectedJsonConfig);
 
         $notifier->error('Something wrong happened!', 'Whoops!');
@@ -143,14 +133,12 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
             'timer'             => 2000,
             'title'             => 'Alert',
             'text'              => 'Hello!',
-            'showConfirmButton' => false,
         ];
         $expectedJsonConfig = json_encode($expectedConfig);
         $session->shouldReceive('flash')->with('sweet_alert.timer', 1800);
         $session->shouldReceive('flash')->with('sweet_alert.timer', $expectedConfig['timer']);
         $session->shouldReceive('flash')->with('sweet_alert.title', $expectedConfig['title']);
         $session->shouldReceive('flash')->with('sweet_alert.text', $expectedConfig['text']);
-        $session->shouldReceive('flash')->with('sweet_alert.showConfirmButton', $expectedConfig['showConfirmButton']);
         $session->shouldReceive('flash')->with('sweet_alert.alert', json_encode(array_merge($expectedConfig, ['timer' => 1800])));
         $session->shouldReceive('flash')->with('sweet_alert.alert', $expectedJsonConfig);
 
@@ -169,17 +157,14 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
             'timer'             => 1800,
             'title'             => '',
             'text'              => 'This should be the title!',
-            'showConfirmButton' => false,
         ];
         $expectedJsonConfig = json_encode([
             'timer'             => 1800,
             'title'             => 'This should be the title!',
-            'showConfirmButton' => false,
         ]);
         $session->shouldReceive('flash')->with('sweet_alert.timer', $expectedConfig['timer']);
         $session->shouldReceive('flash')->with('sweet_alert.text', $expectedConfig['text']);
         $session->shouldReceive('flash')->with('sweet_alert.title', $expectedConfig['title']);
-        $session->shouldReceive('flash')->with('sweet_alert.showConfirmButton', $expectedConfig['showConfirmButton']);
         $session->shouldReceive('flash')->with('sweet_alert.alert', $expectedJsonConfig);
 
         $notifier->message('This should be the title!');
@@ -195,11 +180,10 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
         $session->shouldReceive('flash')->atLeast(1);
         $notifier = new SweetAlertNotifier($session);
         $expectedConfig = [
-            'title'             => 'Alert',
-            'text'              => 'Please, read with care!',
-            'showConfirmButton' => true,
-            'confirmButtonText' => 'Got it!',
-            'allowOutsideClick' => false,
+            'title'               => 'Alert',
+            'text'                => 'Please, read with care!',
+            'button'              => 'Got it!',
+            'closeOnClickOutside' => true,
         ];
         $expectedJsonConfig = json_encode($expectedConfig);
 
@@ -210,21 +194,20 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function it_will_add_the_html_option_to_config_when_using_an_html_alert()
+    public function it_removes_the_timer_option_from_config_when_using_a_persistent_alert_with_custom_buttons()
     {
         $session = m::mock(SessionStore::class);
         $session->shouldReceive('flash')->atLeast(1);
         $notifier = new SweetAlertNotifier($session);
         $expectedConfig = [
-            'timer'             => 1800,
-            'title'             => 'Alert',
-            'text'              => '<strong>This should be bold!</strong>',
-            'showConfirmButton' => false,
-            'html'              => true,
+            'title'               => 'Alert',
+            'text'                => 'Please, read with care!',
+            'buttons'             => ['No', 'Yes'],
+            'closeOnClickOutside' => true,
         ];
         $expectedJsonConfig = json_encode($expectedConfig);
 
-        $notifier->message('<strong>This should be bold!</strong>', 'Alert')->html();
+        $notifier->message('Please, read with care!', 'Alert')->persistent(['No', 'Yes']);
 
         $this->assertEquals($expectedConfig, $notifier->getConfig());
         $this->assertEquals($expectedJsonConfig, $notifier->getJsonConfig());
@@ -237,15 +220,13 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
         $session->shouldReceive('flash')->atLeast(1);
         $notifier = new SweetAlertNotifier($session);
         $expectedConfig = [
+            'timer'              => 1800,
             'title'              => 'Alert',
             'text'               => 'Basic Alert!',
-            'showConfirmButton'  => true,
-            'confirmButtonText'  => 'ok!',
-            'allowOutsideClick'  => false,
         ];
         $expectedJsonConfig = json_encode($expectedConfig);
 
-        $notifier->basic('Basic Alert!', 'Alert')->confirmButton('ok!');
+        $notifier->basic('Basic Alert!', 'Alert');
 
         $this->assertEquals($expectedConfig, $notifier->getConfig());
         $this->assertEquals($expectedJsonConfig, $notifier->getJsonConfig());
@@ -257,15 +238,12 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
         $session = m::spy(SessionStore::class);
         $notifier = new SweetAlertNotifier($session);
 
-        $notifier->basic('Basic Alert!', 'Alert')->cancelButton('Cancel!');
+        $notifier->basic('Basic Alert!', 'Alert');
 
         $expectedConfig = [
-            'title'             => 'Alert',
-            'text'              => 'Basic Alert!',
-            'showConfirmButton' => false,
-            'showCancelButton'  => true,
-            'cancelButtonText'  => 'Cancel!',
-            'allowOutsideClick' => false,
+            'timer'              => 1800,
+            'title'              => 'Alert',
+            'text'               => 'Basic Alert!',
         ];
         $expectedJsonConfig = json_encode($expectedConfig);
         $session->shouldHaveReceived('flash')->with('sweet_alert.title', $expectedConfig['title']);
