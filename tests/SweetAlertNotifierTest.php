@@ -251,6 +251,30 @@ class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expectedJsonConfig, $notifier->getJsonConfig());
     }
 
+    /** @test */
+    public function it_set_the_danger_mode()
+    {
+        $session = m::mock(SessionStore::class);
+        $session->shouldReceive('flash')->atLeast(1);
+        $notifier = new SweetAlertNotifier($session);
+        $expectedConfig = [
+          'timer'             => 1800,
+          'title'             => 'Warning!',
+          'text'              => 'You want to delete it?',
+          'dangerMode'        => true,
+        ];
+        $expectedJsonConfig = json_encode($expectedConfig);
+        $session->shouldReceive('flash')->with('sweet_alert.timer', $expectedConfig['timer']);
+        $session->shouldReceive('flash')->with('sweet_alert.title', $expectedConfig['title']);
+        $session->shouldReceive('flash')->with('sweet_alert.text', $expectedConfig['text']);
+        $session->shouldReceive('flash')->with('sweet_alert.alert', $expectedJsonConfig);
+
+        $notifier->message('You want to delete it?', 'Warning!')->dangerMode();
+
+        $this->assertEquals($expectedConfig, $notifier->getConfig());
+        $this->assertEquals($expectedJsonConfig, $notifier->getJsonConfig());
+    }
+
     public function tearDown()
     {
         m::close();

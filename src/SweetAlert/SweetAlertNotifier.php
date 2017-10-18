@@ -161,6 +161,20 @@ class SweetAlertNotifier
     }
 
     /**
+     * Set the danger mode.
+     *
+     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     */
+    public function dangerMode()
+    {
+        $this->config['dangerMode'] = true;
+
+        $this->flashConfig();
+
+        return $this;
+    }
+
+    /**
      * Make this alert persistent with a confirmation button.
      *
      * @param string $buttonText
