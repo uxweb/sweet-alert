@@ -9,18 +9,11 @@
 
 First, pull in the package through Composer.
 
-```javascript
-"require": {
-    "uxweb/sweet-alert": "~1.4"
-}
-```
-
-or faster using the terminal:
 ```
     composer require uxweb/sweet-alert
 ```
 
-If using Laravel 5, include the service provider within `config/app.php`.
+If using laravel < 5.5 include the service provider within `config/app.php`.
 
 ```php
 'providers' => [
@@ -42,7 +35,7 @@ Finally, you need to get the Sweet Alert library, you can so by:
 
 Download the .js and .css from the [website](http://t4t5.github.io/sweetalert/)
 
-If you are using Laravel Elixir for your front-end workflow, add swet alert with [yarn](https://yarnpkg.com/) or nmp
+If you are using Laravel Elixir for your front-end workflow, add sweet alert with [yarn](https://yarnpkg.com/) or nmp
 
 using Yarn:
 ```php
@@ -119,7 +112,7 @@ public function destroy()
 
 For a general information alert, just do: `alert('Some message');` (same as `alert()->message('Some message');`).
 
-### With the Middleware 
+### With the Middleware
 #### Using middleware groups
 First register the middleware in web middleware groups by simply add the middleware class `UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert::class` into the $middlewareGroups of your app/Http/Kernel.php class:
 
@@ -155,13 +148,13 @@ protected $routeMiddleware = [
 Next step, Within your controllers, set your return message (using `with()`), send the proper message  and proper type
 
 ```PHP
-return redirect('dashboard')->with('success', 'Profile updated!'); 
+return redirect('dashboard')->with('success', 'Profile updated!');
 ```
 
 or
 
 ```PHP
-return redirect()->back()->with('errors', 'Profile updated!'); 
+return redirect()->back()->with('errors', 'Profile updated!');
 ```
 
 > **NOTE**: When using the middleware it will make an alert to display if detects any of the following keys flashed into the session: `errors`, `success`, `warning`, `info`, `message`, `basic`.
