@@ -35,20 +35,20 @@ Finally, you need to get the Sweet Alert library, you can so by:
 
 Download the .js and .css from the [website](http://t4t5.github.io/sweetalert/)
 
-If you are using Laravel Elixir for your front-end workflow, add sweet alert with [yarn](https://yarnpkg.com/) or nmp
+If you are using Laravel Elixir for your front-end workflow, add sweet alert with [yarn](https://yarnpkg.com/) or npm
 
 using Yarn:
 ```php
-    yarn add sweetalert
+    yarn add sweetalert --dev
 ```
 using Npm:
 ```php
-    npm install sweetalert
+    npm install sweetalert --save-dev
 ```
 
 ## Usage
 
-### With the Facade
+### Using the Facade
 
 First import the Alert facade in your controller.
 ```php
@@ -72,7 +72,7 @@ public function store()
 - `Alert::error('Error Message', 'Optional Title');`
 - `Alert::warning('Warning Message', 'Optional Title');`
 
-### With the Helper
+### Using the helper function
 
 - `alert($message = null, $title = '')`
 
@@ -112,8 +112,9 @@ public function destroy()
 
 For a general information alert, just do: `alert('Some message');` (same as `alert()->message('Some message');`).
 
-### With the Middleware
-#### Using middleware groups
+### Using the Middleware
+
+#### Middleware Groups
 First register the middleware in web middleware groups by simply add the middleware class `UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert::class` into the $middlewareGroups of your app/Http/Kernel.php class:
 
 ```php
@@ -133,7 +134,7 @@ First register the middleware in web middleware groups by simply add the middlew
 
 > Ensure to register the middleware within 'web' group only.
 
-#### Using route middleware
+#### Route middleware
 Or if you would like to assign the middleware to specific routes only, you should add the middleware to `$routeMiddleware` in `app/Http/Kernel.php` file:
 
 ```php
@@ -143,7 +144,6 @@ protected $routeMiddleware = [
     'sweetalert' => \UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert::class,
 ];
 ```
-
 
 Next step, Within your controllers, set your return message (using `with()`), send the proper message  and proper type
 
@@ -207,7 +207,7 @@ Also, if you need the alert to be persistent on the page until the user dismiss 
 You can render html in your message with the html() method like this:
 
 ```php
-    // -> html will be evaluate
+    // -> html will be evaluated
     alert('<a href="#">Click me</a>')->html()->persistent("No, thanks");
 ```
 

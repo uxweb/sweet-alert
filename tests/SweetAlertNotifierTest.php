@@ -1,10 +1,11 @@
 <?php
 
 use Mockery as m;
+use PHPUnit\Framework\TestCase;
 use UxWeb\SweetAlert\SessionStore;
 use UxWeb\SweetAlert\SweetAlertNotifier;
 
-class SweetAlertNotifierTest extends PHPUnit_Framework_TestCase
+class SweetAlertNotifierTest extends TestCase
 {
     /** @test */
     public function it_flashes_config_for_a_basic_alert()
