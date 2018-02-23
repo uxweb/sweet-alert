@@ -260,7 +260,7 @@ Note that `{!! !!}` are used to output the json configuration object unescaped, 
         swal({
             text: "{!! Session::get('sweet_alert.text') !!}",
             title: "{!! Session::get('sweet_alert.title') !!}",
-            timer: {!! Session::get('sweet_alert.timer') !!},
+            timer: "{!! Session::get('sweet_alert.timer') !!}",
             type: "{!! Session::get('sweet_alert.type') !!}",
             showConfirmButton: "{!! Session::get('sweet_alert.showConfirmButton') !!}",
             confirmButtonText: "{!! Session::get('sweet_alert.confirmButtonText') !!}",
