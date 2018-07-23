@@ -124,7 +124,7 @@ For a general information alert, just do: `alert('Some message');` (same as `ale
 ### Using the Middleware
 
 #### Middleware Groups
-First register the middleware in web middleware groups by simply add the middleware class `UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert::class` into the $middlewareGroups of your app/Http/Kernel.php class:
+First register the middleware in web middleware groups by simply adding the middleware class `UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert::class` into the $middlewareGroups of your app/Http/Kernel.php class:
 
 ```php
     protected $middlewareGroups = [
@@ -138,10 +138,9 @@ First register the middleware in web middleware groups by simply add the middlew
             'throttle:60,1',
         ],
     ];
-
 ```
 
-> Ensure to register the middleware within 'web' group only.
+> Make sure you register the middleware within the 'web' group only.
 
 #### Route middleware
 Or if you would like to assign the middleware to specific routes only, you should add the middleware to `$routeMiddleware` in `app/Http/Kernel.php` file:
@@ -154,7 +153,7 @@ protected $routeMiddleware = [
 ];
 ```
 
-Next step, Within your controllers, set your return message (using `with()`), send the proper message  and proper type
+Next step: within your controllers, set your return message (using `with()`) and send the proper message and proper type.
 
 ```PHP
 return redirect('dashboard')->with('success', 'Profile updated!');
@@ -166,10 +165,10 @@ or
 return redirect()->back()->with('errors', 'Profile updated!');
 ```
 
-> **NOTE**: When using the middleware it will make an alert to display if detects any of the following keys flashed into the session: `errors`, `success`, `warning`, `info`, `message`, `basic`.
+> **NOTE**: When using the middleware it will make an alert to display if it detects any of the following keys flashed into the session: `errors`, `success`, `warning`, `info`, `message`, `basic`.
 
 ### The View
-Finally, to display the alert in the browser, you may use (or modify) the view that is included with this package. Simply include it to your layout view:
+Finally, to display the alert in the browser, you may use (or modify) the view that is included with this package. Simply include it in your layout view:
 
 ```html
 <!DOCTYPE html>
@@ -199,7 +198,7 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
 ### Final Considerations
 By default, all alerts will dismiss after a sensible default number of seconds.
 
-But no fear, if you need to specify a different time you can:
+But not to worry, if you need to specify a different time you can:
 
 ```php
     // -> Remember!, the number is set in milliseconds
