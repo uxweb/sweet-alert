@@ -13,17 +13,13 @@ First, pull in the package through Composer.
     composer require uxweb/sweet-alert
 ```
 
-If using laravel < 5.5 include the service provider within `config/app.php`.
+If using laravel < 5.5 include the service provider and alias within `config/app.php`.
 
 ```php
 'providers' => [
     UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 ];
-```
 
-And, for convenience, add a facade alias to this same file at the bottom:
-
-```php
 'aliases' => [
     'Alert' => UxWeb\SweetAlert\SweetAlert::class,
 ];
@@ -31,19 +27,15 @@ And, for convenience, add a facade alias to this same file at the bottom:
 
 > Note that this package works only by using the [BEAUTIFUL REPLACEMENT FOR JAVASCRIPT'S "ALERT"](http://t4t5.github.io/sweetalert/).
 
-Finally, you need to get the Sweet Alert library, you can so by:
+Finally, install the Sweet Alert Javascript library through yarn or npm
 
-Download the .js and .css from the [website](http://t4t5.github.io/sweetalert/)
-
-If you are using Laravel Elixir for your front-end workflow, add sweet alert with [yarn](https://yarnpkg.com/) or npm
-
-using Yarn:
-```php
-    yarn add sweetalert --dev
+Install using Yarn:
 ```
-using Npm:
-```php
-    npm install sweetalert --save-dev
+    yarn add sweetalert:1.1.3 --dev
+```
+Install using Npm:
+```
+    npm install sweetalert:1.1.3 --save-dev
 ```
 
 ## Usage
@@ -65,32 +57,49 @@ public function store()
 }
 ```
 
-- `Alert::message('Message', 'Optional Title');`
-- `Alert::basic('Basic Message', 'Mandatory Title');`
-- `Alert::info('Info Message', 'Optional Title');`
-- `Alert::success('Success Message', 'Optional Title');`
-- `Alert::error('Error Message', 'Optional Title');`
-- `Alert::warning('Warning Message', 'Optional Title');`
+Here are some examples on how you can use the facade:
+```php
+Alert::message('Message', 'Optional Title');
+
+Alert::basic('Basic Message', 'Mandatory Title');
+
+Alert::info('Info Message', 'Optional Title');
+
+Alert::success('Success Message', 'Optional Title');
+
+Alert::error('Error Message', 'Optional Title');
+
+Alert::warning('Warning Message', 'Optional Title');
+```
 
 ### Using the helper function
 
-- `alert($message = null, $title = '')`
+`alert($message = null, $title = '')`
 
 In addition to the previous listed methods you can also just use the helper
 function without specifying any message type. Doing so is similar to:
 
-- `alert()->message('Message', 'Optional Title')`
+`alert()->message('Message', 'Optional Title')`
 
 Like with the Facade we can use the helper with the same methods:
 
-- `alert()->message('Message', 'Optional Title');`
-- `alert()->basic('Basic Message', 'Mandatory Title');`
-- `alert()->info('Info Message', 'Optional Title');`
-- `alert()->success('Success Message', 'Optional Title');`
-- `alert()->error('Error Message', 'Optional Title');`
-- `alert()->warning('Warning Message', 'Optional Title');`
-- `alert()->basic('Basic Message', 'Mandatory Title')->autoclose(3500);`
-- `alert()->error('Error Message', 'Optional Title')->persistent('Close');`
+```php
+alert()->message('Message', 'Optional Title');
+
+alert()->basic('Basic Message', 'Mandatory Title');
+
+alert()->info('Info Message', 'Optional Title');
+
+alert()->success('Success Message', 'Optional Title');
+
+alert()->error('Error Message', 'Optional Title');
+
+alert()->warning('Warning Message', 'Optional Title');
+
+alert()->basic('Basic Message', 'Mandatory Title')->autoclose(3500);
+
+alert()->error('Error Message', 'Optional Title')->persistent('Close');
+```
 
 Within your controllers, before you perform a redirect...
 
@@ -229,6 +238,7 @@ A `sweet-alert.php` configuration file will be published to your `config` direct
 
 You have access to the following configuration options to build a custom view:
 
+```php
     Session::get('sweet_alert.text')
     Session::get('sweet_alert.type')
     Session::get('sweet_alert.title')
@@ -236,6 +246,7 @@ You have access to the following configuration options to build a custom view:
     Session::get('sweet_alert.showConfirmButton')
     Session::get('sweet_alert.allowOutsideClick')
     Session::get('sweet_alert.timer')
+```
 
 Please check the CONFIGURATION section in the [website](http://t4t5.github.io/sweetalert/) for all other options available.
 
@@ -262,7 +273,7 @@ Note that `{!! !!}` are used to output the json configuration object unescaped, 
             text: "{!! Session::get('sweet_alert.text') !!}",
             title: "{!! Session::get('sweet_alert.title') !!}",
             timer: {!! Session::get('sweet_alert.timer') !!},
-            type: "{!! Session::get('sweet_alert.type') !!}",
+            icon: "{!! Session::get('sweet_alert.type') !!}",
             showConfirmButton: "{!! Session::get('sweet_alert.showConfirmButton') !!}",
             confirmButtonText: "{!! Session::get('sweet_alert.confirmButtonText') !!}",
             confirmButtonColor: "#AEDEF4"
