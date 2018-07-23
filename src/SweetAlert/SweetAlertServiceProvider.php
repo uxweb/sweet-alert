@@ -37,7 +37,7 @@ class SweetAlertServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../views', 'sweet');
 
         $this->publishes([
-            __DIR__.'/../views'                  => base_path('resources/views/vendor/sweet'),
+            __DIR__.'/../views' => base_path('resources/views/vendor/sweet'),
             __DIR__.'/../config/sweet-alert.php' => config_path('sweet-alert.php'),
         ]);
     }

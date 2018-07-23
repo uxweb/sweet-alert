@@ -9,28 +9,17 @@
 
 First, pull in the package through Composer.
 
-```javascript
-"require": {
-    "uxweb/sweet-alert": "~1.4"
-}
-```
-
-or faster using the terminal:
 ```
     composer require uxweb/sweet-alert
 ```
 
-If using Laravel 5, include the service provider within `config/app.php`.
+If using laravel < 5.5 include the service provider and alias within `config/app.php`.
 
 ```php
 'providers' => [
     UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 ];
-```
 
-And, for convenience, add a facade alias to this same file at the bottom:
-
-```php
 'aliases' => [
     'Alert' => UxWeb\SweetAlert\SweetAlert::class,
 ];
@@ -38,24 +27,20 @@ And, for convenience, add a facade alias to this same file at the bottom:
 
 > Note that this package works only by using the [BEAUTIFUL REPLACEMENT FOR JAVASCRIPT'S "ALERT"](http://t4t5.github.io/sweetalert/).
 
-Finally, you need to get the Sweet Alert library, you can so by:
+Finally, install the Sweet Alert Javascript library through yarn or npm
 
-Download the .js and .css from the [website](http://t4t5.github.io/sweetalert/)
-
-If you are using Laravel Elixir for your front-end workflow, add sweet alert with [yarn](https://yarnpkg.com/) or npm
-
-using Yarn:
-```php
-    yarn add sweetalert
+Install using Yarn:
 ```
-using Npm:
-```php
-    npm install sweetalert
+    yarn add sweetalert:1.1.3 --dev
+```
+Install using Npm:
+```
+    npm install sweetalert:1.1.3 --save-dev
 ```
 
 ## Usage
 
-### With the Facade
+### Using the Facade
 
 First import the Alert facade in your controller.
 ```php
@@ -72,32 +57,49 @@ public function store()
 }
 ```
 
-- `Alert::message('Message', 'Optional Title');`
-- `Alert::basic('Basic Message', 'Mandatory Title');`
-- `Alert::info('Info Message', 'Optional Title');`
-- `Alert::success('Success Message', 'Optional Title');`
-- `Alert::error('Error Message', 'Optional Title');`
-- `Alert::warning('Warning Message', 'Optional Title');`
+Here are some examples on how you can use the facade:
+```php
+Alert::message('Message', 'Optional Title');
 
-### With the Helper
+Alert::basic('Basic Message', 'Mandatory Title');
 
-- `alert($message = null, $title = '')`
+Alert::info('Info Message', 'Optional Title');
+
+Alert::success('Success Message', 'Optional Title');
+
+Alert::error('Error Message', 'Optional Title');
+
+Alert::warning('Warning Message', 'Optional Title');
+```
+
+### Using the helper function
+
+`alert($message = null, $title = '')`
 
 In addition to the previous listed methods you can also just use the helper
 function without specifying any message type. Doing so is similar to:
 
-- `alert()->message('Message', 'Optional Title')`
+`alert()->message('Message', 'Optional Title')`
 
 Like with the Facade we can use the helper with the same methods:
 
-- `alert()->message('Message', 'Optional Title');`
-- `alert()->basic('Basic Message', 'Mandatory Title');`
-- `alert()->info('Info Message', 'Optional Title');`
-- `alert()->success('Success Message', 'Optional Title');`
-- `alert()->error('Error Message', 'Optional Title');`
-- `alert()->warning('Warning Message', 'Optional Title');`
-- `alert()->basic('Basic Message', 'Mandatory Title')->autoclose(3500);`
-- `alert()->error('Error Message', 'Optional Title')->persistent('Close');`
+```php
+alert()->message('Message', 'Optional Title');
+
+alert()->basic('Basic Message', 'Mandatory Title');
+
+alert()->info('Info Message', 'Optional Title');
+
+alert()->success('Success Message', 'Optional Title');
+
+alert()->error('Error Message', 'Optional Title');
+
+alert()->warning('Warning Message', 'Optional Title');
+
+alert()->basic('Basic Message', 'Mandatory Title')->autoclose(3500);
+
+alert()->error('Error Message', 'Optional Title')->persistent('Close');
+```
 
 Within your controllers, before you perform a redirect...
 
@@ -119,9 +121,10 @@ public function destroy()
 
 For a general information alert, just do: `alert('Some message');` (same as `alert()->message('Some message');`).
 
-### With the Middleware 
-#### Using middleware groups
-First register the middleware in web middleware groups by simply add the middleware class `UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert::class` into the $middlewareGroups of your app/Http/Kernel.php class:
+### Using the Middleware
+
+#### Middleware Groups
+First register the middleware in web middleware groups by simply adding the middleware class `UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert::class` into the $middlewareGroups of your app/Http/Kernel.php class:
 
 ```php
     protected $middlewareGroups = [
@@ -135,12 +138,11 @@ First register the middleware in web middleware groups by simply add the middlew
             'throttle:60,1',
         ],
     ];
-
 ```
 
-> Ensure to register the middleware within 'web' group only.
+> Make sure you register the middleware within the 'web' group only.
 
-#### Using route middleware
+#### Route middleware
 Or if you would like to assign the middleware to specific routes only, you should add the middleware to `$routeMiddleware` in `app/Http/Kernel.php` file:
 
 ```php
@@ -151,23 +153,22 @@ protected $routeMiddleware = [
 ];
 ```
 
-
-Next step, Within your controllers, set your return message (using `with()`), send the proper message  and proper type
+Next step: within your controllers, set your return message (using `with()`) and send the proper message and proper type.
 
 ```PHP
-return redirect('dashboard')->with('success', 'Profile updated!'); 
+return redirect('dashboard')->with('success', 'Profile updated!');
 ```
 
 or
 
 ```PHP
-return redirect()->back()->with('errors', 'Profile updated!'); 
+return redirect()->back()->with('errors', 'Profile updated!');
 ```
 
-> **NOTE**: When using the middleware it will make an alert to display if detects any of the following keys flashed into the session: `errors`, `success`, `warning`, `info`, `message`, `basic`.
+> **NOTE**: When using the middleware it will make an alert to display if it detects any of the following keys flashed into the session: `errors`, `success`, `warning`, `info`, `message`, `basic`.
 
 ### The View
-Finally, to display the alert in the browser, you may use (or modify) the view that is included with this package. Simply include it to your layout view:
+Finally, to display the alert in the browser, you may use (or modify) the view that is included with this package. Simply include it in your layout view:
 
 ```html
 <!DOCTYPE html>
@@ -197,7 +198,7 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
 ### Final Considerations
 By default, all alerts will dismiss after a sensible default number of seconds.
 
-But no fear, if you need to specify a different time you can:
+But not to worry, if you need to specify a different time you can:
 
 ```php
     // -> Remember!, the number is set in milliseconds
@@ -214,7 +215,7 @@ Also, if you need the alert to be persistent on the page until the user dismiss 
 You can render html in your message with the html() method like this:
 
 ```php
-    // -> html will be evaluate
+    // -> html will be evaluated
     alert('<a href="#">Click me</a>')->html()->persistent("No, thanks");
 ```
 
@@ -236,6 +237,7 @@ A `sweet-alert.php` configuration file will be published to your `config` direct
 
 You have access to the following configuration options to build a custom view:
 
+```php
     Session::get('sweet_alert.text')
     Session::get('sweet_alert.type')
     Session::get('sweet_alert.title')
@@ -243,6 +245,7 @@ You have access to the following configuration options to build a custom view:
     Session::get('sweet_alert.showConfirmButton')
     Session::get('sweet_alert.allowOutsideClick')
     Session::get('sweet_alert.timer')
+```
 
 Please check the CONFIGURATION section in the [website](http://t4t5.github.io/sweetalert/) for all other options available.
 
@@ -269,7 +272,7 @@ Note that `{!! !!}` are used to output the json configuration object unescaped, 
             text: "{!! Session::get('sweet_alert.text') !!}",
             title: "{!! Session::get('sweet_alert.title') !!}",
             timer: {!! Session::get('sweet_alert.timer') !!},
-            type: "{!! Session::get('sweet_alert.type') !!}",
+            icon: "{!! Session::get('sweet_alert.type') !!}",
             showConfirmButton: "{!! Session::get('sweet_alert.showConfirmButton') !!}",
             confirmButtonText: "{!! Session::get('sweet_alert.confirmButtonText') !!}",
             confirmButtonColor: "#AEDEF4"
