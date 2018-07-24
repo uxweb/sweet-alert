@@ -4,6 +4,12 @@ namespace UxWeb\SweetAlert;
 
 class SweetAlertNotifier
 {
+    const ICON_WARNING = 'warning';
+    const ICON_ERROR = 'error';
+    const ICON_SUCCESS = 'success';
+    const ICON_INFO = 'info';
+    const TIMER_MILLISECONDS = 1800;
+
     /**
      * @var \UxWeb\SweetAlert\SessionStore
      */
@@ -15,6 +21,14 @@ class SweetAlertNotifier
      * @var array
      */
     protected $config;
+
+    protected $defaultButtonConfig = [
+        'text'       => '',
+        'value'      => null,
+        'visible'    => false,
+        'className'  => '',
+        'closeModal' => true,
+    ];
 
     /**
      * Create a new SweetAlertNotifier instance.
@@ -36,10 +50,12 @@ class SweetAlertNotifier
     protected function setDefaultConfig()
     {
         $this->config = [
-            'timer'             => config('sweet-alert.autoclose', 1800),
-            'title'             => '',
-            'text'              => '',
-            'showConfirmButton' => false,
+            'timer'   => config('sweet-alert.autoclose', self::TIMER_MILLISECONDS),
+            'text'    => '',
+            'buttons' => [
+                'cancel'  => false,
+                'confirm' => false,
+            ],
         ];
     }
 
@@ -49,18 +65,21 @@ class SweetAlertNotifier
      * By default the alert is not typed.
      *
      * @param string $text
-     * @param string $type
      * @param string $title
+     * @param string $icon
      *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
-    public function message($text, $title = '', $type = null)
+    public function message($text = '', $title = null, $icon = null)
     {
         $this->config['text'] = $text;
-        $this->config['title'] = $title;
 
-        if (!is_null($type)) {
-            $this->config['type'] = $type;
+        if (!is_null($title)) {
+            $this->config['title'] = $title;
+        }
+
+        if (!is_null($icon)) {
+            $this->config['icon'] = $icon;
         }
 
         $this->flashConfig();
@@ -93,7 +112,7 @@ class SweetAlertNotifier
      */
     public function info($text, $title = '')
     {
-        $this->message($text, $title, 'info');
+        $this->message($text, $title, self::ICON_INFO);
 
         return $this;
     }
@@ -108,7 +127,7 @@ class SweetAlertNotifier
      */
     public function success($text, $title = '')
     {
-        $this->message($text, $title, 'success');
+        $this->message($text, $title, self::ICON_SUCCESS);
 
         return $this;
     }
@@ -123,7 +142,7 @@ class SweetAlertNotifier
      */
     public function error($text, $title = '')
     {
-        $this->message($text, $title, 'error');
+        $this->message($text, $title, self::ICON_ERROR);
 
         return $this;
     }
@@ -138,7 +157,7 @@ class SweetAlertNotifier
      */
     public function warning($text, $title = '')
     {
-        $this->message($text, $title, 'warning');
+        $this->message($text, $title, self::ICON_WARNING);
 
         return $this;
     }
@@ -168,23 +187,66 @@ class SweetAlertNotifier
      *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
-    public function confirmButton($buttonText = 'OK')
+    public function confirmButton($buttonText = 'OK', $overrides = [])
     {
-        $this->config['confirmButtonText'] = $buttonText;
-        $this->config['showConfirmButton'] = true;
-        $this->config['allowOutsideClick'] = false;
+        $this->addButton('confirm', $buttonText, $overrides);
+
+        return $this;
+    }
+
+    /**
+     * Add a cancel button to the alert.
+     *
+     * @param string $buttonText
+     * @param array  $overrides
+     *
+     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     */
+    public function cancelButton($buttonText = 'Cancel', $overrides = [])
+    {
+        $this->addButton('cancel', $buttonText, $overrides);
+
+        return $this;
+    }
+
+    /**
+     * Add a new custom button to the alert.
+     *
+     * @param string $key
+     * @param string $buttonText
+     * @param array  $overrides
+     *
+     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     */
+    public function addButton($key, $buttonText, $overrides = [])
+    {
+        $this->config['buttons'][$key] = array_merge(
+            $this->defaultButtonConfig,
+            [
+                'text'    => $buttonText,
+                'visible' => true,
+            ],
+            $overrides
+        );
+
+        $this->config['closeOnClickOutside'] = false;
         $this->removeTimer();
         $this->flashConfig();
 
         return $this;
     }
 
-    public function cancelButton($buttonText = 'Cancel')
+    /**
+     * Toggle close the alert message when clicking outside.
+     *
+     * @param string $buttonText
+     *
+     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     */
+    public function closeOnClickOutside($value = true)
     {
-        $this->config['showCancelButton'] = true;
-        $this->config['cancelButtonText'] = $buttonText;
-        $this->config['allowOutsideClick'] = false;
-        $this->removeTimer();
+        $this->config['closeOnClickOutside'] = $value;
+
         $this->flashConfig();
 
         return $this;
@@ -229,7 +291,8 @@ class SweetAlertNotifier
      */
     public function html()
     {
-        $this->config['html'] = true;
+        $this->config['content'] = $this->config['text'];
+        unset($this->config['text']);
 
         $this->flashConfig();
 
@@ -251,13 +314,43 @@ class SweetAlertNotifier
     }
 
     /**
+     * Build the configuration as Json.
+     *
+     * @return string
+     */
+    protected function buildJsonConfig()
+    {
+        return json_encode($this->config);
+    }
+
+    /**
      * Return the current alert configuration.
      *
      * @return array
      */
-    public function getConfig()
+    public function getConfig($key = null)
     {
-        return $this->config;
+        if (is_null($key)) {
+            return $this->config;
+        }
+
+        if (array_key_exists($key, $this->config)) {
+            return $this->config[$key];
+        }
+    }
+
+    /**
+     * Customize alert configuration "by hand".
+     *
+     * @return array
+     */
+    public function setConfig($config = [])
+    {
+        $this->config = array_merge($this->config, $config);
+
+        $this->flashConfig();
+
+        return $this;
     }
 
     /**
@@ -268,47 +361,5 @@ class SweetAlertNotifier
     public function getJsonConfig()
     {
         return $this->buildJsonConfig();
-    }
-
-    /**
-     * Build the configuration as Json.
-     *
-     * @return string
-     */
-    protected function buildJsonConfig()
-    {
-        $config = $this->config;
-
-        // If the alert config has no title, it will switch the text for the title.
-        // We are using a copy of the config to prevent messing the instance config.
-        if (!$this->hasTitle()) {
-            $config = $this->switchTitle($config);
-        }
-
-        return json_encode($config);
-    }
-
-    /**
-     * Determine if the title is set.
-     *
-     * @return bool
-     */
-    protected function hasTitle()
-    {
-        return (bool) strlen($this->config['title']);
-    }
-
-    /**
-     * Switch the text message to the title key.
-     *
-     * @return void
-     */
-    protected function switchTitle($config)
-    {
-        $config['title'] = $config['text'];
-
-        unset($config['text']);
-
-        return $config;
     }
 }
