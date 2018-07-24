@@ -23,10 +23,10 @@ class SweetAlertNotifier
     protected $config;
 
     protected $defaultButtonConfig = [
-        'text' => '',
-        'value' => null,
-        'visible' => false,
-        'className' => '',
+        'text'       => '',
+        'value'      => null,
+        'visible'    => false,
+        'className'  => '',
         'closeModal' => true,
     ];
 
@@ -50,10 +50,10 @@ class SweetAlertNotifier
     protected function setDefaultConfig()
     {
         $this->config = [
-            'timer' => config('sweet-alert.autoclose', self::TIMER_MILLISECONDS),
-            'text' => '',
+            'timer'   => config('sweet-alert.autoclose', self::TIMER_MILLISECONDS),
+            'text'    => '',
             'buttons' => [
-                'cancel' => false,
+                'cancel'  => false,
                 'confirm' => false,
             ],
         ];
@@ -198,7 +198,7 @@ class SweetAlertNotifier
      * Add a cancel button to the alert.
      *
      * @param string $buttonText
-     * @param array $overrides
+     * @param array  $overrides
      *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
@@ -214,7 +214,7 @@ class SweetAlertNotifier
      *
      * @param string $key
      * @param string $buttonText
-     * @param array $overrides
+     * @param array  $overrides
      *
      * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
      */
@@ -223,7 +223,7 @@ class SweetAlertNotifier
         $this->config['buttons'][$key] = array_merge(
             $this->defaultButtonConfig,
             [
-                'text' => $buttonText,
+                'text'    => $buttonText,
                 'visible' => true,
             ],
             $overrides

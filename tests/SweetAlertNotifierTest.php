@@ -8,7 +8,7 @@ use UxWeb\SweetAlert\SweetAlertNotifier;
 class SweetAlertNotifierTest extends TestCase
 {
     /** @test */
-    function text_is_empty_by_default()
+    public function text_is_empty_by_default()
     {
         $session = m::spy(SessionStore::class);
         $notifier = new SweetAlertNotifier($session);
@@ -19,7 +19,7 @@ class SweetAlertNotifierTest extends TestCase
     }
 
     /** @test */
-    function default_timer_is_1800_milliseconds()
+    public function default_timer_is_1800_milliseconds()
     {
         $session = m::spy(SessionStore::class);
         $notifier = new SweetAlertNotifier($session);
@@ -30,7 +30,7 @@ class SweetAlertNotifierTest extends TestCase
     }
 
     /** @test */
-    function buttons_config_is_false_by_default()
+    public function buttons_config_is_false_by_default()
     {
         $session = m::spy(SessionStore::class);
         $notifier = new SweetAlertNotifier($session);
@@ -39,13 +39,13 @@ class SweetAlertNotifierTest extends TestCase
 
         $buttonsConfig = [
             'confirm' => false,
-            'cancel' => false,
+            'cancel'  => false,
         ];
         $this->assertEquals($buttonsConfig, $notifier->getConfig('buttons'));
     }
 
     /** @test */
-    function first_parameter_of_alert_message_is_the_config_text()
+    public function first_parameter_of_alert_message_is_the_config_text()
     {
         $session = m::spy(SessionStore::class);
         $notifier = new SweetAlertNotifier($session);
@@ -56,7 +56,7 @@ class SweetAlertNotifierTest extends TestCase
     }
 
     /** @test */
-    function title_key_is_not_present_in_config_when_alert_title_is_not_set()
+    public function title_key_is_not_present_in_config_when_alert_title_is_not_set()
     {
         $session = m::spy(SessionStore::class);
         $notifier = new SweetAlertNotifier($session);
@@ -67,7 +67,7 @@ class SweetAlertNotifierTest extends TestCase
     }
 
     /** @test */
-    function second_parameter_of_alert_message_is_the_config_title()
+    public function second_parameter_of_alert_message_is_the_config_title()
     {
         $session = m::spy(SessionStore::class);
         $notifier = new SweetAlertNotifier($session);
@@ -78,7 +78,7 @@ class SweetAlertNotifierTest extends TestCase
     }
 
     /** @test */
-    function third_parameter_of_alert_message_is_the_config_icon()
+    public function third_parameter_of_alert_message_is_the_config_icon()
     {
         $session = m::spy(SessionStore::class);
         $notifier = new SweetAlertNotifier($session);
@@ -89,7 +89,7 @@ class SweetAlertNotifierTest extends TestCase
     }
 
     /** @test */
-    function icon_key_is_not_present_in_config_when_alert_icon_is_not_set()
+    public function icon_key_is_not_present_in_config_when_alert_icon_is_not_set()
     {
         $session = m::spy(SessionStore::class);
         $notifier = new SweetAlertNotifier($session);
@@ -108,7 +108,7 @@ class SweetAlertNotifierTest extends TestCase
         $notifier->basic('Basic Alert!', 'Alert');
 
         $expectedConfig = [
-            'text' => 'Basic Alert!',
+            'text'  => 'Basic Alert!',
             'title' => 'Alert',
         ];
         $session->shouldHaveReceived('flash')->with('sweet_alert.title', $expectedConfig['title'])->once();
@@ -126,9 +126,9 @@ class SweetAlertNotifierTest extends TestCase
         $notifier->info('Info Alert!', 'Alert');
 
         $expectedConfig = [
-            'text' => 'Info Alert!',
+            'text'  => 'Info Alert!',
             'title' => 'Alert',
-            'icon' => 'info',
+            'icon'  => 'info',
         ];
         $session->shouldHaveReceived('flash')->with('sweet_alert.title', $expectedConfig['title'])->once();
         $session->shouldHaveReceived('flash')->with('sweet_alert.text', $expectedConfig['text'])->once();
@@ -147,8 +147,8 @@ class SweetAlertNotifierTest extends TestCase
 
         $expectedConfig = [
             'title' => 'Success!',
-            'text' => 'Well Done!',
-            'icon' => 'success',
+            'text'  => 'Well Done!',
+            'icon'  => 'success',
         ];
         $session->shouldReceive('flash')->with('sweet_alert.title', $expectedConfig['title']);
         $session->shouldReceive('flash')->with('sweet_alert.text', $expectedConfig['text']);
@@ -167,8 +167,8 @@ class SweetAlertNotifierTest extends TestCase
 
         $expectedConfig = [
             'title' => 'Watch Out!',
-            'text' => 'Hey cowboy!',
-            'icon' => 'warning',
+            'text'  => 'Hey cowboy!',
+            'icon'  => 'warning',
         ];
         $session->shouldReceive('flash')->with('sweet_alert.title', $expectedConfig['title']);
         $session->shouldReceive('flash')->with('sweet_alert.text', $expectedConfig['text']);
@@ -187,8 +187,8 @@ class SweetAlertNotifierTest extends TestCase
 
         $expectedConfig = [
             'title' => 'Whoops!',
-            'text' => 'Something wrong happened!',
-            'icon' => 'error',
+            'text'  => 'Something wrong happened!',
+            'icon'  => 'error',
         ];
         $session->shouldHaveReceived('flash')->with('sweet_alert.title', $expectedConfig['title']);
         $session->shouldHaveReceived('flash')->with('sweet_alert.text', $expectedConfig['text']);
@@ -275,7 +275,7 @@ class SweetAlertNotifierTest extends TestCase
     }
 
     /** @test */
-    function close_on_click_outside_config_can_be_enabled()
+    public function close_on_click_outside_config_can_be_enabled()
     {
         $session = m::spy(SessionStore::class);
         $notifier = new SweetAlertNotifier($session);
@@ -286,7 +286,7 @@ class SweetAlertNotifierTest extends TestCase
     }
 
     /** @test */
-    function close_on_click_outside_config_can_be_disabled()
+    public function close_on_click_outside_config_can_be_disabled()
     {
         $session = m::spy(SessionStore::class);
         $notifier = new SweetAlertNotifier($session);
@@ -297,7 +297,7 @@ class SweetAlertNotifierTest extends TestCase
     }
 
     /** @test */
-    function additional_buttons_can_be_added()
+    public function additional_buttons_can_be_added()
     {
         $session = m::spy(SessionStore::class);
         $notifier = new SweetAlertNotifier($session);
@@ -309,7 +309,7 @@ class SweetAlertNotifierTest extends TestCase
     }
 
     /** @test */
-    function additional_config_can_be_added_to_configure_alert_message()
+    public function additional_config_can_be_added_to_configure_alert_message()
     {
         $session = m::spy(SessionStore::class);
         $notifier = new SweetAlertNotifier($session);
