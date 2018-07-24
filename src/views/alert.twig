@@ -2,7 +2,9 @@
     <script>
         {% if session_has('sweet_alert.content') %}
             var config = {!! Session::pull('sweet_alert.alert') !!}
-            config.content = document.createElement('div').innerHtml = config.content;
+            var content = document.createElement('div');
+            content.insertAdjacentHTML('afterbegin', config.content);
+            config.content = content;
             swal(config);
         {% else %}
             swal({!! Session::pull('sweet_alert.alert') !!});

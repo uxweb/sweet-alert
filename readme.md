@@ -135,17 +135,17 @@ For a general information alert, just do: `alert('Some message');` (same as `ale
 First register the middleware in web middleware groups by simply adding the middleware class `UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert::class` into the $middlewareGroups of your app/Http/Kernel.php class:
 
 ```php
-    protected $middlewareGroups = [
-        'web' => [
-            \App\Http\Middleware\EncryptCookies::class,
-            ...
-            \UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert::class,
-        ],
+protected $middlewareGroups = [
+    'web' => [
+        \App\Http\Middleware\EncryptCookies::class,
+        ...
+        \UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert::class,
+    ],
 
-        'api' => [
-            'throttle:60,1',
-        ],
-    ];
+    'api' => [
+        'throttle:60,1',
+    ],
+];
 ```
 
 > Make sure you register the middleware within the 'web' group only.
@@ -186,7 +186,6 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="css/sweetalert.css">
 </head>
 <body>
 
