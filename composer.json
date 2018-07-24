@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=7.0",
         "illuminate/support": "~5.0",
         "illuminate/session": "~5.0"
     },
@@ -19,11 +19,11 @@
             "UxWeb\\SweetAlert\\": "src/SweetAlert/"
         },
         "files": [
-          "src/SweetAlert/functions.php"
+            "src/SweetAlert/functions.php"
         ]
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.0",
+        "phpunit/phpunit": "^7.0",
         "mockery/mockery": "0.9.*"
     },
     "extra": {
