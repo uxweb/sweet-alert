@@ -250,8 +250,8 @@ class SweetAlertNotifierTest extends TestCase
         $this->assertArraySubset(
             [
                 'confirm' => [
-                    'text' => 'I\'m sure',
-                    'visible' => true
+                    'text'    => 'I\'m sure',
+                    'visible' => true,
                 ],
             ],
             $notifier->getConfig('buttons')
@@ -280,8 +280,8 @@ class SweetAlertNotifierTest extends TestCase
         $notifier->basic('Basic Alert!', 'Alert')->confirmButton('help!');
         $this->assertArraySubset(
             [
-                'text' => 'help!',
-                'visible' => true
+                'text'    => 'help!',
+                'visible' => true,
             ],
             $notifier->getConfig('buttons')['confirm']
         );
@@ -334,12 +334,12 @@ class SweetAlertNotifierTest extends TestCase
         $this->assertArraySubset(
             [
                 'credit_card' => [
-                    'text' => 'Credit Card',
+                    'text'    => 'Credit Card',
                     'visible' => true,
                 ],
                 'paypal' => [
-                    'text' => 'Paypal',
-                    'visible' => true
+                    'text'    => 'Paypal',
+                    'visible' => true,
                 ],
             ],
             $notifier->getConfig('buttons')
