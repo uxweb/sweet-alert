@@ -239,6 +239,26 @@ class SweetAlertNotifierTest extends TestCase
     }
 
     /** @test */
+    public function persistent_alert_has_only_a_confirm_button_by_default()
+    {
+        $session = m::mock(SessionStore::class);
+        $session->shouldReceive('flash')->atLeast(1);
+        $notifier = new SweetAlertNotifier($session);
+
+        $notifier->warning('Are you sure?', 'Delete all posts')->persistent('I\'m sure');
+
+        $this->assertArraySubset(
+            [
+                'confirm' => [
+                    'text'    => 'I\'m sure',
+                    'visible' => true,
+                ],
+            ],
+            $notifier->getConfig('buttons')
+        );
+    }
+
+    /** @test */
     public function it_will_add_the_content_option_to_config_when_using_an_html_alert()
     {
         $session = m::mock(SessionStore::class);
@@ -257,8 +277,14 @@ class SweetAlertNotifierTest extends TestCase
         $session->shouldReceive('flash')->atLeast(1);
         $notifier = new SweetAlertNotifier($session);
 
-        $notifier->basic('Basic Alert!', 'Alert')->confirmButton('ok!');
-        $this->assertArraySubset(['text' => 'ok!', 'visible' => true], $notifier->getConfig('buttons')['confirm']);
+        $notifier->basic('Basic Alert!', 'Alert')->confirmButton('help!');
+        $this->assertArraySubset(
+            [
+                'text'    => 'help!',
+                'visible' => true,
+            ],
+            $notifier->getConfig('buttons')['confirm']
+        );
         $this->assertFalse($notifier->getConfig('closeOnClickOutside'));
     }
 
@@ -302,9 +328,23 @@ class SweetAlertNotifierTest extends TestCase
         $session = m::spy(SessionStore::class);
         $notifier = new SweetAlertNotifier($session);
 
-        $notifier->basic('Basic Alert!', 'Alert')->addButton('pay', 'Confirm Payment');
+        $notifier->basic('Pay with:', 'Payment')->addButton('credit_card', 'Credit Card');
+        $notifier->basic('Pay with:', 'Payment')->addButton('paypal', 'Paypal');
 
-        $this->assertArraySubset(['text' => 'Confirm Payment', 'visible' => true], $notifier->getConfig('buttons')['pay']);
+        $this->assertArraySubset(
+            [
+                'credit_card' => [
+                    'text'    => 'Credit Card',
+                    'visible' => true,
+                ],
+                'paypal' => [
+                    'text'    => 'Paypal',
+                    'visible' => true,
+                ],
+            ],
+            $notifier->getConfig('buttons')
+        );
+
         $this->assertFalse($notifier->getConfig('closeOnClickOutside'));
     }
 
