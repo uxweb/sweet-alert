@@ -171,10 +171,10 @@ return redirect('dashboard')->with('success', 'Profile updated!');
 or
 
 ```PHP
-return redirect()->back()->with('errors', 'Profile updated!');
+return redirect()->back()->with('error', 'Profile updated!');
 ```
 
-> **NOTE**: When using the middleware it will make an alert to display if it detects any of the following keys flashed into the session: `errors`, `success`, `warning`, `info`, `message`, `basic`.
+> **NOTE**: When using the middleware it will make an alert to display if it detects any of the following keys flashed into the session: `error`, `success`, `warning`, `info`, `message`, `basic`.
 
 ### The View
 
