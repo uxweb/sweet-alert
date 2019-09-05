@@ -79,7 +79,7 @@ class SweetAlertNotifier
         }
 
         if (!is_null($icon)) {
-            $this->config['icon'] = $icon;
+            $this->config['type'] = $icon;
         }
 
         $this->flashConfig();
