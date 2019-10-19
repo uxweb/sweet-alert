@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added this changelog.
 
 ## [2.0.1] - 2018-11-21
-### Changed
+### Fixed
 - Bugfix related to persistent alert confirm button.
 
 ## [2.0.0] - 2018-07-24
@@ -22,18 +22,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Only supports PHP >= 7.0.
 
 ## [1.4.3] - 2018-07-24
-### Changed
+### Fixed
 - Minor documentation fixes
 
 ## [1.4.2] - 2017-09-11
 ### Added
 - Added package discovery for Laravel 5.5
 
-### Changed
+### Fixed
 - Middleware class name type fixed.
 
 ## [1.4.1] - 2017-03-27
-### Changed
+### Fixed
 - Fix readme typos
 
 ## [1.4.0] - 2016-11-24
@@ -67,7 +67,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added Html option. This will let sweetalert display html content.
 
 ## [1.1.2] - 2015-11-24
-### Changes
+### Fixed
 - Some StyleCI fixes.
 
 ## [1.1.1] - 2015-08-04
@@ -86,19 +86,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.7] - 2015-07-16
 
 ## [1.0.6] - 2015-07-12
-### Changed
+### Fixed
 - Fix included view template
 
 ## [1.0.5] - 2015-07-12
-### Changed
+### Fixed
 -Fixed composer.json
 
 ## [1.0.4] - 2015-07-12
-### Changed
+### Fixed
 - Fix composer.json
 
 ## [1.0.3] - 2015-07-12
-### Changed
+### Fixed
 - Fixed psr-4 autoload
 
 ## [1.0.2] - 2015-07-12
