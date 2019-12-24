@@ -7,6 +7,8 @@ use UxWeb\SweetAlert\SweetAlertNotifier;
 
 class SweetAlertNotifierTest extends TestCase
 {
+    use \Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+
     /** @test */
     public function text_is_empty_by_default()
     {
@@ -19,14 +21,14 @@ class SweetAlertNotifierTest extends TestCase
     }
 
     /** @test */
-    public function default_timer_is_1800_milliseconds()
+    public function default_timer_is_2500_milliseconds()
     {
         $session = m::spy(SessionStore::class);
         $notifier = new SweetAlertNotifier($session);
 
         $notifier->message('Good News!');
 
-        $this->assertEquals(1800, $notifier->getConfig('timer'));
+        $this->assertEquals(2500, $notifier->getConfig('timer'));
     }
 
     /** @test */
@@ -111,10 +113,11 @@ class SweetAlertNotifierTest extends TestCase
             'text' => 'Basic Alert!',
             'title' => 'Alert',
         ];
+        $this->assertArraySubset($expectedConfig, $notifier->getConfig());
+        unset($notifier);
         $session->shouldHaveReceived('flash')->with('sweet_alert.title', $expectedConfig['title'])->once();
         $session->shouldHaveReceived('flash')->with('sweet_alert.text', $expectedConfig['text'])->once();
-        $session->shouldHaveReceived('flash')->with('sweet_alert.alert', nonEmptyString())->once();
-        $this->assertArraySubset($expectedConfig, $notifier->getConfig());
+        $session->shouldHaveReceived('flash')->with('sweet_alert.alert', \Hamcrest\Text\IsEmptyString::isNonEmptyString())->once();
     }
 
     /** @test */
@@ -130,11 +133,12 @@ class SweetAlertNotifierTest extends TestCase
             'title' => 'Alert',
             'icon' => 'info',
         ];
+        $this->assertArraySubset($expectedConfig, $notifier->getConfig());
+        unset($notifier);
         $session->shouldHaveReceived('flash')->with('sweet_alert.title', $expectedConfig['title'])->once();
         $session->shouldHaveReceived('flash')->with('sweet_alert.text', $expectedConfig['text'])->once();
         $session->shouldHaveReceived('flash')->with('sweet_alert.icon', $expectedConfig['icon'])->once();
-        $session->shouldHaveReceived('flash')->with('sweet_alert.alert', nonEmptyString())->once();
-        $this->assertArraySubset($expectedConfig, $notifier->getConfig());
+        $session->shouldHaveReceived('flash')->with('sweet_alert.alert', \Hamcrest\Text\IsEmptyString::isNonEmptyString())->once();
     }
 
     /** @test */
@@ -150,11 +154,12 @@ class SweetAlertNotifierTest extends TestCase
             'text' => 'Well Done!',
             'icon' => 'success',
         ];
+        $this->assertArraySubset($expectedConfig, $notifier->getConfig());
+        unset($notifier);
         $session->shouldReceive('flash')->with('sweet_alert.title', $expectedConfig['title']);
         $session->shouldReceive('flash')->with('sweet_alert.text', $expectedConfig['text']);
         $session->shouldReceive('flash')->with('sweet_alert.icon', $expectedConfig['icon']);
-        $session->shouldHaveReceived('flash')->with('sweet_alert.alert', nonEmptyString())->once();
-        $this->assertArraySubset($expectedConfig, $notifier->getConfig());
+        $session->shouldHaveReceived('flash')->with('sweet_alert.alert', \Hamcrest\Matchers::isNonEmptyString())->once();
     }
 
     /** @test */
@@ -170,11 +175,12 @@ class SweetAlertNotifierTest extends TestCase
             'text' => 'Hey cowboy!',
             'icon' => 'warning',
         ];
+        $this->assertArraySubset($expectedConfig, $notifier->getConfig());
+        unset($notifier);
         $session->shouldReceive('flash')->with('sweet_alert.title', $expectedConfig['title']);
         $session->shouldReceive('flash')->with('sweet_alert.text', $expectedConfig['text']);
         $session->shouldReceive('flash')->with('sweet_alert.icon', $expectedConfig['icon']);
-        $session->shouldHaveReceived('flash')->with('sweet_alert.alert', nonEmptyString())->once();
-        $this->assertArraySubset($expectedConfig, $notifier->getConfig());
+        $session->shouldHaveReceived('flash')->with('sweet_alert.alert', \Hamcrest\Matchers::isNonEmptyString())->once();
     }
 
     /** @test */
@@ -190,11 +196,12 @@ class SweetAlertNotifierTest extends TestCase
             'text' => 'Something wrong happened!',
             'icon' => 'error',
         ];
+        $this->assertArraySubset($expectedConfig, $notifier->getConfig());
+        unset($notifier);
         $session->shouldHaveReceived('flash')->with('sweet_alert.title', $expectedConfig['title']);
         $session->shouldHaveReceived('flash')->with('sweet_alert.text', $expectedConfig['text']);
         $session->shouldHaveReceived('flash')->with('sweet_alert.icon', $expectedConfig['icon']);
-        $session->shouldHaveReceived('flash')->with('sweet_alert.alert', nonEmptyString())->once();
-        $this->assertArraySubset($expectedConfig, $notifier->getConfig());
+        $session->shouldHaveReceived('flash')->with('sweet_alert.alert', \Hamcrest\Matchers::isNonEmptyString())->once();
     }
 
     /** @test */
@@ -206,31 +213,16 @@ class SweetAlertNotifierTest extends TestCase
         $notifier->message('Hello!', 'Alert')->autoclose(2000);
 
         $this->assertEquals(2000, $notifier->getConfig('timer'));
+        unset($notifier);
         $session->shouldHaveReceived('flash')->with('sweet_alert.timer', 2000);
     }
-
-    // /** @test */
-    // public function it_flashes_the_message_as_the_alert_title_if_no_title_is_passed_for_json_config()
-    // {
-    // $this->('Review this functionality to have the same api as in v1');
-    // $session = m::mock(SessionStore::class);
-    // $notifier = new SweetAlertNotifier($session);
-    // $expectedConfig = [
-    //     'text' => 'This should be the title!',
-    // ];
-    // $expectedJsonConfig = json_encode([
-    //     'title' => 'This should be the title!',
-    // ]);
-    // $session->shouldReceive('flash')->with('sweet_alert.title', $expectedConfig['title']);
-
-    // $notifier->message('This should be the title!');
-    // }
 
     /** @test */
     public function timer_option_is_not_present_in_config_when_using_a_persistent_alert()
     {
         $session = m::mock(SessionStore::class);
         $session->shouldReceive('flash')->atLeast(1);
+        $session->shouldReceive('remove')->atLeast(1);
         $notifier = new SweetAlertNotifier($session);
 
         $notifier->message('Please, read with care!', 'Alert')->persistent('Got it!');
@@ -243,6 +235,7 @@ class SweetAlertNotifierTest extends TestCase
     {
         $session = m::mock(SessionStore::class);
         $session->shouldReceive('flash')->atLeast(1);
+        $session->shouldReceive('remove')->atLeast(1);
         $notifier = new SweetAlertNotifier($session);
 
         $notifier->warning('Are you sure?', 'Delete all posts')->persistent('I\'m sure');
@@ -263,6 +256,7 @@ class SweetAlertNotifierTest extends TestCase
     {
         $session = m::mock(SessionStore::class);
         $session->shouldReceive('flash')->atLeast(1);
+        $session->shouldReceive('remove')->atLeast(1);
         $notifier = new SweetAlertNotifier($session);
 
         $notifier->message('<strong>This should be bold!</strong>', 'Alert')->html();
@@ -275,9 +269,11 @@ class SweetAlertNotifierTest extends TestCase
     {
         $session = m::mock(SessionStore::class);
         $session->shouldReceive('flash')->atLeast(1);
+        $session->shouldReceive('remove')->atLeast(1);
         $notifier = new SweetAlertNotifier($session);
 
         $notifier->basic('Basic Alert!', 'Alert')->confirmButton('help!');
+
         $this->assertArraySubset(
             [
                 'text' => 'help!',
@@ -344,7 +340,6 @@ class SweetAlertNotifierTest extends TestCase
             ],
             $notifier->getConfig('buttons')
         );
-
         $this->assertFalse($notifier->getConfig('closeOnClickOutside'));
     }
 
@@ -357,12 +352,8 @@ class SweetAlertNotifierTest extends TestCase
         $notifier->basic('Basic Alert!', 'Alert')->setConfig(['dangerMode' => true]);
 
         $this->assertTrue($notifier->getConfig('dangerMode'));
+        unset($notifier);
         $session->shouldHaveReceived('flash')->with('sweet_alert.dangerMode', true);
-    }
-
-    public function tearDown()
-    {
-        m::close();
     }
 }
 
@@ -378,5 +369,5 @@ class SweetAlertNotifierTest extends TestCase
  */
 function config($key = null, $default = null)
 {
-    return 1800;
+    return 2500;
 }
