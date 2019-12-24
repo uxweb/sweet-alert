@@ -39,7 +39,7 @@ class ConvertMessagesIntoSweetAlert
         if ($request->session()->has('errors')) {
             $message = $request->session()->get('errors');
 
-            if (!is_string($message)) {
+            if (! is_string($message)) {
                 $message = $this->prepareErrors($message->getMessages());
             }
 

@@ -1,7 +1,6 @@
 <?php
 
-if (!function_exists('alert')) {
-
+if (! function_exists('alert')) {
     /**
      * Arrange for an alert message.
      *
@@ -14,7 +13,7 @@ if (!function_exists('alert')) {
     {
         $notifier = app('uxweb.sweet-alert');
 
-        if (!is_null($message)) {
+        if (! is_null($message)) {
             return $notifier->message($message, $title);
         }
 

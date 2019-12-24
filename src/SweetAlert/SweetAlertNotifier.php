@@ -73,11 +73,11 @@ class SweetAlertNotifier
     {
         $this->config['text'] = $text;
 
-        if (!is_null($title)) {
+        if (! is_null($title)) {
             $this->config['title'] = $title;
         }
 
-        if (!is_null($icon)) {
+        if (! is_null($icon)) {
             $this->config['icon'] = $icon;
         }
 
@@ -168,7 +168,7 @@ class SweetAlertNotifier
      */
     public function autoclose($milliseconds = null)
     {
-        if (!is_null($milliseconds)) {
+        if (! is_null($milliseconds)) {
             $this->config['timer'] = $milliseconds;
         }
 
