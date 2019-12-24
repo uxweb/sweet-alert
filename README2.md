@@ -397,3 +397,7 @@ return Redirect::home();
 ```
 
 ![A persistent alert](demos/dj3y95K.png)
+
+## License
+
+Sweet Alert for Laravel is open-sourced software licensed under the [MIT license](LICENSE).
