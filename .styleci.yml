@@ -9,3 +9,4 @@ disabled:
   - short_list_syntax
   - alpha_ordered_imports
   - single_class_element_per_statement
+  - align_double_arrow
