@@ -24,23 +24,21 @@ If using laravel < 5.5 include the service provider and alias within `config/app
 ];
 ```
 
-> Note that this package works only by using the [BEAUTIFUL REPLACEMENT FOR JAVASCRIPT'S "ALERT"](https://sweetalert.js.org/).
+> Note that this package works only by using the [BEAUTIFUL REPLACEMENT FOR JAVASCRIPT'S "ALERT"](https://github.com/sweetalert2/sweetalert2).
 
 Finally, install the Sweet Alert Javascript library through yarn or npm
 
 Install using Yarn:
 
 ```bash
-yarn add sweetalert@^2.0 --dev
+yarn add sweetalert2 --dev
 ```
 
 Install using Npm:
 
 ```bash
-npm install sweetalert@^2.0 --save-dev
+npm install sweetalert2 --save-dev
 ```
-
-> Note that this version of the package only works with sweetalert v2. If you need v1 please install the last release of version 1 of the PHP package and js library.
 
 ## Usage
 
@@ -132,7 +130,7 @@ For a general information alert, just do: `alert('Some message');` (same as `ale
 
 #### Middleware Groups
 
-First register the middleware in web middleware groups by simply adding the middleware class `UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert::class` into the $middlewareGroups of your app/Http/Kernel.php class:
+First register the middleware in web middleware groups by simply adding the middleware class `UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert::class` into the \$middlewareGroups of your app/Http/Kernel.php class:
 
 ```php
 protected $middlewareGroups = [
@@ -183,22 +181,20 @@ Finally, to display the alert in the browser, you may use (or modify) the view t
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Document</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="container">
-        <p>Welcome to my website...</p>
+      <p>Welcome to my website...</p>
     </div>
 
     <script src="js/sweetalert.min.js"></script>
 
     <!-- Include this after the sweet alert js file -->
     @include('sweet::alert')
-
-</body>
+  </body>
 </html>
 ```
 
@@ -274,9 +270,9 @@ The `sweet_alert.alert` session key contains a JSON configuration object to pass
 
 ```html
 @if (Session::has('sweet_alert.alert'))
-    <script>
-        swal({!! Session::get('sweet_alert.alert') !!});
-    </script>
+<script>
+  swal({!! Session::get('sweet_alert.alert') !!});
+</script>
 @endif
 ```
 
@@ -288,17 +284,17 @@ This is an example of how you can customize your view to fit your needs:
 
 ```html
 @if (Session::has('sweet_alert.alert'))
-    <script>
-        swal({
-            text: "{!! Session::get('sweet_alert.text') !!}",
-            title: "{!! Session::get('sweet_alert.title') !!}",
-            timer: {!! Session::get('sweet_alert.timer') !!},
-            icon: "{!! Session::get('sweet_alert.type') !!}",
-            buttons: "{!! Session::get('sweet_alert.buttons') !!}",
+<script>
+  swal({
+      text: "{!! Session::get('sweet_alert.text') !!}",
+      title: "{!! Session::get('sweet_alert.title') !!}",
+      timer: {!! Session::get('sweet_alert.timer') !!},
+      icon: "{!! Session::get('sweet_alert.type') !!}",
+      buttons: "{!! Session::get('sweet_alert.buttons') !!}",
 
-            // more options
-        });
-    </script>
+      // more options
+  });
+</script>
 @endif
 ```
 

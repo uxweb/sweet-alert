@@ -19,11 +19,21 @@ class LaravelSessionStore implements SessionStore
     /**
      * Flash some data into the session.
      *
-     * @param $name
-     * @param $data
+     * @param string $key
+     * @param $value
      */
-    public function flash($name, $data)
+    public function flash(string $key, $value = true)
     {
-        $this->session->flash($name, $data);
+        $this->session->flash($key, $value);
+    }
+
+    /**
+     * Remove an item from the session.
+     *
+     * @param  string|array  $keys
+     */
+    public function remove($keys)
+    {
+        $this->session->forget($keys);
     }
 }
