@@ -10,5 +10,12 @@ interface SessionStore
      * @param $name
      * @param $data
      */
-    public function flash($name, $data);
+    public function flash(string $key, $value = true);
+
+    /**
+     * Remove an item from the session.
+     *
+     * @param  string|array  $keys
+     */
+    public function remove($keys);
 }

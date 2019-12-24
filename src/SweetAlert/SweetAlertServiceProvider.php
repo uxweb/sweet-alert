@@ -13,14 +13,14 @@ class SweetAlertServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../views', 'sweet');
+        $this->loadViewsFrom(__DIR__ . '/../views', 'sweet');
 
         $this->publishes([
-            __DIR__.'/../config/sweet-alert.php' => config_path('sweet-alert.php'),
+            __DIR__ . '/../config/sweet-alert.php' => config_path('sweet-alert.php'),
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/../views' => base_path('resources/views/vendor/sweet'),
+            __DIR__ . '/../views' => base_path('resources/views/vendor/sweet'),
         ], 'views');
     }
 
@@ -31,6 +31,11 @@ class SweetAlertServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/sweet-alert.php',
+            'sweet-alert'
+        );
+
         $this->app->bind(
             'UxWeb\SweetAlert\SessionStore',
             'UxWeb\SweetAlert\LaravelSessionStore'
