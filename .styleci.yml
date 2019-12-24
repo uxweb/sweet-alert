@@ -3,10 +3,10 @@ preset: laravel
 enabled:
   - length_ordered_imports
   - long_list_syntax
+  - unalign_double_arrow
 
 disabled:
   - self_accessor
   - short_list_syntax
   - alpha_ordered_imports
   - single_class_element_per_statement
-  - align_double_arrow
