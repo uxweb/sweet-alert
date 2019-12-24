@@ -10,4 +10,4 @@ disabled:
   - short_list_syntax
   - alpha_ordered_imports
   - single_class_element_per_statement
-  - object_operator_without_whitespace
+  - unary_operator_spaces
