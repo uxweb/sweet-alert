@@ -8,6 +8,5 @@ enabled:
 disabled:
   - self_accessor
   - short_list_syntax
+  - concat_without_spaces
   - alpha_ordered_imports
-  - single_class_element_per_statement
-  - unary_operator_spaces
