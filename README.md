@@ -94,10 +94,10 @@ npm run dev
 
 ### Using the Facade
 
-First import the Alert facade in your controller.
+First import the SweetAlert facade in your controller.
 
 ```php
-use Alert;
+use SweetAlert;
 ```
 
 Within your controllers, before you perform a redirect...
@@ -105,7 +105,7 @@ Within your controllers, before you perform a redirect...
 ```php
 public function store()
 {
-    Alert::message('Robots are working!');
+    SweetAlert::message('Robots are working!');
 
     return Redirect::home();
 }
@@ -114,17 +114,17 @@ public function store()
 Here are some examples on how you can use the facade:
 
 ```php
-Alert::message('Message', 'Optional Title');
+SweetAlert::message('Message', 'Optional Title');
 
-Alert::basic('Basic Message', 'Mandatory Title');
+SweetAlert::basic('Basic Message', 'Mandatory Title');
 
-Alert::info('Info Message', 'Optional Title');
+SweetAlert::info('Info Message', 'Optional Title');
 
-Alert::success('Success Message', 'Optional Title');
+SweetAlert::success('Success Message', 'Optional Title');
 
-Alert::error('Error Message', 'Optional Title');
+SweetAlert::error('Error Message', 'Optional Title');
 
-Alert::warning('Warning Message', 'Optional Title');
+SweetAlert::warning('Warning Message', 'Optional Title');
 ```
 
 ### Using the helper function
@@ -335,7 +335,7 @@ vendor/bin/phpunit
 ## Demo
 
 ```php
-Alert::message('Welcome back!');
+SweetAlert::message('Welcome back!');
 
 return Redirect::home();
 ```
@@ -343,7 +343,7 @@ return Redirect::home();
 ![A simple alert](demos/4bvuJx9.png)
 
 ```php
-Alert::message('Your profile is up to date', 'Wonderful!');
+SweetAlert::message('Your profile is up to date', 'Wonderful!');
 
 return Redirect::home();
 ```
@@ -351,7 +351,7 @@ return Redirect::home();
 ![A simple alert with title](demos/GsGOtOq.png)
 
 ```php
-Alert::message('Thanks for comment!')->persistent('Close');
+SweetAlert::message('Thanks for comment!')->persistent('Close');
 
 return Redirect::home();
 ```
@@ -359,7 +359,7 @@ return Redirect::home();
 ![A simple alert with title and button](demos/AnRGDY2.png)
 
 ```php
-Alert::info('Email was sent!');
+SweetAlert::info('Email was sent!');
 
 return Redirect::home();
 ```
@@ -367,7 +367,7 @@ return Redirect::home();
 ![A info alert](demos/DxKh3Yx.png)
 
 ```php
-Alert::error('Something went wrong', 'Oops!');
+SweetAlert::error('Something went wrong', 'Oops!');
 
 return Redirect::home();
 ```
@@ -375,7 +375,7 @@ return Redirect::home();
 ![A error alert](demos/pIeTEYz.png)
 
 ```php
-Alert::success('Good job!');
+SweetAlert::success('Good job!');
 
 return Redirect::home();
 ```
@@ -383,7 +383,7 @@ return Redirect::home();
 ![A success alert](demos/pQz3ijJ.png)
 
 ```php
-Alert::info('Random lorempixel.com : <img src="http://lorempixel.com/150/150/">')->html();
+SweetAlert::info('Random lorempixel.com : <img src="http://lorempixel.com/150/150/">')->html();
 
 return Redirect::home();
 ```
@@ -391,7 +391,7 @@ return Redirect::home();
 ![HTML in message](demos/x44c12a.png)
 
 ```php
-Alert::success('Good job!')->persistent("Close");
+SweetAlert::success('Good job!')->persistent("Close");
 
 return Redirect::home();
 ```
