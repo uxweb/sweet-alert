@@ -6,7 +6,6 @@ enabled:
   - unalign_double_arrow
 
 disabled:
-  - self_accessor
   - short_list_syntax
   - concat_without_spaces
   - alpha_ordered_imports
