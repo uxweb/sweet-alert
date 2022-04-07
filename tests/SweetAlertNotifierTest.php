@@ -2,8 +2,8 @@
 
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use erfan\SweetAlert\SessionStore;
-use erfan\SweetAlert\SweetAlertNotifier;
+use eru\SweetAlert\SessionStore;
+use eru\SweetAlert\SweetAlertNotifier;
 
 class SweetAlertNotifierTest extends TestCase
 {

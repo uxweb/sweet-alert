@@ -2,27 +2,27 @@
 
 ![A success alert](demos/1XySJiz.png)
 
-[![Latest Version](https://img.shields.io/github/release/erfan/sweet-alert.svg?style=flat-square)](https://github.com/erfan/sweet-alert/releases)
+[![Latest Version](https://img.shields.io/github/release/eru/sweet-alert.svg?style=flat-square)](https://github.com/eru/sweet-alert/releases)
 [![StyleCI](https://styleci.io/repos/38935942/shield)](https://styleci.io/repos/38935942)
-[![Total Downloads](https://img.shields.io/packagist/dt/erfan/sweet-alert.svg?style=flat-square)](https://packagist.org/packages/erfan/sweet-alert)
+[![Total Downloads](https://img.shields.io/packagist/dt/eru/sweet-alert.svg?style=flat-square)](https://packagist.org/packages/eru/sweet-alert)
 
 ## Installation
 
 Require the package using Composer.
 
 ```bash
-composer require erfan/sweet-alert
+composer require eru/sweet-alert
 ```
 
 If using laravel < 5.5 include the service provider and alias within `config/app.php`.
 
 ```php
 'providers' => [
-    erfan\SweetAlert\SweetAlertServiceProvider::class,
+    eru\SweetAlert\SweetAlertServiceProvider::class,
 ];
 
 'aliases' => [
-    'Alert' => erfan\SweetAlert\SweetAlert::class,
+    'Alert' => eru\SweetAlert\SweetAlert::class,
 ];
 ```
 
@@ -180,14 +180,14 @@ For a general information alert, just do: `alert('Some message');` (same as `ale
 
 #### Middleware Groups
 
-First register the middleware in web middleware groups by simply adding the middleware class `erfan\SweetAlert\ConvertMessagesIntoSweetAlert::class` into the \$middlewareGroups of your app/Http/Kernel.php class:
+First register the middleware in web middleware groups by simply adding the middleware class `eru\SweetAlert\ConvertMessagesIntoSweetAlert::class` into the \$middlewareGroups of your app/Http/Kernel.php class:
 
 ```php
 protected $middlewareGroups = [
     'web' => [
         \App\Http\Middleware\EncryptCookies::class,
         ...
-        \erfan\SweetAlert\ConvertMessagesIntoSweetAlert::class,
+        \eru\SweetAlert\ConvertMessagesIntoSweetAlert::class,
     ],
 
     'api' => [
@@ -206,7 +206,7 @@ Or if you would like to assign the middleware to specific routes only, you shoul
 protected $routeMiddleware = [
     'auth' => \App\Http\Middleware\Authenticate::class,
     ....
-    'sweetalert' => \erfan\SweetAlert\ConvertMessagesIntoSweetAlert::class,
+    'sweetalert' => \eru\SweetAlert\ConvertMessagesIntoSweetAlert::class,
 ];
 ```
 
@@ -256,7 +256,7 @@ alert('<a href="#">Click me</a>')->html()->persistent("No, thanks");
 If you need to customize the default configuration options for this package just export the configuration file:
 
 ```bash
-php artisan vendor:publish --provider "erfan\SweetAlert\SweetAlertServiceProvider" --tag=config
+php artisan vendor:publish --provider "eru\SweetAlert\SweetAlertServiceProvider" --tag=config
 ```
 
 A `sweet-alert.php` configuration file will be published to your `config` directory. By now, the only configuration that can be changed is the timer for all autoclose alerts.
@@ -266,7 +266,7 @@ A `sweet-alert.php` configuration file will be published to your `config` direct
 If you need to customize the included alert message view, run:
 
 ```bash
-php artisan vendor:publish --provider "erfan\SweetAlert\SweetAlertServiceProvider" --tag=views
+php artisan vendor:publish --provider "eru\SweetAlert\SweetAlertServiceProvider" --tag=views
 ```
 
 The package view is located in the `resources/views/vendor/sweet/` directory.

@@ -1,6 +1,6 @@
 <?php
 
-namespace erfan\SweetAlert;
+namespace eru\SweetAlert;
 
 interface SessionStore
 {

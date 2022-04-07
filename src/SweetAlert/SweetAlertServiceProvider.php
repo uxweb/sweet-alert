@@ -1,6 +1,6 @@
 <?php
 
-namespace erfan\SweetAlert;
+namespace eru\SweetAlert;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -37,12 +37,12 @@ class SweetAlertServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
-            'erfan\SweetAlert\SessionStore',
-            'erfan\SweetAlert\LaravelSessionStore'
+            'eru\SweetAlert\SessionStore',
+            'eru\SweetAlert\LaravelSessionStore'
         );
 
-        $this->app->bind('erfan.sweet-alert', function () {
-            return $this->app->make('erfan\SweetAlert\SweetAlertNotifier');
+        $this->app->bind('eru.sweet-alert', function () {
+            return $this->app->make('eru\SweetAlert\SweetAlertNotifier');
         });
     }
 
@@ -54,8 +54,8 @@ class SweetAlertServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            'erfan\SweetAlert\SessionStore',
-            'erfan.sweet-alert',
+            'eru\SweetAlert\SessionStore',
+            'eru.sweet-alert',
         ];
     }
 }

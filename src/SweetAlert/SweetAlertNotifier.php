@@ -1,6 +1,6 @@
 <?php
 
-namespace erfan\SweetAlert;
+namespace eru\SweetAlert;
 
 class SweetAlertNotifier
 {
@@ -10,7 +10,7 @@ class SweetAlertNotifier
     const ICON_INFO = 'info';
 
     /**
-     * @var \erfan\SweetAlert\SessionStore
+     * @var \eru\SweetAlert\SessionStore
      */
     protected $session;
 
@@ -32,7 +32,7 @@ class SweetAlertNotifier
     /**
      * Create a new SweetAlertNotifier instance.
      *
-     * @param \erfan\SweetAlert\SessionStore $session
+     * @param \eru\SweetAlert\SessionStore $session
      */
     public function __construct(SessionStore $session)
     {
@@ -67,17 +67,17 @@ class SweetAlertNotifier
      * @param string $title
      * @param string $icon
      *
-     * @return \erfan\SweetAlert\SweetAlertNotifier $this
+     * @return \eru\SweetAlert\SweetAlertNotifier $this
      */
     public function message($text = '', $title = null, $icon = null)
     {
         $this->config['text'] = $text;
 
-        if (! is_null($title)) {
+        if (!is_null($title)) {
             $this->config['title'] = $title;
         }
 
-        if (! is_null($icon)) {
+        if (!is_null($icon)) {
             $this->config['icon'] = $icon;
         }
         $this->flashConfig();
@@ -90,7 +90,7 @@ class SweetAlertNotifier
      * @param string $text
      * @param string $title
      *
-     * @return \erfan\SweetAlert\SweetAlertNotifier $this
+     * @return \eru\SweetAlert\SweetAlertNotifier $this
      */
     public function basic($text, $title)
     {
@@ -105,7 +105,7 @@ class SweetAlertNotifier
      * @param string $text
      * @param string $title
      *
-     * @return \erfan\SweetAlert\SweetAlertNotifier $this
+     * @return \eru\SweetAlert\SweetAlertNotifier $this
      */
     public function info($text, $title = '')
     {
@@ -120,7 +120,7 @@ class SweetAlertNotifier
      * @param string $text
      * @param string $title
      *
-     * @return \erfan\SweetAlert\SweetAlertNotifier $this
+     * @return \eru\SweetAlert\SweetAlertNotifier $this
      */
     public function success($text, $title = '')
     {
@@ -135,7 +135,7 @@ class SweetAlertNotifier
      * @param string $text
      * @param string $title
      *
-     * @return \erfan\SweetAlert\SweetAlertNotifier $this
+     * @return \eru\SweetAlert\SweetAlertNotifier $this
      */
     public function error($text, $title = '')
     {
@@ -150,7 +150,7 @@ class SweetAlertNotifier
      * @param string $text
      * @param string $title
      *
-     * @return \erfan\SweetAlert\SweetAlertNotifier $this
+     * @return \eru\SweetAlert\SweetAlertNotifier $this
      */
     public function warning($text, $title = '')
     {
@@ -164,11 +164,11 @@ class SweetAlertNotifier
      *
      * @param int $milliseconds
      *
-     * @return \erfan\SweetAlert\SweetAlertNotifier $this
+     * @return \eru\SweetAlert\SweetAlertNotifier $this
      */
     public function autoclose($milliseconds = null)
     {
-        if (! is_null($milliseconds)) {
+        if (!is_null($milliseconds)) {
             $this->config['timer'] = $milliseconds;
         }
 
@@ -180,7 +180,7 @@ class SweetAlertNotifier
      *
      * @param string $buttonText
      *
-     * @return \erfan\SweetAlert\SweetAlertNotifier $this
+     * @return \eru\SweetAlert\SweetAlertNotifier $this
      */
     public function confirmButton($buttonText = 'OK', $overrides = [])
     {
@@ -195,7 +195,7 @@ class SweetAlertNotifier
      * @param string $buttonText
      * @param array  $overrides
      *
-     * @return \erfan\SweetAlert\SweetAlertNotifier $this
+     * @return \eru\SweetAlert\SweetAlertNotifier $this
      */
     public function cancelButton($buttonText = 'Cancel', $overrides = [])
     {
@@ -211,7 +211,7 @@ class SweetAlertNotifier
      * @param string $buttonText
      * @param array  $overrides
      *
-     * @return \erfan\SweetAlert\SweetAlertNotifier $this
+     * @return \eru\SweetAlert\SweetAlertNotifier $this
      */
     public function addButton($key, $buttonText, $overrides = [])
     {
@@ -235,7 +235,7 @@ class SweetAlertNotifier
      *
      * @param string $buttonText
      *
-     * @return \erfan\SweetAlert\SweetAlertNotifier $this
+     * @return \eru\SweetAlert\SweetAlertNotifier $this
      */
     public function closeOnClickOutside($value = true)
     {
@@ -249,7 +249,7 @@ class SweetAlertNotifier
      *
      * @param string $buttonText
      *
-     * @return \erfan\SweetAlert\SweetAlertNotifier $this
+     * @return \eru\SweetAlert\SweetAlertNotifier $this
      */
     public function persistent($buttonText = 'OK')
     {
@@ -277,7 +277,7 @@ class SweetAlertNotifier
      *
      * @param bool|true $html
      *
-     * @return \erfan\SweetAlert\SweetAlertNotifier $this
+     * @return \eru\SweetAlert\SweetAlertNotifier $this
      */
     public function html()
     {

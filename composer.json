@@ -1,5 +1,5 @@
 {
-  "name": "erfan/sweet-alert",
+  "name": "eru/sweet-alert",
   "description": "A simple PHP package to show Sweet Alerts with the Laravel Framework",
   "keywords": [
     "laravel",
@@ -26,7 +26,7 @@
   },
   "autoload": {
     "psr-4": {
-      "erfan\\SweetAlert\\": "src/SweetAlert/"
+      "eru\\SweetAlert\\": "src/SweetAlert/"
     },
     "files": [
       "src/SweetAlert/functions.php"
@@ -35,10 +35,10 @@
   "extra": {
     "laravel": {
       "providers": [
-        "erfan\\SweetAlert\\SweetAlertServiceProvider"
+        "eru\\SweetAlert\\SweetAlertServiceProvider"
       ],
       "aliases": {
-        "Alert": "erfan\\SweetAlert\\SweetAlert"
+        "Alert": "eru\\SweetAlert\\SweetAlert"
       }
     }
   }
