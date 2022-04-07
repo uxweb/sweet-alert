@@ -1,6 +1,6 @@
 <?php
 
-namespace UxWeb\SweetAlert;
+namespace erfan\SweetAlert;
 
 class SweetAlertNotifier
 {
@@ -10,7 +10,7 @@ class SweetAlertNotifier
     const ICON_INFO = 'info';
 
     /**
-     * @var \UxWeb\SweetAlert\SessionStore
+     * @var \erfan\SweetAlert\SessionStore
      */
     protected $session;
 
@@ -32,7 +32,7 @@ class SweetAlertNotifier
     /**
      * Create a new SweetAlertNotifier instance.
      *
-     * @param \UxWeb\SweetAlert\SessionStore $session
+     * @param \erfan\SweetAlert\SessionStore $session
      */
     public function __construct(SessionStore $session)
     {
@@ -67,7 +67,7 @@ class SweetAlertNotifier
      * @param string $title
      * @param string $icon
      *
-     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     * @return \erfan\SweetAlert\SweetAlertNotifier $this
      */
     public function message($text = '', $title = null, $icon = null)
     {
@@ -90,7 +90,7 @@ class SweetAlertNotifier
      * @param string $text
      * @param string $title
      *
-     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     * @return \erfan\SweetAlert\SweetAlertNotifier $this
      */
     public function basic($text, $title)
     {
@@ -105,7 +105,7 @@ class SweetAlertNotifier
      * @param string $text
      * @param string $title
      *
-     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     * @return \erfan\SweetAlert\SweetAlertNotifier $this
      */
     public function info($text, $title = '')
     {
@@ -120,7 +120,7 @@ class SweetAlertNotifier
      * @param string $text
      * @param string $title
      *
-     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     * @return \erfan\SweetAlert\SweetAlertNotifier $this
      */
     public function success($text, $title = '')
     {
@@ -135,7 +135,7 @@ class SweetAlertNotifier
      * @param string $text
      * @param string $title
      *
-     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     * @return \erfan\SweetAlert\SweetAlertNotifier $this
      */
     public function error($text, $title = '')
     {
@@ -150,7 +150,7 @@ class SweetAlertNotifier
      * @param string $text
      * @param string $title
      *
-     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     * @return \erfan\SweetAlert\SweetAlertNotifier $this
      */
     public function warning($text, $title = '')
     {
@@ -164,7 +164,7 @@ class SweetAlertNotifier
      *
      * @param int $milliseconds
      *
-     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     * @return \erfan\SweetAlert\SweetAlertNotifier $this
      */
     public function autoclose($milliseconds = null)
     {
@@ -180,7 +180,7 @@ class SweetAlertNotifier
      *
      * @param string $buttonText
      *
-     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     * @return \erfan\SweetAlert\SweetAlertNotifier $this
      */
     public function confirmButton($buttonText = 'OK', $overrides = [])
     {
@@ -195,7 +195,7 @@ class SweetAlertNotifier
      * @param string $buttonText
      * @param array  $overrides
      *
-     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     * @return \erfan\SweetAlert\SweetAlertNotifier $this
      */
     public function cancelButton($buttonText = 'Cancel', $overrides = [])
     {
@@ -211,7 +211,7 @@ class SweetAlertNotifier
      * @param string $buttonText
      * @param array  $overrides
      *
-     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     * @return \erfan\SweetAlert\SweetAlertNotifier $this
      */
     public function addButton($key, $buttonText, $overrides = [])
     {
@@ -235,7 +235,7 @@ class SweetAlertNotifier
      *
      * @param string $buttonText
      *
-     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     * @return \erfan\SweetAlert\SweetAlertNotifier $this
      */
     public function closeOnClickOutside($value = true)
     {
@@ -249,7 +249,7 @@ class SweetAlertNotifier
      *
      * @param string $buttonText
      *
-     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     * @return \erfan\SweetAlert\SweetAlertNotifier $this
      */
     public function persistent($buttonText = 'OK')
     {
@@ -277,7 +277,7 @@ class SweetAlertNotifier
      *
      * @param bool|true $html
      *
-     * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+     * @return \erfan\SweetAlert\SweetAlertNotifier $this
      */
     public function html()
     {

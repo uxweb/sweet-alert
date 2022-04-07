@@ -1,6 +1,6 @@
 <?php
 
-namespace UxWeb\SweetAlert;
+namespace erfan\SweetAlert;
 
 use Closure;
 

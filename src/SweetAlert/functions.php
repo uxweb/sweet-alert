@@ -7,11 +7,11 @@ if (! function_exists('alert')) {
      * @param string|null $message
      * @param string      $title
      *
-     * @return \UxWeb\SweetAlert\SweetAlertNotifier
+     * @return \erfan\SweetAlert\SweetAlertNotifier
      */
     function alert($message = null, $title = '')
     {
-        $notifier = app('uxweb.sweet-alert');
+        $notifier = app('erfan.sweet-alert');
 
         if (! is_null($message)) {
             return $notifier->message($message, $title);

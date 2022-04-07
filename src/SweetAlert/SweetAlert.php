@@ -1,16 +1,16 @@
 <?php
 
-namespace UxWeb\SweetAlert;
+namespace erfan\SweetAlert;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static \UxWeb\SweetAlert\SweetAlertNotifier message(string $text = '', $title = null, $icon = null)
- * @method static \UxWeb\SweetAlert\SweetAlertNotifier basic(string $text, string $title)
- * @method static \UxWeb\SweetAlert\SweetAlertNotifier info(string $text, string $title = '')
- * @method static \UxWeb\SweetAlert\SweetAlertNotifier success(string $text, string $title = '')
- * @method static \UxWeb\SweetAlert\SweetAlertNotifier error(string $text, string $title = '')
- * @method static \UxWeb\SweetAlert\SweetAlertNotifier warning(string $text, string $title = '')
+ * @method static \erfan\SweetAlert\SweetAlertNotifier message(string $text = '', $title = null, $icon = null)
+ * @method static \erfan\SweetAlert\SweetAlertNotifier basic(string $text, string $title)
+ * @method static \erfan\SweetAlert\SweetAlertNotifier info(string $text, string $title = '')
+ * @method static \erfan\SweetAlert\SweetAlertNotifier success(string $text, string $title = '')
+ * @method static \erfan\SweetAlert\SweetAlertNotifier error(string $text, string $title = '')
+ * @method static \erfan\SweetAlert\SweetAlertNotifier warning(string $text, string $title = '')
  */
 class SweetAlert extends Facade
 {
@@ -21,6 +21,6 @@ class SweetAlert extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'uxweb.sweet-alert';
+        return 'erfan.sweet-alert';
     }
 }
