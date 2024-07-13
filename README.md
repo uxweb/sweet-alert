@@ -6,12 +6,16 @@
 [![StyleCI](https://styleci.io/repos/38935942/shield)](https://styleci.io/repos/38935942)
 [![Total Downloads](https://img.shields.io/packagist/dt/uxweb/sweet-alert.svg?style=flat-square)](https://packagist.org/packages/uxweb/sweet-alert)
 
+## Introduction
+
+This package is a fork of [uxweb/sweet-alert](https://github.com/uxweb/sweet-alert). We have added updates specifically for Laravel 9 and 10 compatibility. All rights and credits belong to the original package [uxweb/sweet-alert](https://github.com/uxweb/sweet-alert).
+
 ## Installation
 
 Require the package using Composer.
 
 ```bash
-composer require uxweb/sweet-alert
+composer require mr-mokhtari/sweet-alert
 ```
 
 If using laravel < 5.5 include the service provider and alias within `config/app.php`.
